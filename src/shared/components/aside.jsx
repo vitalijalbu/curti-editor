@@ -7,17 +7,17 @@ const Aside = () => {
     {
       key: "1",
       label: "Testo",
-      children: "demo",
+      children: <div className="token-panel">ww</div>,
     },
     {
       key: "2",
       label: "Colori",
-      children: <p>ww</p>,
+      children: <div className="token-panel">ww</div>,
     },
     {
       key: "3",
       label: "Altro",
-      children: <p>ww</p>,
+      children: <div className="token-panel">ww</div>,
     },
   ];
 
