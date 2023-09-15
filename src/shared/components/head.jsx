@@ -14,7 +14,7 @@ const Header = () => {
   };
 
   return (
-    <div className="container">
+    <div className="contain">
       <Row justify={"space-between"}>
         <Col style={{display: "flex", alignItems: "center"}}>
           <img src={img} className="site-logo" alt="Logo Curti"/>

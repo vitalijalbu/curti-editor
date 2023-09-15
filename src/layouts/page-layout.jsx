@@ -14,7 +14,7 @@ const PageLayout = (props) => {
               background: "#fff",
               height: "50px",
               lineHeight: "50px",
-              padding: "0",
+              padding: "0 30px",
               position: "fixed",
               top: 0,
               zIndex: 100,
@@ -27,13 +27,15 @@ const PageLayout = (props) => {
           <Layout>
             <Sider
               style={{
-                //overflow: "auto",
+                overflow: "auto",
                 height: "100vh",
                 position: "fixed",
                 left: 0,
                 top: "50px",
                 bottom: "50px",
-                background: "#fff"
+                padding: "10px",
+                background: "#F2F3F3",
+
               }}
               breakpoint="md"
               width={"400px"}
