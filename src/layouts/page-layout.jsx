@@ -34,11 +34,11 @@ const PageLayout = (props) => {
                 top: "50px",
                 bottom: "50px",
                 padding: "10px",
-                background: "#F2F3F3",
+                background: "#fff",
 
               }}
               breakpoint="md"
-              width={"400px"}
+              width={"600px"}
               theme="light"
               //collapsible
               //collapsed={collapsed}
@@ -50,7 +50,7 @@ const PageLayout = (props) => {
             <Layout
               className="site-layout"
               style={{
-                marginLeft: 400,
+                marginLeft: 600,
                 marginTop: "30px",
                 transition: "margin-left 0.2s",
               }}

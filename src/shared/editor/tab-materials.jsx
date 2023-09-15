@@ -1,9 +1,9 @@
 import React from "react";
-import { List, Select, Form, Input } from "antd";
+import { List, Select, Form } from "antd";
 import materials from "data/static.materials.json";
 import finish from "data/static.finish.json";
 
-const Tab1 = () => {
+const Tab2 = () => {
   
   const data = [
     {
@@ -24,14 +24,23 @@ const Tab1 = () => {
        <List
     itemLayout="horizontal"
     dataSource={data}
-    > 
+    >
       <List.Item>
         <List.Item.Meta
-          title="Testo"
-          description="Inserisci testo"
+          title="Materiale"
+          description="Seleziona materiale"
         />
         <div className="list-actions">
-          <Form.Item name="material"><Input allowCLear/></Form.Item>
+          <Select options={materials}/>
+          </div>
+      </List.Item>  
+      <List.Item>
+        <List.Item.Meta
+          title="Finitura"
+          description="Seleziona finitura"
+        />
+        <div className="list-actions">
+          <Form.Item name="material"><Select options={finish}/></Form.Item>
           </div>
       </List.Item>
     </List>
@@ -39,4 +48,4 @@ const Tab1 = () => {
   );
 };
 
-export default Tab1;
+export default Tab2;
