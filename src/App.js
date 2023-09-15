@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import { Button } from 'antd';
+import React from 'react';
+import { Button, Card, ConfigProvider } from 'antd';
+import PageLayout from "layouts/page-layout";
+import theme from "./theme.json"
+import Home from 'pages/home';
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Button type="primary">Button</Button>
-    </div>
+    <ConfigProvider theme={theme} locale="it">
+      <PageLayout>
+          <Home/>
+      </PageLayout>
+    </ConfigProvider>
   );
 }
 
