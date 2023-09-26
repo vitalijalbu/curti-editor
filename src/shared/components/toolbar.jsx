@@ -6,13 +6,7 @@ const Toolbar = () => {
     <div>
       <Row justify={"space-between"}>
         <Col>
-          <Space.Compact>
-            <Button type="primary">Button</Button>
-
-            <Button>Click to Upload</Button>
-
-            <Button>Confirm</Button>
-          </Space.Compact>
+          
         </Col>
         <Col>
           <Space.Compact>

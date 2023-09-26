@@ -3,7 +3,7 @@ import { List, Select, Form, Input, InputNumber } from "antd";
 import materials from "data/static.materials.json";
 import finish from "data/static.finish.json";
 
-const TabMain = () => {
+const TabDimensions = () => {
   
   const data = [
     {
@@ -49,5 +49,4 @@ const TabMain = () => {
   );
 };
 
-export default TabMain;
-
+export default TabDimensions;
