@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Col, Popconfirm, Row, Space, Upload } from "antd";
+import { IconEyeShare } from "@tabler/icons-react";
 
 const Toolbar = () => {
   return (
@@ -10,11 +11,7 @@ const Toolbar = () => {
         </Col>
         <Col>
           <Space.Compact>
-            <Button type="primary">Button</Button>
-
-            <Button>Click to Upload</Button>
-
-            <Button>Confirm</Button>
+            <Button icon={<IconEyeShare/>}>Anteprima</Button>
           </Space.Compact>
         </Col>
       </Row>

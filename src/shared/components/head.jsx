@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Col, Row, Space, Popconfirm, message } from "antd";
-import { IconDownload, IconTrash } from "@tabler/icons-react";
+import { Button, Col, Row, Space, Popconfirm, message, Divider } from "antd";
+import { IconDownload, IconPrinter, IconTrash } from "@tabler/icons-react";
 import img from "assets/images/logo.png"
 
 const Header = () => {
@@ -20,23 +20,21 @@ const Header = () => {
           <img src={img} className="site-logo" alt="Logo Curti"/>
         </Col>
         <Col span="16" style={{display: "flex", justifyContent: "end"}}>
-          <Space>
-            <Button type="primary" icon={<IconDownload />}>
-              Esporta
-            </Button>
-
-            <Button>Continua</Button>
+          <Space split={<Divider type="vertical" />}>
             <Popconfirm
-              title="Delete the task"
-              description="Are you sure to delete this task?"
+              title="Eliminare sessione?"
+              description="Sei sicuro di voler eliminare la sessione? Tutti i dati verranno persi."
               onConfirm={confirm}
               onCancel={cancel}
               okType="danger"
-              okText="Sì"
-              cancelText="No"
+              okText="Elimina"
+              cancelText="Chiudi"
             >
             <Button danger icon={<IconTrash/>}>Elimina</Button>
             </Popconfirm>
+            <Button type="primary" icon={<IconPrinter />}>
+              Stampa
+            </Button>
           </Space>
         </Col>
       </Row>

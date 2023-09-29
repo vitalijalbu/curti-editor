@@ -21,7 +21,9 @@ html, body{
     display: flex;
     align-self: center;
 }
-
+.ant-btn-primary{
+  background: linear-gradient(to bottom,#3b8f60 0,#0B7542 100%) !important;
+}
 svg{
     vertical-align: middle;
     stroke-width: 1.5;
@@ -52,3 +54,33 @@ svg{
   .ant-select, input, select{
     width: 100%;
   }
+  .ant-card-body{
+    position: relative;
+    display: block;
+    min-height: 50vh;
+  }
+
+
+  .ruler {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .mark {
+    width: 1px;
+    height: 5mm; /* Height of each centimeter */
+    background-color: black;
+    position: absolute;
+  }
+  
+  .vertical {
+    transform: rotate(90deg);
+  }
+  
+  .centimeter {
+    position: absolute;
+    bottom: -10px;
+    transform: translateX(-50%);
+  }
+  

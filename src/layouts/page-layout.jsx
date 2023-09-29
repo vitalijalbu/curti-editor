@@ -61,7 +61,7 @@ const PageLayout = (props) => {
                   maxWidth: "100%",
                   overflow: "initial",
                   paddingBottom: "30px",
-                  background: "#F2F3F3"
+                  background: "#F8F8F8"
                 }}
               >
                 <div className="main-container">{props.children}</div>

@@ -1,53 +1,62 @@
 import React from "react";
-import { List, Select, Form, Input, InputNumber } from "antd";
-import materials from "data/static.materials.json";
-import finish from "data/static.finish.json";
+import { Collapse, Form, Input, Typography } from "antd";
+const {Title} = Typography;
+
+
+const { Panel } = Collapse;
 
 const TabMain = () => {
-  
   const data = [
     {
-      id: "marginTop",
-      type: "number",
-      title: 'Spaziatura sopra',
+      id: "main",
+      type: "text",
+      title: "Testo",
+      tabs: [
+    {
+      id: "textEditor",
+      type: "text",
+      title: "Testo",
+      component: <Input.TextArea />
     },
     {
-      id: "marginBottom",
-      type: "number",
-      title: 'Spaziatura sotto',
-    }, 
-    {
-      id: "marginLeft",
-      type: "number",
-      title: 'Spaziatura sinistra',
-    },
-    {
-      id: "marginRight",
-      type: "number",
-      title: 'Spaziatura destra',
+      id: "fontFamily",
+      title: "Font",
+      component: "demo"
     }
+  ]
+}, {
+      id: "main",
+      type: "text",
+      title: "Colori",
+      tabs: [
+    {
+      id: "textEditor",
+      type: "text",
+      title: "Testo",
+      component: <Input.TextArea />
+    }
+  ]
+}
   ];
 
   return (
     <div>
-       <List
-    itemLayout="horizontal"
-    dataSource={data}
-    renderItem={(item, i) => (
-      <List.Item key={i}>
-      <List.Item.Meta
-        title={item.title}
-        description="Inserisci testo"
-      />
-      <div className="list-actions">
-          <InputNumber allowClear suffix="cm"/>
-        </div>
-    </List.Item>
-    )}
-  />
+      {data.map((item, i) => (
+        <>
+        <Title level={3}>{item.title}</Title>
+      <Collapse accordion>
+        {item.tabs.map((item, i) => (
+          <Panel header={item.title} key={i}>
+            <Form.Item label={item.title} help="Inserisci testo">
+              {item.component}
+            </Form.Item>
+          </Panel>
+        ))}
+      </Collapse>
+      </>
+        ))}
     </div>
   );
 };
 
 export default TabMain;
-
