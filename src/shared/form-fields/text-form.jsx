@@ -32,7 +32,7 @@ const TextForm = () => {
         },
       ]}
     >
-      <InputNumber />
+      <InputNumber addonAfter="mm"/>
     </Form.Item>
     
     <Form.Item name="fontFamily" label="Seleziona carattere">

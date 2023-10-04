@@ -1,19 +1,20 @@
-import { Button, Divider, Tabs } from "antd";
+import { Button, Tabs } from "antd";
 import React from "react";
 import TabMain from "@/shared/editor/tab-main";
 import TabDimensions from "@/shared/editor/tab-dimensions";
 import TabSettings from "@/shared/editor/tab-settings";
+import { IconAlphabetLatin, IconAspectRatio, IconSettings, IconSortAZ } from "@tabler/icons-react";
 
 const Aside = () => {
   const items = [
-    { label: (<Button type="text">Testi</Button>), key: "1", children: <TabMain /> },
-    { label: (<Button type="text">Lapide</Button>), key: "2", children: <TabDimensions /> },
-    { label: (<Button type="text">Impostazioni</Button>), key: "3", children: <TabSettings /> }
+    { key: "1", label: (<Button type="text" icon={<IconSortAZ/>}>Testi</Button>),  children: <TabMain /> },
+    { key: "2", label: (<Button type="text" icon={<IconAspectRatio/>}>Lapide</Button>), children: <TabDimensions /> },
+    { key: "3", label: (<Button type="text" icon={<IconSettings/>}>Impostazioni</Button>), children: <TabSettings /> }
   ];
 
   return (
     <aside>
-      <Tabs defaultActiveKey="1" items={items}/>
+      <Tabs items={items}/>
     </aside>
   );
 };

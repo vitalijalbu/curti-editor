@@ -31,7 +31,7 @@ const TabSettings = () => {
           description="Inserisci testo"
         />
         <div className="list-actions">
-          <Form.Item name="material"><Input allowClear/></Form.Item>
+         demo
           </div>
       </List.Item>
     </List>

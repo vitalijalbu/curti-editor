@@ -27,14 +27,10 @@ const SelectFont = () => {
 
   return (
     <div>
-      <Text style={{ fontFamily: '"Font 4903" !important' }}>demo text</Text>
-      <Select
-        style={{ width: "100%", fontFamily: '"Font 4903" !important' }}
-        listHeight={400}
-        placeholder="Select Font"
-      >
+      <p style={{ fontFamily: `"Font 4400" !important` }}>demo text</p>
+      <Select listHeight={400} placeholder="Select Font">
         {fontOptions.map((option) => (
-          <Option key={option.value} value={option.value}>
+          <Option key={option.value} value={option.value} dropdownStyle={{ fontFamily: `"Font 4400" !important` }}>
             {option.label}
           </Option>
         ))}
