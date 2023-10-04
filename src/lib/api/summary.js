@@ -1,4 +1,4 @@
-import instance from '../api';
+import instance from '@/lib/api';
 
 
 export const getGlobalSummary = async (id) => {
@@ -6,6 +6,6 @@ export const getGlobalSummary = async (id) => {
     const response = await instance.get(`/api/summary?user_id=1`);
     return response;
   } catch (error) {
-    return {status: false, error: error}
+    throw new Error(`Failed to get data from API: ${error.message}`);
   }
 };

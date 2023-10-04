@@ -1,7 +1,7 @@
 import instance, { setSession, removeSession, getSession } from "../api";
 
 //define storeage instance
- const Storage = () => {
+const Storage = () => {
   if (typeof window !== "undefined") {
     return window.sessionStorage;
   }
@@ -13,12 +13,31 @@ export const loginAction = (body) => {
   return instance
     .post("/api/auth/local", body)
     .then(async (response) => {
-    
+     
+
       setSession({ jwt: response.data.jwt});
       //
         // Get full user info
         const user = await getProfile();
       setSession({ user });
+      return response;
+    })
+    .catch((err) => {
+      return Promise.reject(err);
+    });
+};
+
+/* Login API Action */
+export const registerAction = async (body) => {
+  return instance
+    .post("/api/auth/local", body)
+    .then((response) => {
+      if (response.status === 200) {
+        setSession({ jwt: response.data.jwt });
+        const user = getProfile();
+        setSession({ user });
+      }
+
       return response;
     })
     .catch((err) => {
@@ -38,6 +57,20 @@ export const updatePasswordAction = (body) => {
 export const updateProfile = (id, body) => {
   return instance.put(`/api/users/${id}`, body);
 };
+
+/* Reset Password API Action */
+export const getSummary = async () => {
+  return instance
+    .get("/api/users/me?populate=*")
+    .then((response) => {
+      return response.data;
+    })
+    .catch((err) => {
+      //dispatch({ type: USER_ERROR });
+      return Promise.reject(err);
+    });
+};
+
 
 /* Reset Password API Action */
 export const getProfile = async () => {

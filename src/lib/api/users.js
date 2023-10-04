@@ -1,83 +1,56 @@
-import instance from '../api';
+import instance from '@/lib/api';
 
-/* Get all Users */
-export const getAllUsers = async (params) => {
+export const getAllUsers = async () => {
   try {
-   /* const options = {
-      params: {
-        fields: '*',
-        filters:{
-          'first_name': {
-            '$containsi' : params?.query
-          }
-        }
-      }
-    };*/
-    const response = await instance.get('/api/users?populate=*');
+    const response = await instance.get(`/api/users?populate=*`);
     return response;
   } catch (error) {
-    return {error};
+    throw new Error(`Failed to get data from API: ${error.message}`);
   }
 };
-
 
 export const getUserOverview = async () => {
   try {
     const response = await instance.get(`/api/users/${id}?populate=*`);
     return response.data;
   } catch (error) {
-    return {status: false, error: error}
+    throw new Error(`Failed to get data from API: ${error.message}`);
   }
 };
 
 /* Get User details */
 export const getUserById = async (id) => {
   try {
-    const response = await instance.get(`/api/users/${id}?populate=*`);
+    const response = await instance.get(`/api/users/${id}`);
     return response;
   } catch (error) {
-    return {status: false, error: error}
+    throw new Error(`Failed to get data from API: ${error.message}`);
   }
 };
 
-export const createUser = async (body) => {
+export const createUser = async () => {
   try {
-    const response = await instance.post(`/api/users?populate=*`, body);
-    console.log("Response create", response);
+    const response = await instance.delete(`/api/users?populate=*`);
     return response.data;
   } catch (error) {
-    return {status: false, error: error}
+    throw new Error(`Failed to get data from API: ${error.message}`);
   }
 };
-
-export const updateUser = async (id,body) => {
+export const updateUser = async () => {
   try {
-    const response = await instance.put(`/api/users/${id}`, body);
+    const response = await instance.delete(`/api/users?populate=*`);
     return response.data;
   } catch (error) {
-    return {status: false, error: error};
+    throw new Error(`Failed to get data from API: ${error.message}`);
   }
 };
 
-export const deleteUser = async (id) => {
+export const deleteUser = async () => {
   try {
-    const response = await instance.delete(`/api/users/${id}`);
+    const response = await instance.delete(`/api/users?populate=*`);
     return response.data;
   } catch (error) {
-    return {status: false, error: error}
+    throw new Error(`Failed to get data from API: ${error.message}`);
   }
 };
 
-//=============================================================================
-// User roles
-//=============================================================================
-
-/* Get all Users */
-export const getAllUserRoles = async () => {
-  try {
-    const response = await instance.get('/api/users-permissions/roles?populate=*');
-    return response;
-  } catch (error) {
-    return {error};
-  }
-};

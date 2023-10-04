@@ -1,54 +1,45 @@
-import instance from '../api';
+import instance from '@/lib/api';
 
-/* Get all Contacts */
-export const getAllContacts = async (params) => {
+export const getAllContacts = async () => {
   try {
-    
-    const response = await instance.get('/api/contacts?populate=*');
+    const response = await instance.get(`/api/contacts?populate=*`);
     return response.data;
   } catch (error) {
-    return {status: false, error: error}
+    throw new Error(`Failed to get data from API: ${error.message}`);
   }
 };
-
 /* Get Contact details */
 export const getContactById = async (id) => {
   try {
-    const response = await instance.get(`/api/contacts/${id}?populate=*`);
+    const response = await instance.get(`/api/contacts/${id}`);
     return response.data;
   } catch (error) {
-    return {status: false, error: error}
+    throw new Error(`Failed to get data from API: ${error.message}`);
   }
 };
 
-//Create Contact
-export const createContact = async (body) => {
+export const createContact = async () => {
   try {
-    const response = await instance.post(`/api/contacts?populate=*`, body);
-    console.log("Response create", response);
+    const response = await instance.delete(`/api/contacts?populate=*`);
     return response.data;
   } catch (error) {
-    return {status: false, error: error}
+    throw new Error(`Failed to get data from API: ${error.message}`);
+  }
+};
+export const updateContact = async () => {
+  try {
+    const response = await instance.delete(`/api/contacts?populate=*`);
+    return response.data;
+  } catch (error) {
+    throw new Error(`Failed to get data from API: ${error.message}`);
   }
 };
 
-//Update Contact
-export const updateContact = async (id, body) => {
+export const deleteContact = async () => {
   try {
-    const response = await instance.put(`/api/contacts/${id}`,  body);
-    console.log("Response update", response);
+    const response = await instance.delete(`/api/contacts?populate=*`);
     return response.data;
   } catch (error) {
-    return {status: false, error: error}
-  }
-};
-
-//Delete Contact
-export const deleteContact = async (id) => {
-  try {
-    const response = await instance.delete(`/api/contacts/${id}`);
-    return response.data;
-  } catch (error) {
-    return {status: false, error: error}
+    throw new Error(`Failed to get data from API: ${error.message}`);
   }
 };

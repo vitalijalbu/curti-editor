@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Head from "shared/components/head";
-import Aside from "shared/components/aside";
+import Head from "@/shared/components/head";
+import Aside from "@/shared/components/aside";
 import { Layout } from "antd";
 
 const { Content, Sider, Header } = Layout;

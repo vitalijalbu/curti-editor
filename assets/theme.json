@@ -1,0 +1,97 @@
+{
+  "theme": "light",
+  "token": {
+    "colorPrimary": "#0B7542",
+    "borderRadius": 12,
+    "fontFamily": "Inter, sans-serif"
+    },
+    "components": {
+      "Typography": {
+        "marginXS": "0",
+        "marginXXS": "0"
+      }, 
+      "Card": {
+        "borderRadiusLG": 12,
+        "colorBorderSecondary": "rgb(0 0 0 / 15%)"
+      },    
+      "Statistic": {
+        "fontSize": 14,
+        "fontSizeHeading3": 20
+      },
+      "Collapse": {
+        "colorBgContainer": "#fff",
+        "padding": 0
+      },
+      "message": {
+        "boxShadow": 0,
+        "controlHeightLG": 50,
+        "borderRadiusLG": 12
+      },
+      "Pagination": {
+        "colorPrimaryHover": "rgba(0, 0, 0, 0.88)",
+        "colorPrimary": "rgba(0, 0, 0, 0.88)"
+      },
+      "Button": {
+        "motionDurationMid": 0,
+        "motionDurationSlow": 0,
+        "controlHeight": 38,
+        "controlHeightLG": 56,
+        "colorTextDisabled": "rgba(0, 0, 0, 0.25)",
+        "controlOutline": 0,
+        "defaultBg": "linear-gradient(to bottom,#3b8f60 0,#0B7542 100%)"
+      },
+      "Menu": {
+        "itemMarginInline": 0,
+        "borderRadius": 12,
+        "subMenuItemBorderRadius": 12,
+        "itemHeight": 34,
+        "lineWidth": 0,
+        "lineHeight": 1.5,
+        "margin": 4,
+        "itemMarginBlock": 2,
+        "iconMarginInlineEnd": 4,
+        "itemPaddingInline": 6,
+        "lineWidthFocus":12,
+        "motionDurationMid": 0,
+        "motionDurationSlow": 0,
+        "dropdownWidth": 200
+      },
+      "Input": {
+        "lineHeight": 1.75,
+        "motionDurationMid": "0",
+        "motionDurationSlow": "0",
+        "controlOutline": "rgba(5, 25, 42, 23)",
+        "controlHeight": 40,
+        "controlOutlineWidth": 1,
+        "colorWarningOutline": "rgba(255, 215, 5, 1)"
+      },
+      "InputNumber": {
+        "controlHeight": 40,
+        "controlOutline": "rgba(5, 25, 42, 10)",
+        "controlOutlineWidth": 1
+      },
+      "Select": {
+        "controlHeight": 40,
+        "controlHeightLG": 56,
+        "optionHeight": 40
+      },
+      "Radio": {
+        "motionDurationMid": "0",
+        "motionDurationSlow": "0",
+        "controlHeight": 40
+      },
+      "Modal": {
+        "colorBgMask": "rgba(0, 0, 0, 0.75)"
+      },
+      "Checkbox": {
+        "controlInteractiveSize": 22,
+        "fontSize": 14,
+        "lineHeight": 1.5
+      },
+      "Cascader": {
+        "controlHeight": 40,
+        "motionDurationMid": "0.1s",
+        "motionDurationSlow": "0.2s"
+      }
+    }
+  }

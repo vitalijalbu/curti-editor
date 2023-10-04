@@ -1,4 +1,4 @@
-import instance from '../api';
+import instance from '@/lib/api';
 
 export const getAllTeams = async () => {
   try {
@@ -11,33 +11,33 @@ export const getAllTeams = async () => {
 /* Get Team details */
 export const getTeamById = async (id) => {
   try {
-    const response = await instance.get(`/api/teams/${id}?populate=*`);
+    const response = await instance.get(`/api/teams/${id}`);
     return response.data;
   } catch (error) {
     throw new Error(`Failed to get data from API: ${error.message}`);
   }
 };
 
-export const createTeam = async (body) => {
+export const createTeam = async () => {
   try {
-    const response = await instance.post(`/api/teams?populate=*`, body);
+    const response = await instance.delete(`/api/teams?populate=*`);
     return response.data;
   } catch (error) {
     throw new Error(`Failed to get data from API: ${error.message}`);
   }
 };
-export const updateTeam = async (id, body) => {
+export const updateTeam = async () => {
   try {
-    const response = await instance.put(`/api/teams/${id}?populate=*`, body);
+    const response = await instance.delete(`/api/teams?populate=*`);
     return response.data;
   } catch (error) {
     throw new Error(`Failed to get data from API: ${error.message}`);
   }
 };
 
-export const deleteTeam = async (id) => {
+export const deleteTeam = async () => {
   try {
-    const response = await instance.delete(`/api/teams/${id}`);
+    const response = await instance.delete(`/api/teams?populate=*`);
     return response.data;
   } catch (error) {
     throw new Error(`Failed to get data from API: ${error.message}`);
