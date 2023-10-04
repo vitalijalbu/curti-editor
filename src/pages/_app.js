@@ -4,6 +4,7 @@ import "@/assets/styles/index.scss";
 import PageLayout from "@/layouts/page-layout";
 import { RecoilRoot } from "recoil";
 import { ConfigProvider } from "antd";
+import "@/hooks/fonts";
 
 
 

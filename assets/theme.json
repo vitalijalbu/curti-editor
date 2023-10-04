@@ -2,14 +2,9 @@
   "theme": "light",
   "token": {
     "colorPrimary": "#0B7542",
-    "borderRadius": 12,
-    "fontFamily": "Inter, sans-serif"
+    "borderRadius": 12
     },
     "components": {
-      "Typography": {
-        "marginXS": "0",
-        "marginXXS": "0"
-      }, 
       "Card": {
         "borderRadiusLG": 12,
         "colorBorderSecondary": "rgb(0 0 0 / 15%)"
