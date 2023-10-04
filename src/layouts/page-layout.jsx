@@ -6,6 +6,8 @@ import { Layout } from "antd";
 const { Content, Sider, Header } = Layout;
 
 const PageLayout = (props) => {
+  const [collapsed, setCollapsed] = useState(false);
+
     return (
         <Layout className="main-layout">
           <Header
@@ -27,8 +29,7 @@ const PageLayout = (props) => {
           <Layout>
             <Sider
               style={{
-                overflow: "auto",
-                height: "100vh",
+                height: "100%",
                 position: "fixed",
                 left: 0,
                 top: "50px",
@@ -38,19 +39,19 @@ const PageLayout = (props) => {
 
               }}
               breakpoint="md"
-              width={"600px"}
+              width={"500px"}
               theme="light"
               //collapsible
-              //collapsed={collapsed}
-              //onCollapse={onCollapse}
-              //collapsedWidth={0}
+              collapsed={collapsed}
+              onCollapse={() => setCollapsed(!collapsed)}
+              collapsedWidth={0}
             >
-              <Aside />
+              <Aside collapse={() => setCollapsed(!collapsed)}/>
             </Sider>
             <Layout
               className="site-layout"
               style={{
-                marginLeft: 600,
+                marginLeft: collapsed ? 0 : 500,
                 marginTop: "30px",
                 transition: "margin-left 0.2s",
               }}
