@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Head from "@/shared/components/head";
 import Aside from "@/shared/components/aside";
-import { Layout } from "antd";
+import { Button, Layout } from "antd";
+import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 
 const { Content, Sider, Header } = Layout;
 
@@ -9,7 +10,12 @@ const PageLayout = (props) => {
   const [collapsed, setCollapsed] = useState(false);
 
     return (
-        <Layout className="main-layout">
+        <Layout className="main-layout" 
+        style={{
+          backgroundImage: "radial-gradient(#ccc 1px, transparent 0)",
+          backgroundSize: "10mm 10mm",
+          backgroundPosition: "0 0"
+        }}>
           <Header
             theme="light"
             style={{
@@ -36,22 +42,29 @@ const PageLayout = (props) => {
                 bottom: "50px",
                 padding: "10px",
                 background: "#fff",
-
+                overflowY: "auto"
               }}
               breakpoint="md"
               width={"500px"}
               theme="light"
-              //collapsible
+              collapsible
+              reverseArrow={true}
               collapsed={collapsed}
+              trigger={<Button
+                shape="circle"
+                size="small"
+                onClick={() => setCollapsed(!collapsed)} // Assuming props.collapse is a function that toggles the collapse state
+                icon={<IconChevronRight />}
+              />}
               onCollapse={() => setCollapsed(!collapsed)}
-              collapsedWidth={0}
+              collapsedWidth={40}
             >
-              <Aside collapse={() => setCollapsed(!collapsed)}/>
+              <Aside collapse={collapsed}/>
             </Sider>
             <Layout
               className="site-layout"
               style={{
-                marginLeft: collapsed ? 0 : 500,
+                marginLeft: collapsed ? 40 : 500,
                 marginTop: "30px",
                 transition: "margin-left 0.2s",
               }}

@@ -1,76 +1,66 @@
-import React, { useState } from "react";
-import { Button, Collapse, Divider, Form, Input, Typography } from "antd";
-const { Title, Text } = Typography;
-import TextForm from "@/shared/form-fields/text-form";
-import { CaretRightOutlined } from "@ant-design/icons";
-import { IconPlus, IconTrash } from "@tabler/icons-react";
+import React from 'react';
 import _ from "lodash";
+import { Button, Collapse, Divider, Typography } from 'antd';
+import { CaretRightOutlined } from '@ant-design/icons';
+import { IconPlus, IconTrash } from '@tabler/icons-react';
+import { useRecoilState } from 'recoil';
+import { formsState } from '@/store/index'; // Update the path
+import TextForm from '@/shared/form-fields/text-form';
 
-
+const { Title } = Typography;
 const { Panel } = Collapse;
 
 const TabMain = () => {
-  const [items, setItems] = useState([
-    {
-      id: "1",
-      label: "Testo 1",
-      children: <TextForm key={0} />,
-    },
-    {
-      id: "2",
-      label: "Testo 2",
-      children: <TextForm key={1} />,
-    },
-  ]);
+  const [forms, setForms] = useRecoilState(formsState);
 
   const handleAddRow = () => {
-    const newItem = {
-      id: _.uniqueId(), // Using lodash to generate a unique ID
-      label: `Testo ${items.length + 1}`,
-      children: <TextForm key={items.length} />,
+    const newForm = {
+      id: _.uniqueId(),
+      label: `Testo ${forms.length + 1}`,
+      children: <TextForm key={forms.length} />,
     };
 
-    setItems([...items, newItem]);
+    setForms([...forms, newForm]);
   };
 
   const handleRemoveRow = (id) => {
-    const updatedItems = items.filter((item) => item.id !== id);
-    setItems(updatedItems);
+    const updatedForms = forms.filter((form) => form.id !== id);
+    setForms(updatedForms);
   };
 
   return (
     <div>
       <Title level={5}>Modifica i testi sulla lapide</Title>
-      <Divider/>
+      <Divider />
       <Collapse
         bordered={false}
-        style={{background: "#fff"}}
+        style={{ background: '#fff' }}
         expandIcon={({ isActive }) => (
           <CaretRightOutlined rotate={isActive ? 90 : 0} />
         )}
-        defaultActiveKey={["1"]}
+        defaultActiveKey={['1']}
       >
-        {items.map((item) => (
+        {forms.map((form) => (
           <Panel
-            key={item.id}
-            header={item.label}
+            key={form.id}
+            header={form.label}
             extra={
               <Button
                 danger
                 type="text"
-                icon={<IconTrash/>}
-                onClick={() => handleRemoveRow(item.id)}
+                icon={<IconTrash />}
+                onClick={() => handleRemoveRow(form.id)}
               >
                 Elimina riga
               </Button>
             }
           >
-            {item.children}
+            {form.children}
           </Panel>
         ))}
       </Collapse>
       {/* Add new line */}
-      <Divider>o</Divider>
+      <Divider />
       <Button block type="dashed" icon={<IconPlus />} onClick={handleAddRow}>
         Aggiungi riga
       </Button>

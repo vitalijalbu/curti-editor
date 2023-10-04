@@ -6,9 +6,6 @@ html, body{
     width: 100%;
     background: #f5f5f5;
     color: #111;
-    background-image: radial-gradient(black 1px, transparent 0);
-    background-size: 10mm 10mm;
-    background-position: 0 0;
 }
 #main-layout{
     margin: auto;
@@ -24,7 +21,11 @@ html, body{
     display: flex;
     align-self: center;
 }
-
+.ant-layout-sider-trigger{
+  left: -1px !important;
+  background-color: #fafafa !important;
+  border-top: 1px solid $border-color;
+}
 svg{
     vertical-align: middle;
     stroke-width: 1.5;

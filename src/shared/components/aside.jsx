@@ -43,25 +43,13 @@ const Aside = (props) => {
     },
   ];
 
+  console.log('collapse', props?.collapse);
+
   return (
     <aside>
-      <div
-        style={{
-          position: "absolute",
-          right: -10,
-          top: 0,
-          zIndex: 1000,
-          background: "#fff",
-        }}
-      >
-        <Button
-          shape="circle"
-          size="small"
-          onClick={props.collapse} // Assuming props.collapse is a function that toggles the collapse state
-          icon={props.collapse ? <IconChevronLeft /> : <IconChevronRight />}
-        />
-      </div>
+      {props?.collapse === false ?
       <Tabs items={items} />
+      : null}
     </aside>
   );
 };
