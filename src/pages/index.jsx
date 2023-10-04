@@ -12,7 +12,7 @@ const Index = () => {
 
   return (
     <div>
-      <Card title="Anteprima lapide" extra={[<Toolbar />]}>
+      <Card title="Anteprima lapide" extra={[<Toolbar />]} actions={[<Alert showIcon message="SCALA 1:10" description="1cm sullo schermo corrisponde a 10cm nella realtà" type="warning"/>]}>
         <div id="headstone">
           <Form
             layout="vertical"
@@ -24,7 +24,7 @@ const Index = () => {
           </Form>
         </div>
         <Divider />
-        <Alert showIcon message="SCALA 2:1" type="warning" />
+        
       </Card>
     </div>
   );

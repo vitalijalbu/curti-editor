@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Button, Collapse, Form, Input, Typography } from "antd";
+import { Button, Collapse, Divider, Form, Input, Typography } from "antd";
+const { Title, Text } = Typography;
 import TextForm from "@/shared/form-fields/text-form";
 import { CaretRightOutlined } from "@ant-design/icons";
-import { IconPlus } from "@tabler/icons-react";
+import { IconPlus, IconTrash } from "@tabler/icons-react";
 import _ from "lodash";
+
 
 const { Panel } = Collapse;
 
@@ -38,9 +40,11 @@ const TabMain = () => {
 
   return (
     <div>
+      <Title level={5}>Modifica i testi sulla lapide</Title>
+      <Divider/>
       <Collapse
-        ghost
         bordered={false}
+        style={{background: "#fff"}}
         expandIcon={({ isActive }) => (
           <CaretRightOutlined rotate={isActive ? 90 : 0} />
         )}
@@ -54,6 +58,7 @@ const TabMain = () => {
               <Button
                 danger
                 type="text"
+                icon={<IconTrash/>}
                 onClick={() => handleRemoveRow(item.id)}
               >
                 Elimina riga
@@ -65,6 +70,7 @@ const TabMain = () => {
         ))}
       </Collapse>
       {/* Add new line */}
+      <Divider>o</Divider>
       <Button block type="dashed" icon={<IconPlus />} onClick={handleAddRow}>
         Aggiungi riga
       </Button>

@@ -14,8 +14,7 @@ const TextForm = () => {
       name="text"
       rules={[
         {
-          required: true,
-          message: 'Please input your username!',
+          required: true
         },
       ]}
     >
@@ -24,13 +23,14 @@ const TextForm = () => {
 
     <Form.Item
       label="Grandezza testo"
-      name="text"
-      rules={[
-        {
-          required: true,
-          message: 'Please input your username!',
-        },
-      ]}
+      name="fontSize"
+    >
+      <InputNumber addonAfter="mm"/>
+    </Form.Item>    
+    
+    <Form.Item
+      label="Spaziatura lettere"
+      name="letterSpacing"
     >
       <InputNumber addonAfter="mm"/>
     </Form.Item>

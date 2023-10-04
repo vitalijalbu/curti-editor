@@ -1,5 +1,6 @@
 import React from "react";
-import { List, Select, Form, Input } from "antd";
+import { List, Select, Form, Input, Divider, Typography } from "antd";
+const { Title, Text } = Typography;
 import materials from "@/data/static.materials.json";
 import finish from "@/data/static.finish.json";
 
@@ -21,17 +22,18 @@ const TabSettings = () => {
   ];
   return (
     <div>
+            <Title level={5}>Impostazioni area di lavoro</Title>
+      <Divider/>
        <List
     itemLayout="horizontal"
     dataSource={data}
     > 
       <List.Item>
         <List.Item.Meta
-          title="Testo"
-          description="Inserisci testo"
+          title="Unità di misura"
         />
         <div className="list-actions">
-         demo
+         mm
           </div>
       </List.Item>
     </List>

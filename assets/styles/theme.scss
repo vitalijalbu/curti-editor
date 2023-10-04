@@ -6,6 +6,9 @@ html, body{
     width: 100%;
     background: #f5f5f5;
     color: #111;
+    background-image: radial-gradient(black 1px, transparent 0);
+    background-size: 10mm 10mm;
+    background-position: 0 0;
 }
 #main-layout{
     margin: auto;
@@ -57,8 +60,12 @@ svg{
     display: block;
     min-height: 50vh;
   }
-
-
+  
+.ant-card {
+  .ant-card-actions{
+    padding: 0 24px;
+  }
+}
   .ruler {
     display: flex;
     flex-direction: column;

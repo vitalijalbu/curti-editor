@@ -1,5 +1,6 @@
 import React from "react";
-import { List, Select, Form, Input, InputNumber } from "antd";
+import { List, Select, Form, Input, InputNumber, Typography, Divider } from "antd";
+const { Title, Text } = Typography;
 import materials from "@/data/static.materials.json";
 import finish from "@/data/static.finish.json";
 
@@ -30,6 +31,8 @@ const TabDimensions = () => {
 
   return (
     <div>
+        <Title level={5}>Impostazioni lapide</Title>
+      <Divider/>
        <List
     itemLayout="horizontal"
     dataSource={data}
