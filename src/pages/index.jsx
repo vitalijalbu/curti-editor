@@ -3,10 +3,10 @@ import React from 'react';
 import { Alert, Card, Divider, Form } from 'antd';
 import Toolbar from '@/shared/components/toolbar';
 import { useRecoilValue } from 'recoil';
-import { formsState } from '@/store/index'; // Update the path
+import { formState } from '@/store/index'; // Update the path
 
 const Index = () => {
-  const forms = useRecoilValue(formsState);
+  const forms = useRecoilValue(formState);
   console.log('👀 state-forms', forms)
 
   return (

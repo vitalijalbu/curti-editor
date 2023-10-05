@@ -4,17 +4,16 @@ import _ from 'lodash';
 import { Button, Collapse, Divider, Typography } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
 import { IconPlus, IconTrash } from '@tabler/icons-react';
-import { useRecoilState } from 'recoil';
-import { formsState } from '@/store/index'; // Update the path
+import { useRecoilValue, useRecoilState } from 'recoil';
+import { formState } from '@/store/index'; // Update the path
 import TextForm from '../form-fields/text-form';
-import { formValuesState } from '@/store/index'; // Update the path
 
 const { Title } = Typography;
 const { Panel } = Collapse;
 
 const TabMain = () => {
-  const [forms, setForms] = useRecoilState(formsState);
-  const [formValues, setFormValues] = useRecoilState(formValuesState);
+  const forms = useRecoilValue(formState); // useRecoilValue should work with the atom name
+  const [formsState, setFormsState] = useRecoilState(formState);
 
   const handleAddRow = () => {
     const newForm = {
@@ -23,28 +22,20 @@ const TabMain = () => {
       values: {}, // Initialize an empty values object
     };
 
-    setForms([...forms, newForm]);
-    setFormValues([...formValues, { id: newForm.id, data: newForm.values }]);
+    setFormsState([...forms, newForm]);
   };
 
   const handleRemoveRow = (id) => {
     const updatedForms = forms.filter((form) => form.id !== id);
-    setForms(updatedForms);
-    setFormValues(formValues.filter((fv) => fv.id !== id));
+    setFormsState(updatedForms);
   };
 
   const handleFormValuesChange = (formId, changedValues) => {
-    setForms((prevForms) =>
+    setFormsState((prevForms) =>
       prevForms.map((prevForm) =>
         prevForm.id === formId
           ? { ...prevForm, values: { ...prevForm.values, ...changedValues } }
           : prevForm
-      )
-    );
-
-    setFormValues((prevFormValues) =>
-      prevFormValues.map((fv) =>
-        fv.id === formId ? { id: formId, data: { ...fv.data, ...changedValues } } : fv
       )
     );
   };

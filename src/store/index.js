@@ -1,7 +1,7 @@
 // recoil.js
 import { atom } from 'recoil';
 
-export const formsState = atom({
-  key: 'formsState',
+export const formState = atom({
+  key: 'formState',
   default: [],
 });

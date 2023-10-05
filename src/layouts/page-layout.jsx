@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Head from "@/shared/components/head";
+import Head from "next/head";
 import Aside from "@/shared/components/aside";
 import { Button, Layout } from "antd";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
@@ -10,6 +10,10 @@ const PageLayout = (props) => {
   const [collapsed, setCollapsed] = useState(false);
 
     return (
+      <>
+        <Head>
+						<title>Epigrafe</title>
+					</Head>
         <Layout className="main-layout" 
         style={{
           backgroundImage: "radial-gradient(#ccc 1px, transparent 0)",
@@ -83,7 +87,7 @@ const PageLayout = (props) => {
             </Layout>
           </Layout>
         </Layout>
-    
+        </>
       );
 }
 export default PageLayout;

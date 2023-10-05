@@ -14,6 +14,7 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
     <Form
       form={form}
       layout="vertical"
+      initialValues={{text: "esempio", fontSize: 25}}
       onValuesChange={(changedValues) => onValuesChange(formId, changedValues)}
     >
       <Form.Item
