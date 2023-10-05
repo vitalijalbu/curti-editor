@@ -9,20 +9,20 @@ import { formState } from '@/store/index';
 const Index = () => {
   const forms = useRecoilValue(formState);
 
-  const moveableRef = useRef(null);
+  const targetRef = React.useRef(null);
 
-  useEffect(() => {
-    if (moveableRef.current) {
+  /*useEffect(() => {
+    if (targetRef.current) {
       const moveable = new Moveable();
 
-      moveable.target = moveableRef.current; // Set the target element
+      moveable.target = targetRef.current; // Set the target element
 
-      moveableRef.current.addEventListener('click', (e) => {
+      targetRef.current.addEventListener('click', (e) => {
         moveable.target = e.target;
       });
 
     }
-  }, []);
+  }, []);*/
 
   return (
     <div>
@@ -43,7 +43,7 @@ const Index = () => {
       >
         <div id="headstone">
           {forms.map((form) => (
-            <div key={form.id} ref={moveableRef} style={{position: "relative" }}>
+            <div key={form.id} ref={targetRef} style={{position: "relative" }}>
               <Moveable
                 resizable={true}
                 moveable={true}
@@ -60,11 +60,11 @@ const Index = () => {
                 onDragStart={({ target, clientX, clientY }) => {
                   console.log("onDragStart", target);
               }}
-                target={moveableRef.current} // Specify the target element
+              target={targetRef} // Specify the target element
                 flushSync={flushSync}
-              >
-               <div> {form.data.text}</div>
-              </Moveable>
+              />
+              <div className="target" ref={targetRef}><h1>{form.data.text}</h1></div>
+
 
             </div>
           ))}
