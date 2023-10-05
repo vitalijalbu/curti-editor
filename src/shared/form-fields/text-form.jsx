@@ -1,23 +1,20 @@
-import React from "react";
-import { Form, Input, InputNumber } from "antd";
-import _ from "lodash";
-import SelectFont from "./select-font";
-import { useRecoilState } from 'recoil';
-import { formValuesState } from '@/store/index'; // Update the path
+// TextForm.jsx
+import React from 'react';
+import { Form, Input, InputNumber } from 'antd';
 
-const TextForm = (props) => {
+const TextForm = ({ formId, initialValues, onValuesChange }) => {
   const [form] = Form.useForm();
-  const [formValues, setFormValues] = useRecoilState(formValuesState);
 
-  const saveRecoilState = (changedValues) => {
-    setFormValues({ ...formValues, ...changedValues });
-  };
+  // Set initial values when the component mounts
+  React.useEffect(() => {
+    form.setFieldsValue(initialValues);
+  }, [form, initialValues]);
 
   return (
     <Form
       form={form}
       layout="vertical"
-      onValuesChange={(changedValues) => saveRecoilState(changedValues)}
+      onValuesChange={(changedValues) => onValuesChange(formId, changedValues)}
     >
       <Form.Item
         label="Testo"
@@ -25,6 +22,7 @@ const TextForm = (props) => {
         rules={[
           {
             required: true,
+            message: 'Please input your text!',
           },
         ]}
       >
@@ -37,10 +35,6 @@ const TextForm = (props) => {
 
       <Form.Item label="Spaziatura lettere" name="letterSpacing">
         <InputNumber addonAfter="mm" />
-      </Form.Item>
-
-      <Form.Item name="fontFamily" label="Seleziona carattere">
-        <SelectFont />
       </Form.Item>
     </Form>
   );

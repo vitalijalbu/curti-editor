@@ -1,31 +1,52 @@
+// TabMain.jsx
 import React from 'react';
-import _ from "lodash";
+import _ from 'lodash';
 import { Button, Collapse, Divider, Typography } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
 import { IconPlus, IconTrash } from '@tabler/icons-react';
 import { useRecoilState } from 'recoil';
 import { formsState } from '@/store/index'; // Update the path
-import TextForm from '@/shared/form-fields/text-form';
+import TextForm from '../form-fields/text-form';
+import { formValuesState } from '@/store/index'; // Update the path
 
 const { Title } = Typography;
 const { Panel } = Collapse;
 
 const TabMain = () => {
   const [forms, setForms] = useRecoilState(formsState);
+  const [formValues, setFormValues] = useRecoilState(formValuesState);
 
   const handleAddRow = () => {
     const newForm = {
-      id: _.uniqueId(),
+      id: forms.length,
       label: `Testo ${forms.length + 1}`,
-      children: <TextForm key={forms.length} />,
+      values: {}, // Initialize an empty values object
     };
 
     setForms([...forms, newForm]);
+    setFormValues([...formValues, { id: newForm.id, data: newForm.values }]);
   };
 
   const handleRemoveRow = (id) => {
     const updatedForms = forms.filter((form) => form.id !== id);
     setForms(updatedForms);
+    setFormValues(formValues.filter((fv) => fv.id !== id));
+  };
+
+  const handleFormValuesChange = (formId, changedValues) => {
+    setForms((prevForms) =>
+      prevForms.map((prevForm) =>
+        prevForm.id === formId
+          ? { ...prevForm, values: { ...prevForm.values, ...changedValues } }
+          : prevForm
+      )
+    );
+
+    setFormValues((prevFormValues) =>
+      prevFormValues.map((fv) =>
+        fv.id === formId ? { id: formId, data: { ...fv.data, ...changedValues } } : fv
+      )
+    );
   };
 
   return (
@@ -55,7 +76,13 @@ const TabMain = () => {
               </Button>
             }
           >
-            {form.children}
+            <TextForm
+              formId={form.id}
+              initialValues={form.values}
+              onValuesChange={(changedValues) =>
+                handleFormValuesChange(form.id, changedValues)
+              }
+            />
           </Panel>
         ))}
       </Collapse>

@@ -5,9 +5,9 @@ import fontsData from "@/data/static.fonts.json";
 const FontStyles = () => {
   return (
     <>
-      {fontsData.map(({ filename, fontFamily }) => (
+      {fontsData.map(({ filename, i, fontFamily }) => (
         <style
-          key={filename}
+          key={i}
           jsx
           global
         >{`
