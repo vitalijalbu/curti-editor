@@ -50,6 +50,7 @@ const Index = () => {
                     target={targetRef}
                     draggable={true}
                     resizable={true}
+                    rotatable={true}
                     throttleDrag={1}
                     edgeDraggable={false}
                     //keepRatio={true}
