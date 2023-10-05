@@ -8,7 +8,9 @@
 }
 .target {
     position: absolute;
-      width: 100%;
+      width: auto;
+      display: block;
+      min-width: 100px;
       min-height: 100px;
     text-align: center;
    line-height: auto;
