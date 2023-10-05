@@ -1,6 +1,5 @@
 // TabMain.jsx
 import React from 'react';
-import _ from 'lodash';
 import { Button, Collapse, Divider, Typography } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
 import { IconPlus, IconTrash } from '@tabler/icons-react';
@@ -12,14 +11,14 @@ const { Title } = Typography;
 const { Panel } = Collapse;
 
 const TabMain = () => {
-  const forms = useRecoilValue(formState); // useRecoilValue should work with the atom name
+  const forms = useRecoilValue(formState);
   const [formsState, setFormsState] = useRecoilState(formState);
 
   const handleAddRow = () => {
     const newForm = {
       id: forms.length,
       label: `Testo ${forms.length + 1}`,
-      values: {}, // Initialize an empty values object
+      data: {}, // Initialize an empty values object
     };
 
     setFormsState([...forms, newForm]);
@@ -30,11 +29,14 @@ const TabMain = () => {
     setFormsState(updatedForms);
   };
 
-  const handleFormValuesChange = (formId, changedValues) => {
+  // Set forms Data State
+  const handleFormValuesChange = (values, formId) => {
+    console.log('parent-component-form-changed', values);
+
     setFormsState((prevForms) =>
       prevForms.map((prevForm) =>
         prevForm.id === formId
-          ? { ...prevForm, values: { ...prevForm.values, ...changedValues } }
+          ? { ...prevForm, data: values }
           : prevForm
       )
     );
@@ -69,9 +71,9 @@ const TabMain = () => {
           >
             <TextForm
               formId={form.id}
-              initialValues={form.values}
-              onValuesChange={(changedValues) =>
-                handleFormValuesChange(form.id, changedValues)
+              initialValues={form.data}
+              onValuesChange={(values) =>
+                handleFormValuesChange(values, form.id)
               }
             />
           </Panel>

@@ -1,21 +1,20 @@
 // TextForm.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Input, InputNumber } from 'antd';
 
 const TextForm = ({ formId, initialValues, onValuesChange }) => {
   const [form] = Form.useForm();
+  const formBody = Form.useWatch([], { form, preserve: true });
 
-  // Set initial values when the component mounts
-  React.useEffect(() => {
-    form.setFieldsValue(initialValues);
-  }, [form, initialValues]);
+  console.log("👀 useWatch", formBody);
 
   return (
     <Form
       form={form}
       layout="vertical"
-      initialValues={{text: "esempio", fontSize: 25}}
-      onValuesChange={(changedValues) => onValuesChange(formId, changedValues)}
+      name="form-text"
+      initialValues={initialValues}
+      onValuesChange={() => onValuesChange(formBody)}
     >
       <Form.Item
         label="Testo"
@@ -30,7 +29,7 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
         <Input />
       </Form.Item>
 
-      <Form.Item label="Grandezza testo" name="fontSize">
+      <Form.Item label="Grandezza testo" name="fontSize" initialValue={25}>
         <InputNumber addonAfter="mm" />
       </Form.Item>
 

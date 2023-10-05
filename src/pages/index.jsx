@@ -27,16 +27,17 @@ const Index = () => {
         ]}
       >
         <div id="headstone">
-          {forms.map((form) => (
-            <Form key={form.id} layout="vertical" name={`form-${form.id}`}>
+        {forms.map((form) => (
+            <div key={form.id}>
               <p><strong>Label:</strong> {form.label}</p>
-              {Object.entries(form.values).map(([key, value]) => (
-                <p key={key}>
-                  <strong>{key}:</strong> {value}
+              {Object.entries(form.data).map(([field, value], i) => (
+                <p key={i}>
+                  <strong>{field}:</strong> {value}
                 </p>
               ))}
-            </Form>
+            </div>
           ))}
+
         </div>
         <Divider />
       </Card>
