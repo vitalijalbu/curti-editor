@@ -43,28 +43,23 @@ const Index = () => {
       >
         <div id="headstone">
           {forms.map((form) => (
-            <div key={form.id} ref={targetRef} style={{position: "relative" }}>
-              <Moveable
-                resizable={true}
-                moveable={true}
-                container={null}
-                origin={true}
-                throttleDrag={0}
-                keepRatio={true}
-                throttleResize={0}
-                scalable={true}
-                throttleScale={0}
-                onResizeStart={({ target , clientX, clientY}) => {
-                    console.log("onResizeStart", target);
-                }}
-                onDragStart={({ target, clientX, clientY }) => {
-                  console.log("onDragStart", target);
-              }}
-              target={targetRef} // Specify the target element
-                flushSync={flushSync}
-              />
+            <div key={form.id} style={{position: "relative" }}>
               <div className="target" ref={targetRef}><h1>{form.data.text}</h1></div>
 
+                <Moveable
+                    target={targetRef}
+                    draggable={true}
+                    throttleDrag={1}
+                    edgeDraggable={false}
+                    resizable={true}
+                    startDragRotate={0}
+                    throttleDragRotate={0}
+                    onDrag={e => {
+                        e.target.style.transform = e.transform;
+                    }}
+                />
+           
+              
 
             </div>
           ))}
