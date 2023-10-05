@@ -1,24 +1,39 @@
-// Index.jsx
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Alert, Card, Divider, Form } from 'antd';
+import Moveable from 'react-moveable';
 import Toolbar from '@/shared/components/toolbar';
 import { useRecoilValue } from 'recoil';
-import { formState } from '@/store/index'; // Update the path
+import { formState } from '@/store/index';
 
 const Index = () => {
   const forms = useRecoilValue(formState);
-  console.log('👀 state-forms', forms)
+
+  const moveableRef = useRef(null);
+
+
+  useEffect(() => {
+    if (moveableRef.current) {
+      const moveable = new Moveable();
+
+      moveableRef.current.addEventListener('click', (e) => {
+        moveable.target = e.target;
+      });
+
+      return () => {
+        moveable.destroy();
+      };
+    }
+  }, []);
 
   return (
     <div>
       <Card
         title="Anteprima lapide"
         extra={[
-          <Toolbar key="toolbar" />,
+          <Toolbar />,
         ]}
         actions={[
           <Alert
-            key="alert"
             showIcon
             message="SCALA 1:10"
             description="1cm sullo schermo corrisponde a 10cm nella realtà"
@@ -27,9 +42,11 @@ const Index = () => {
         ]}
       >
         <div id="headstone">
-        {forms.map((form) => (
+          {forms.map((form) => (
             <div key={form.id}>
-              <p><strong>Label:</strong> {form.label}</p>
+<div ref={moveableRef} style={{ position: 'relative', display: 'inline-block' }}>
+                <h1>{form.data.text}</h1>
+              </div>
               {Object.entries(form.data).map(([field, value], i) => (
                 <p key={i}>
                   <strong>{field}:</strong> {value}
@@ -37,7 +54,6 @@ const Index = () => {
               ))}
             </div>
           ))}
-
         </div>
         <Divider />
       </Card>
