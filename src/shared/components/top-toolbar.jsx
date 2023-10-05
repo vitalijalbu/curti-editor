@@ -3,7 +3,7 @@ import { Button, Col, Row, Space, Modal, message, Divider } from "antd";
 const { confirm } = Modal;
 import { IconDownload, IconPrinter, IconTrash } from "@tabler/icons-react";
 
-const Header = () => {
+const TopToolbar = () => {
 
     // Delete action
     const handleDeleteSession = () => {
@@ -49,4 +49,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default TopToolbar;

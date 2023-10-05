@@ -3,6 +3,7 @@ import Head from "next/head";
 import Aside from "@/shared/components/aside";
 import { Button, Layout } from "antd";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import TopToolbar from "@/shared/components/top-toolbar";
 
 const { Content, Sider, Header } = Layout;
 
@@ -34,7 +35,7 @@ const PageLayout = (props) => {
               borderBottom: "1px solid rgba(0, 0, 0, 0.15)"
             }}
           >
-            <Head />
+            <TopToolbar />
           </Header>
           <Layout>
             <Sider
