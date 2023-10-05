@@ -6,7 +6,7 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
   const [form] = Form.useForm();
   const formBody = Form.useWatch([], { form, preserve: true });
 
-  console.log("👀 useWatch", formBody);
+  //console.log("👀 useWatch", formBody);
 
   return (
     <Form

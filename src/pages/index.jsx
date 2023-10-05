@@ -8,6 +8,7 @@ import Draggable from "@/shared/components/draggable";
 
 const Index = () => {
   const forms = useRecoilValue(formState);
+  console.log('✅ all-forms', forms)
 
   return (
     <div>
@@ -25,12 +26,12 @@ const Index = () => {
         ]}
       >
         <div id="headstone">
-          {forms.map((form) => (
-            <div key={form.id} style={{ position: "relative" }}>
+          {forms.map((form, i) => (
+            
          
-              <Draggable form={form}/>
+              <Draggable key={i} form={form}/>
               
-            </div>
+ 
           ))}
         </div>
         <Divider />

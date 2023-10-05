@@ -56,6 +56,7 @@ const PageLayout = (props) => {
               reverseArrow={true}
               collapsed={collapsed}
               trigger={<Button
+                titl="Chiudi"
                 shape="circle"
                 size="small"
                 onClick={() => setCollapsed(!collapsed)} // Assuming props.collapse is a function that toggles the collapse state

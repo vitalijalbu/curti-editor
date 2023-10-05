@@ -1,19 +1,18 @@
 // Draggable.jsx
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Moveable from "react-moveable";
-import { flushSync } from "react-dom";
 
 const Draggable = ({ form }) => {
   const targetRef = useRef(null);
   const moveableRef = useRef(null);
+  const [fontSize, setFontSize] = useState(form?.data?.fontSize || 16);
 
   useEffect(() => {
     if (moveableRef.current) {
       const moveable = new Moveable();
 
       moveable.target = targetRef.current;
-
-
+  
     }
   }, [form]);
 
@@ -24,12 +23,15 @@ const Draggable = ({ form }) => {
         ref={targetRef}
         id={`target-${form.id}`}
         key={form.id}
-        style={{
-          width: "100px",
-          height: "100px",
-        }}
       >
-        <h1>{form.data.text}</h1>
+        <span 
+          style={{
+            fontFamily: form?.data?.fontFamily,
+            fontSize: `${fontSize}px`,
+          }}
+        >
+          {form.data.text}
+        </span>
       </div>
       <Moveable
         ref={moveableRef}
