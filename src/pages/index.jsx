@@ -47,11 +47,11 @@ const Index = () => {
 <div ref={moveableRef} style={{ position: 'relative', display: 'inline-block' }}>
                 <h1>{form.data.text}</h1>
               </div>
-              {Object.entries(form.data).map(([field, value], i) => (
+              {/*Object.entries(form.data).map(([field, value], i) => (
                 <p key={i}>
                   <strong>{field}:</strong> {value}
                 </p>
-              ))}
+              ))*/}
             </div>
           ))}
         </div>
