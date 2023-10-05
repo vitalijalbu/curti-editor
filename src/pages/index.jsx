@@ -47,7 +47,12 @@ const Index = () => {
               <Moveable
                 resizable={true}
                 moveable={true}
-                container={document.body}
+                container={null}
+                origin={true}
+                throttleDrag={0}
+                onDragStart={({ target, clientX, clientY }) => {
+                  console.log("onDragStart", target);
+              }}
                 target={moveableRef.current} // Specify the target element
                 flushSync={flushSync}
               >
