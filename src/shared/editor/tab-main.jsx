@@ -13,6 +13,9 @@ const { Panel } = Collapse;
 const TabMain = () => {
   const forms = useRecoilValue(formState);
   const [formsState, setFormsState] = useRecoilState(formState);
+  const [activeKeys, setActiveKeys] = React.useState([1]);
+
+  console.log('activeKeys', activeKeys);
 
   const handleAddRow = () => {
     const newForm = {
@@ -20,8 +23,9 @@ const TabMain = () => {
       label: `Testo ${forms.length + 1}`,
       data: {}, // Initialize an empty values object
     };
-
-    setFormsState([...forms, newForm]);
+     // Close all existing panels and open the new one
+     setActiveKeys([newForm.id]);
+      setFormsState([...forms, newForm]);
   };
 
   const handleRemoveRow = (id) => {
@@ -52,7 +56,8 @@ const TabMain = () => {
         expandIcon={({ isActive }) => (
           <CaretRightOutlined rotate={isActive ? 90 : 0} />
         )}
-        defaultActiveKey={['1']}
+        activeKey={activeKeys}
+        //onChange={(keys) => setActiveKeys(keys)}
       >
         {forms.map((form) => (
           <Panel
