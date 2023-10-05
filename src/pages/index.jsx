@@ -49,14 +49,22 @@ const Index = () => {
                 <Moveable
                     target={targetRef}
                     draggable={true}
+                    resizable={true}
                     throttleDrag={1}
                     edgeDraggable={false}
-                    resizable={true}
+                    //keepRatio={true}
+                    throttleScale={0}
                     startDragRotate={0}
                     throttleDragRotate={0}
                     onDrag={e => {
                         e.target.style.transform = e.transform;
                     }}
+                    renderDirections={["nw","n","ne","w","e","sw","s","se"]}
+                                      onResize={e => {
+                                           e.target.style.width = `${e.width}px`;
+                                           e.target.style.height = `${e.height}px`;
+                                          e.target.style.transform = e.drag.transform;
+                                     }}
                 />
            
               
