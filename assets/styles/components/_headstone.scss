@@ -3,19 +3,22 @@
     height: 100%;
     background: #A58A6B;
     padding: 20mm;
-    min-height: 60vh;
-    box-shadow: 4px 4px 0px 0px #c9c9c9;
-}
-.target {
-    position: absolute;
-      width: auto;
-      display: block;
-      min-width: 100px;
-      min-height: 100px;
-    text-align: center;
-   line-height: auto;
-     box-sizing: border-box;
-     & *{
-        position: relative;
-     }
+    min-height: 70vh;
+    box-shadow: 2px 2px 0px 0px #c9c9c9;
+
+  .target {
+        position: absolute;
+        margin: auto;
+        width: auto;
+        display: block;
+        min-width: 100px;
+        min-height: 100px;
+        width: auto;
+        text-align: center;
+        line-height: auto;
+        box-sizing: border-box;
+      & *{
+          position: relative;
+      }
+  }
 }

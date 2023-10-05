@@ -39,20 +39,27 @@ const Draggable = ({ form }) => {
       <Moveable
         ref={moveableRef}
         target={`#target-${form.id}`}
+        individualGroupable={true}
         draggable={true}
         resizable={true}
         rotatable={true}
-        throttleDrag={1}
-        edgeDraggable={false}
         throttleScale={0}
         startDragRotate={0}
         throttleDragRotate={0}
+        snappable={true}
+        isDisplaySnapDigit={true}
+        isDisplayInnerSnapDigit={false}
+        snapGap={true}
+        snapDirections={{"top":true,"left":true,"bottom":true,"right":true,"center":true,"middle":true}}
+        elementSnapDirections={{"top":true,"left":true,"bottom":true,"right":true,"center":true,"middle":true}}
+        snapThreshold={5}
         onDrag={(e) => {
           e.target.style.transform = e.transform;
         }}
         onRotate={(e) => {
           e.target.style.transform = e.drag.transform;
         }}
+
         renderDirections={["nw", "n", "ne", "w", "e", "sw", "s", "se"]}
         onResize={(e) => {
           e.target.style.width = `${e.width}px`;

@@ -43,7 +43,7 @@ const TabDimensions = () => {
         description="Inserisci testo"
       />
       <div className="list-actions">
-          <InputNumber allowClear addonAfter="mm"/>
+          <InputNumber allowClear addonAfter="cm"/>
         </div>
     </List.Item>
     )}

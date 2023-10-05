@@ -60,7 +60,7 @@ const PageLayout = (props) => {
                 shape="circle"
                 size="small"
                 onClick={() => setCollapsed(!collapsed)} // Assuming props.collapse is a function that toggles the collapse state
-                icon={<IconChevronRight />}
+                icon={collapsed === true ? <IconChevronRight /> : <IconChevronLeft />}
               />}
               onCollapse={() => setCollapsed(!collapsed)}
               collapsedWidth={40}

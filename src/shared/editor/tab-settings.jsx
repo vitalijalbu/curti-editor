@@ -33,7 +33,7 @@ const TabSettings = () => {
           title="Unità di misura"
         />
         <div className="list-actions">
-         mm
+         cm
           </div>
       </List.Item>
     </List>

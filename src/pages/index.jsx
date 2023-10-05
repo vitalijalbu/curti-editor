@@ -1,41 +1,46 @@
+// Import necessary libraries and components
 import React, { useRef, useEffect } from "react";
-import { Alert, Card, Divider } from "antd";
-
+import { Row, Col, Alert, Button, Card, Divider } from "antd";
 import Toolbar from "@/shared/components/toolbar";
 import { useRecoilValue } from "recoil";
 import { formState } from "@/store/index";
-import Draggable from "@/shared/components/draggable";
+
+import Editor from "@/shared/components/editor";
 
 const Index = () => {
-  const forms = useRecoilValue(formState);
-  console.log('✅ all-forms', forms)
+  const indexRef = useRef(null);
+
+  const handlePrintButtonClick = () => {
+    if (indexRef.current && indexRef.current.captureHeadstoneHTML) {
+      indexRef.current.captureHeadstoneHTML();
+    } else {
+      console.error("The captureHeadstoneHTML function is not available.");
+    }
+  };
+
+  // Ensure that the ref is updated after the Index component mounts
+  useEffect(() => {
+    indexRef.current = indexRef.current; // This triggers a re-render and updates the ref
+  }, []);
+
 
   return (
     <div>
-      <Card
-        title="Anteprima lapide"
-        extra={[<Toolbar key="toolbar" />]}
-        actions={[
-          <Alert
+
+         <Button onClick={handlePrintButtonClick}>Print</Button>
+        <Editor/>
+        <Divider />
+        <Row>
+          <Col span="24">
+        <Alert
             showIcon
             message="SCALA 1:10"
             description="1cm sullo schermo corrisponde a 10cm nella realtà"
             type="warning"
             key="alert"
-          />,
-        ]}
-      >
-        <div id="headstone">
-          {forms.map((form, i) => (
-            
-         
-              <Draggable key={i} form={form}/>
-              
- 
-          ))}
-        </div>
-        <Divider />
-      </Card>
+          />
+          </Col>
+        </Row>
     </div>
   );
 };
