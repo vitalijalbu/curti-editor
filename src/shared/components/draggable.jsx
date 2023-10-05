@@ -5,7 +5,7 @@ import Moveable from "react-moveable";
 const Draggable = ({ form }) => {
   const targetRef = useRef(null);
   const moveableRef = useRef(null);
-  const [fontSize, setFontSize] = useState(form?.data?.fontSize || 16);
+  const [fontSize, setFontSize] = useState(25);
 
   useEffect(() => {
     if (moveableRef.current) {
@@ -14,7 +14,10 @@ const Draggable = ({ form }) => {
       moveable.target = targetRef.current;
   
     }
+    setFontSize(form?.data?.fontSize);
   }, [form]);
+
+
 
   return (
     <div style={{ position: "relative" }}>
@@ -27,7 +30,7 @@ const Draggable = ({ form }) => {
         <span 
           style={{
             fontFamily: form?.data?.fontFamily,
-            fontSize: `${fontSize}px`,
+            fontSize: `${fontSize/10}cm`,
           }}
         >
           {form.data.text}
