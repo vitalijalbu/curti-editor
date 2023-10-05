@@ -50,15 +50,22 @@ const Index = () => {
                 container={null}
                 origin={true}
                 throttleDrag={0}
+                keepRatio={true}
+                throttleResize={0}
+                scalable={true}
+                throttleScale={0}
+                onResizeStart={({ target , clientX, clientY}) => {
+                    console.log("onResizeStart", target);
+                }}
                 onDragStart={({ target, clientX, clientY }) => {
                   console.log("onDragStart", target);
               }}
                 target={moveableRef.current} // Specify the target element
                 flushSync={flushSync}
               >
-               <div style={{height: "60px"}}> <h1>{form.data.text}</h1></div>
+               <div> {form.data.text}</div>
               </Moveable>
-              <h1>{form.data.text}</h1>
+
             </div>
           ))}
         </div>
