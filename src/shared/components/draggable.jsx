@@ -1,11 +1,11 @@
 // Draggable.jsx
+import { scaleFontSize } from "helpers/scale-sizes";
 import React, { useRef, useEffect, useState } from "react";
 import Moveable from "react-moveable";
 
 const Draggable = ({ form }) => {
   const targetRef = useRef(null);
   const moveableRef = useRef(null);
-  const [fontSize, setFontSize] = useState(25);
 
   useEffect(() => {
     if (moveableRef.current) {
@@ -14,7 +14,6 @@ const Draggable = ({ form }) => {
       moveable.target = targetRef.current;
   
     }
-    setFontSize(form?.data?.fontSize);
   }, [form]);
 
   console.log('font-family', form?.data?.fontFamily);
@@ -27,15 +26,19 @@ const Draggable = ({ form }) => {
         ref={targetRef}
         id={`target-${form.id}`}
         key={form.id}
+        style={{
+          minWidth: scaleFontSize(form?.data?.fontSize, 10)
+        }}
       >
         <span 
           className="has-font"
           style={{
-            fontFamily: `"4500"`,
-            fontSize: `${fontSize/10}cm`,
+            fontFamily: `"${form?.data?.fontFamily}" !important`,
+            fontSize: scaleFontSize(form?.data?.fontSize, 10),
+            lineHeight: scaleFontSize(form?.data?.fontSize, 10)+1,
           }}
         >
-          {form.data.text}
+          {form?.data?.text}
         </span>
       </div>
       <Moveable

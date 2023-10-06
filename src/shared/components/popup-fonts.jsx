@@ -3,7 +3,7 @@ import { Modal, Button, List, Radio } from "antd";
 import { IconCheckbox } from "@tabler/icons-react";
 const fontsData = require("@/data/static.fonts.json");
 
-const PopupFonts = ({ opened, toggle, reload, data, onChange }) => {
+const PopupFonts = ({ opened, toggle, data, onChange }) => {
   const [selectedFont, setSelectedFont] = useState("3900");
 
   console.log('selectedFont', selectedFont);

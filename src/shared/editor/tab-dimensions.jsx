@@ -7,24 +7,31 @@ import Link from "next/link";
 import HelpBox from "@/shared/components/help-box";
 
 const TabDimensions = () => {
-  
+  const [form] = Form.useForm();
+  const formBody = Form.useWatch([], { form, preserve: true });
+  console.log("👀 dimensions", formBody);
+
+
   const data = [
     {
       id: "lenght",
       type: "number",
+      default: 80,
       title: 'Larghezza lapide',
     },
     {
       id: "width",
       type: "number",
-      title: 'Lunghezza lapide',
+      default: 60,
+      title: 'Altezza lapide',
     }
   ];
 
   return (
     <div>
-       <Alert message="Impostazioni e dimensioni lapide"/>
+       <Alert showIcon message="Impostazioni e dimensioni lapide"/>
       <Divider/>
+      <Form form={form} name="form-dimensions">
        <List
        key={0}
     itemLayout="horizontal"
@@ -36,12 +43,14 @@ const TabDimensions = () => {
         description="Inserisci testo"
       />
       <div className="list-actions">
-          <InputNumber allowClear addonAfter="cm"/>
+          <Form.Item name={item.id} initialValue={item.default}>
+            <InputNumber allowClear addonAfter="cm"/>
+          </Form.Item>
         </div>
     </List.Item>
     )}
   />
-
+</Form>
 <HelpBox/>
     </div>
   );

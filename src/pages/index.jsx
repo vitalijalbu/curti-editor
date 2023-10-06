@@ -11,22 +11,8 @@ import { formState } from "@/store/index";
 import Editor from "@/shared/components/editor";
 
 const Index = () => {
-  const indexRef = useRef(null);
-
-  const handlePrintButtonClick = () => {
-    if (indexRef.current && indexRef.current.captureHeadstoneHTML) {
-      indexRef.current.captureHeadstoneHTML();
-    } else {
-      console.error("The captureHeadstoneHTML function is not available.");
-    }
-  };
-
-  // Ensure that the ref is updated after the Index component mounts
-  useEffect(() => {
-    indexRef.current = indexRef.current; // This triggers a re-render and updates the ref
-  }, []);
-
-
+  
+  
   return (
     <div>
       

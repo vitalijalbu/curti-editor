@@ -24,7 +24,7 @@ const TabSettings = () => {
   ];
   return (
     <div>
-            <Alert message="Impostazioni area di lavoro"/>
+            <Alert showIcon message="Impostazioni area di lavoro"/>
       <Divider/>
        <List
     itemLayout="horizontal"

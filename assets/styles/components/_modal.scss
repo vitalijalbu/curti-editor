@@ -87,10 +87,12 @@
     }
    
   }
-
+  &.full{
+    width: 100% !important;
+    height: 100% !important;
+  }
   &.p-0 .ant-modal-body {
     padding: 0px !important;
-    
    }
 
 }

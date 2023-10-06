@@ -4,14 +4,21 @@ import dayjs from 'dayjs';
 import jsPDF from 'jspdf';
 import { Button, Col, Row, Space, Modal, message, Divider, Spin } from "antd";
 const { confirm } = Modal;
-import { IconDownload, IconPrinter, IconTrash } from "@tabler/icons-react";
+import { IconDownload, IconEyeShare, IconPrinter, IconTrash } from "@tabler/icons-react";
 import { formState } from '@/store/index'; // Update the path
 import { useRecoilState } from "recoil";
+import PopupPreview from "./popup-preview";
 
 const TopToolbar = () => {
   const [loading, setLoading] = useState(false);
   const [form, setForms] = useRecoilState(formState);
+  const [popup, setPopup] = useState(false);
   
+  const togglePopup = () => {
+    setPopup(!popup);
+  };
+
+
 
     // Delete action
     const handleDeleteSession = () => {
@@ -78,6 +85,7 @@ const TopToolbar = () => {
 
   return (
     <>
+     {popup && <PopupPreview opened={popup} toggle={togglePopup} />}
     <div className="contain">
       <Row justify={"space-between"}>
         <Col style={{display: "flex", alignItems: "center"}}>
@@ -85,8 +93,11 @@ const TopToolbar = () => {
         </Col>
         <Col span="16" style={{display: "flex", justifyContent: "end"}}>
           <Space split={<Divider type="vertical" />}>
-            <Button type="link" icon={<IconTrash/>} onClick={handleDeleteSession}>Ricomincia</Button>
-            <Button type="primary" icon={<IconPrinter />} onClick={() => printToPdf()} disabled={form.length <= 0} loading={loading}>
+            <Button key={0} type="link" icon={<IconTrash/>} onClick={handleDeleteSession}>Ricomincia</Button>
+            <Button key={1} icon={<IconEyeShare />} onClick={togglePopup}>
+              Anteprima
+            </Button>
+            <Button key={2} type="primary" icon={<IconPrinter />} onClick={() => printToPdf()} disabled={form.length <= 0} loading={loading}>
               Stampa
             </Button>
           </Space>

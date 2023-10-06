@@ -1,35 +1,14 @@
-import React, { useState, useEffect, useCallback } from "react";
-import {
-  Tag,
-  Divider,
-  Button,
-  Row,
-  Col,
-  Form,
-  Modal,
-  Spin,
-  Input,
-  message,
-} from "antd";
-const { confirm } = Modal;
-import {
-  IconEye,
-  IconPencil,
-  IconTrash,
-  IconAlertCircle,
-  IconTriangleSquareCircle,
-  IconPlus,
-  IconCheckbox,
-} from "@tabler/icons-react";
+import React from "react";
+import { Button, List, Modal, Alert, Typography } from "antd";
+const { Title, Text } = Typography;
+const arrayChars = require("@/data/static.chars.json");
 
-const PopupCharacters = ({ opened, toggle, reload, data }) => {
-
-
+const PopupCharacters = ({ opened, toggle, data }) => {
   return (
     <Modal
       open={opened}
       onCancel={toggle}
-      size={"large"}
+      width={"60%"}
       title="Caratteri speciali"
       centered
       maskClosable={false}
@@ -37,10 +16,25 @@ const PopupCharacters = ({ opened, toggle, reload, data }) => {
       footer={[
         <Button key={0} onClick={toggle}>
           Chiudi
-        </Button>
+        </Button>,
       ]}
     >
-
+      <Alert showIcon type="info" message="Clicca per copiare un carattere speciale da inserere nei tuoi testi" />
+      <List
+        grid={{
+          gutter: 16,
+          column: 6,
+        }}
+        itemLayout="horizontal"
+        dataSource={arrayChars}
+        renderItem={(option, i) => (
+          <List.Item key={i}>
+            <Title copyable style={{ fontFamily: `"${data?.fontFamily}"` }} className="has-font">
+              {option}
+            </Title>
+          </List.Item>
+        )}
+      />
     </Modal>
   );
 };

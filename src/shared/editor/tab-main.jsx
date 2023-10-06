@@ -1,14 +1,14 @@
 // TabMain.jsx
 import React from 'react';
 import { Alert, Button, Collapse, Divider, Typography } from 'antd';
+const { Title } = Typography;
+const { Panel } = Collapse;
 import { CaretRightOutlined } from '@ant-design/icons';
 import { IconPlus, IconTrash } from '@tabler/icons-react';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { formState } from '@/store/index'; // Update the path
 import TextForm from '../form-fields/text-form';
 
-const { Title } = Typography;
-const { Panel } = Collapse;
 
 const TabMain = () => {
   const forms = useRecoilValue(formState);
@@ -48,7 +48,7 @@ const TabMain = () => {
 
   return (
     <div>
-      <Alert message="Modifica i testi sulla lapide"/>
+      <Alert showIcon message="Modifica i testi sulla lapide"/>
       <Divider />
       <Collapse
         bordered={false}
@@ -71,7 +71,7 @@ const TabMain = () => {
                 icon={<IconTrash />}
                 onClick={() => handleRemoveRow(form.id)}
               >
-                Elimina riga
+                Rimuovi
               </Button>
             }
           >

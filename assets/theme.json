@@ -2,12 +2,17 @@
   "theme": "light",
   "token": {
     "colorPrimary": "#0B7542",
+    "colorSuccess": "#0f845d",
+    "colorError": "#de0004",
     "borderRadius": 12,
     "fontFamily": "Inter",
     "wireframe": true
     },
     "components": {
-      "Avatar": {
+      "Tag": {
+        "borderRadiusSM": 0
+      },  
+       "Avatar": {
         "borderRadius": 8,
         "colorBgContainer": "#0B7542"
       },  
@@ -33,7 +38,7 @@
       },
       "Button": {
         "controlHeight": 40,
-        "controlHeightLG": 56,
+        "controlHeightLG": 40,
         "colorTextDisabled": "rgba(0, 0, 0, 0.25)",
         "controlOutline": 0,
         "defaultBg": "linear-gradient(to bottom,#3b8f60 0,#0B7542 100%)"
@@ -76,7 +81,7 @@
       "Radio": {
         "motionDurationMid": "0",
         "motionDurationSlow": "0",
-        "controlHeight": 40
+        "controlHeight": 50
       },
       "Modal": {
         "colorBgMask": "rgba(0, 0, 0, 0.75)",
