@@ -21,6 +21,15 @@ html, body{
     display: flex;
     align-self: center;
 }
+.ant-collapse-header-text{
+  font-weight: 600;
+}
+.list-actions{
+  text-align: right;
+}
+.has-font{
+  text-transform: uppercase;
+}
 .ant-layout-sider-trigger{
   left: -1px !important;
   background-color: #fafafa !important;
@@ -48,7 +57,11 @@ svg{
     stroke-width: 1.75;
     vertical-align: middle;
   }
-
+  .ant-form-item-label {
+      label{
+        font-weight: 500;
+      }
+  }
   .list-actions{
     width: 30%;
   }

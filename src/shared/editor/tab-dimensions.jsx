@@ -1,39 +1,32 @@
 import React from "react";
-import { List, Select, Form, Input, InputNumber, Typography, Divider } from "antd";
+import { List, Select, Form, Input, InputNumber, Typography, Divider, Alert } from "antd";
 const { Title, Text } = Typography;
 import materials from "@/data/static.materials.json";
 import finish from "@/data/static.finish.json";
+import Link from "next/link";
+import HelpBox from "@/shared/components/help-box";
 
 const TabDimensions = () => {
   
   const data = [
     {
-      id: "marginTop",
+      id: "lenght",
       type: "number",
-      title: 'Spaziatura sopra',
+      title: 'Larghezza lapide',
     },
     {
-      id: "marginBottom",
+      id: "width",
       type: "number",
-      title: 'Spaziatura sotto',
-    }, 
-    {
-      id: "marginLeft",
-      type: "number",
-      title: 'Spaziatura sinistra',
-    },
-    {
-      id: "marginRight",
-      type: "number",
-      title: 'Spaziatura destra',
+      title: 'Lunghezza lapide',
     }
   ];
 
   return (
     <div>
-        <Title level={5}>Impostazioni lapide</Title>
+       <Alert message="Impostazioni e dimensioni lapide"/>
       <Divider/>
        <List
+       key={0}
     itemLayout="horizontal"
     dataSource={data}
     renderItem={(item, i) => (
@@ -48,6 +41,8 @@ const TabDimensions = () => {
     </List.Item>
     )}
   />
+
+<HelpBox/>
     </div>
   );
 };

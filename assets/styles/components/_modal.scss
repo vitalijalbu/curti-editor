@@ -69,15 +69,37 @@
 
 
 .modal-fullscreen {
-width: 90%;
-height: 90%;
+  width: 90%;
+  height: 90%;
+  min-height: 90%;
+  overflow: hidden;
+  .ant-modal-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    & .ant-modal-body{
+      overflow-y: auto;
+      height: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+   
+  }
+
+  &.p-0 .ant-modal-body {
+    padding: 0px !important;
+    
+   }
+
 }
 
 @media (max-width: 1280px) {
-.modal-fullscreen {
-  width: 100% !important;
-  height: 100% !important;
-}
+  .modal-fullscreen {
+    width: 100% !important;
+    height: 100% !important;
+  }
 }
 
 
@@ -96,5 +118,10 @@ padding: 20px 24px;
 
 .ant-modal .ant-modal-header,
 .ant-modal .ant-modal-footer{
-border-color: $border-color;
+  border-color: $border-color;
+  .ant-typography {
+    font-size: 16px !important;
+  }
 }
+
+

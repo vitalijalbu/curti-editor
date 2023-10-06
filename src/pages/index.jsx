@@ -1,9 +1,12 @@
 // Import necessary libraries and components
 import React, { useRef, useEffect } from "react";
-import { Row, Col, Alert, Button, Card, Divider } from "antd";
+import { Row, Col, Alert, Button, Card, Typography, Divider } from "antd";
+const { Title } = Typography;
 import Toolbar from "@/shared/components/toolbar";
 import { useRecoilValue } from "recoil";
 import { formState } from "@/store/index";
+
+
 
 import Editor from "@/shared/components/editor";
 
@@ -26,9 +29,11 @@ const Index = () => {
 
   return (
     <div>
+      
 
-         <Button onClick={handlePrintButtonClick}>Print</Button>
-        <Editor/>
+         <Title level={3}>Anteprima lapide</Title>
+          <Editor/>
+       
         <Divider />
         <Row>
           <Col span="24">

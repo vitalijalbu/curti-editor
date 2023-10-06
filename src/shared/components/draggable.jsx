@@ -17,6 +17,7 @@ const Draggable = ({ form }) => {
     setFontSize(form?.data?.fontSize);
   }, [form]);
 
+  console.log('font-family', form?.data?.fontFamily);
 
 
   return (
@@ -28,8 +29,9 @@ const Draggable = ({ form }) => {
         key={form.id}
       >
         <span 
+          className="has-font"
           style={{
-            fontFamily: form?.data?.fontFamily,
+            fontFamily: `"4500"`,
             fontSize: `${fontSize/10}cm`,
           }}
         >

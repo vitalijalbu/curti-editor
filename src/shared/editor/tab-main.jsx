@@ -1,6 +1,6 @@
 // TabMain.jsx
 import React from 'react';
-import { Button, Collapse, Divider, Typography } from 'antd';
+import { Alert, Button, Collapse, Divider, Typography } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
 import { IconPlus, IconTrash } from '@tabler/icons-react';
 import { useRecoilValue, useRecoilState } from 'recoil';
@@ -13,7 +13,7 @@ const { Panel } = Collapse;
 const TabMain = () => {
   const forms = useRecoilValue(formState);
   const [formsState, setFormsState] = useRecoilState(formState);
-  const [activeKeys, setActiveKeys] = React.useState([1]);
+  const [activeKeys, setActiveKeys] = React.useState(1);
 
   console.log('activeKeys', activeKeys);
 
@@ -24,7 +24,7 @@ const TabMain = () => {
       data: {}, // Initialize an empty values object
     };
      // Close all existing panels and open the new one
-     setActiveKeys([newForm.id]);
+      setActiveKeys(newForm.id);
       setFormsState([...forms, newForm]);
   };
 
@@ -48,7 +48,7 @@ const TabMain = () => {
 
   return (
     <div>
-      <Title level={5}>Modifica i testi sulla lapide</Title>
+      <Alert message="Modifica i testi sulla lapide"/>
       <Divider />
       <Collapse
         bordered={false}
@@ -56,8 +56,9 @@ const TabMain = () => {
         expandIcon={({ isActive }) => (
           <CaretRightOutlined rotate={isActive ? 90 : 0} />
         )}
+        onChange={(key) => setActiveKeys(key)}
+        onClick={(key) => setActiveKeys(key)}
         activeKey={activeKeys}
-        //onChange={(keys) => setActiveKeys(keys)}
       >
         {forms.map((form) => (
           <Panel

@@ -12,9 +12,9 @@ const SelectFont = () => {
     const fetchFontList = async () => {
       try {
         const fontsData = require("@/data/static.fonts.json");
-        const fontList = fontsData.map(({ filename, fontFamily }) => ({
+        const fontList = fontsData.map(({ filename, code }) => ({
           value: filename,
-          label: fontFamily,
+          label: code,
         }));
         setFontOptions(fontList);
       } catch (error) {

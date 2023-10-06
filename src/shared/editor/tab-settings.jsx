@@ -1,8 +1,10 @@
 import React from "react";
-import { List, Select, Form, Input, Divider, Typography } from "antd";
+import { List, Select, Form, Input, Divider, Typography, Alert } from "antd";
 const { Title, Text } = Typography;
 import materials from "@/data/static.materials.json";
 import finish from "@/data/static.finish.json";
+import HelpBox from "@/shared/components/help-box";
+
 
 const TabSettings = () => {
   
@@ -22,7 +24,7 @@ const TabSettings = () => {
   ];
   return (
     <div>
-            <Title level={5}>Impostazioni area di lavoro</Title>
+            <Alert message="Impostazioni area di lavoro"/>
       <Divider/>
        <List
     itemLayout="horizontal"
@@ -37,6 +39,7 @@ const TabSettings = () => {
           </div>
       </List.Item>
     </List>
+    <HelpBox/>
     </div>
   );
 };

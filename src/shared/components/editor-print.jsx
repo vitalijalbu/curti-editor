@@ -14,12 +14,10 @@ const Editor = () => {
   return (
 
         <div id="headstone">
-        <div className="headstone-wrapper">
           {/* A3 text will be replaced by the embedded PDF */}
           {forms.map((form, i) => (
             <Draggable key={i} form={form}/>
           ))}
-        </div>
         </div>
        
   );

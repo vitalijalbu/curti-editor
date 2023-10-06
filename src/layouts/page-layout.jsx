@@ -4,6 +4,7 @@ import Aside from "@/shared/components/aside";
 import { Button, Layout } from "antd";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import TopToolbar from "@/shared/components/top-toolbar";
+import FontStyles from "@/hooks/font-styles";
 
 const { Content, Sider, Header } = Layout;
 
@@ -15,6 +16,7 @@ const PageLayout = (props) => {
         <Head>
 						<title>Epigrafe</title>
 					</Head>
+
         <Layout className="main-layout" 
         style={{
           backgroundImage: "radial-gradient(#ccc 1px, transparent 0)",
@@ -44,8 +46,7 @@ const PageLayout = (props) => {
                 position: "fixed",
                 left: 0,
                 top: "50px",
-                bottom: "50px",
-                padding: "10px",
+                padding: "0px 10px 50px 10px",
                 background: "#fff",
                 overflowY: "auto"
               }}
@@ -84,7 +85,10 @@ const PageLayout = (props) => {
                   background: "#F8F8F8"
                 }}
               >
-                <div className="main-container">{props.children}</div>
+                <div className="main-container">
+                  <FontStyles/>
+                  {props.children}
+                  </div>
               </Content>
             </Layout>
           </Layout>

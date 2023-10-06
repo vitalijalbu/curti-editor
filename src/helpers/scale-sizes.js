@@ -1,4 +1,4 @@
-export const constructFilters = (values) => {
+export const scaleSize = (values) => {
   if (!values || typeof values !== 'object') {
     throw new Error('Invalid values object provided');
   }

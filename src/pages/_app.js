@@ -5,7 +5,6 @@ import "@/assets/styles/index.scss";
 import PageLayout from "@/layouts/page-layout";
 import { RecoilRoot } from "recoil";
 import { Button, ConfigProvider } from "antd";
-import FontStyles from "@/hooks/font-styles"; // Adjust the path
 
 const App = ({ Component, pageProps }) => {
 
@@ -15,7 +14,6 @@ const App = ({ Component, pageProps }) => {
       <RecoilRoot>
         <ConfigProvider theme={theme} locale="it">
           <PageLayout>
-            <FontStyles />
             <Component {...pageProps} />
           </PageLayout>
         </ConfigProvider>
