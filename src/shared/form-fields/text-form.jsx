@@ -28,7 +28,7 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
 
   return (
     <>
-      {popup && <PopupCharacters opened={popup} toggle={togglePopup} />}
+      {popup && <PopupCharacters opened={popup} toggle={togglePopup} fontFamily={form.getFieldValue('fontFamily')}/>}
 
       <Form
         form={form}
@@ -47,13 +47,13 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
             },
           ]}
         >
-          <Input allowClear autoFocus={true} placeholder="Inserisci il testo qui" rows="3" />
-          <Button type="link" onClick={() => togglePopup()} icon={<IconCodeAsterix />}>
+          <Input.TextArea allowClear autoFocus={true} placeholder="Inserisci il testo qui" rows="3" />
+        </Form.Item>
+        <Button block type="link" onClick={() => togglePopup()} icon={<IconCodeAsterix />}>
             Caratteri speciali
           </Button>
-        </Form.Item>
-        <Form.Item label="Font" name="fontFamily">
-          <SelectFont />
+        <Form.Item label="Font" name="fontFamily" initialValue={"3900"}>
+          <SelectFont name="fontFamily" onChange={(value) => form.setFieldValue("fontFamily", value)}/>
         </Form.Item>
         <Row gutter="16">
           <Col span="12">
@@ -62,13 +62,13 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
             </Form.Item>
           </Col>
           <Col span="12">
-            <Form.Item label="Spaziatura caratteri" name="letterSpacing" initialValue={1}>
+            <Form.Item label="Spaziatura caratteri" name="letterSpacing" initialValue={0}>
               <InputNumber addonAfter="cm" />
             </Form.Item>
           </Col>
           <Col span="12">
             <Form.Item label="Allineamento testo" name="textAlign">
-              <Radio.Group initialValue="left">
+              <Radio.Group initialValue="left" size="large">
                 <Radio.Button value="left">
                   <IconAlignLeft />
                 </Radio.Button>

@@ -21,6 +21,9 @@ html, body{
     display: flex;
     align-self: center;
 }
+.ant-collapse-content.ant-collapse-content-active {
+  background: #fafafa !important;
+}
 .ant-collapse-header-text{
   font-weight: 600;
 }

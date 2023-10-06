@@ -52,7 +52,7 @@ const PopupFonts = ({ opened, toggle, data, onChange }) => {
               value={font.code}
               checked={selectedFont === font.code}
             >
-              <h1 style={{ fontFamily: `"${font?.code}"`, }} className="has-font">{font.fontFamily}</h1>
+              <h1 style={{ fontFamily: `"${font?.code}"`}} className="has-font">{font.fontFamily}</h1>
             </Radio>
           </List.Item>
         )}

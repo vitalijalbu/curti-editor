@@ -3,7 +3,10 @@ import { Button, List, Modal, Alert, Typography } from "antd";
 const { Title, Text } = Typography;
 const arrayChars = require("@/data/static.chars.json");
 
-const PopupCharacters = ({ opened, toggle, data }) => {
+const PopupCharacters = ({ opened, toggle, fontFamily }) => {
+
+  console.log('chars--font-family', fontFamily);
+
   return (
     <Modal
       open={opened}
@@ -29,7 +32,12 @@ const PopupCharacters = ({ opened, toggle, data }) => {
         dataSource={arrayChars}
         renderItem={(option, i) => (
           <List.Item key={i}>
-            <Title copyable style={{ fontFamily: `"${data?.fontFamily}"` }} className="has-font">
+            <Title copyable 
+          className="has-font"
+          style={{
+            fontFamily: `"${fontFamily}" !important`
+          }}
+        >
               {option}
             </Title>
           </List.Item>

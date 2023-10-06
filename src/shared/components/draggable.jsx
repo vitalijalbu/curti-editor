@@ -33,7 +33,7 @@ const Draggable = ({ form }) => {
         <span 
           className="has-font"
           style={{
-            fontFamily: `"${form?.data?.fontFamily}" !important`,
+            fontFamily: `"${form?.data?.fontFamily}"`,
             fontSize: scaleFontSize(form?.data?.fontSize, 10),
             lineHeight: scaleFontSize(form?.data?.fontSize, 10)+1,
           }}

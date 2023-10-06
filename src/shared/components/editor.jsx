@@ -15,7 +15,7 @@ const Editor = () => {
 
   const values = { width: 800, height: 600 };
   const scaledSize = scaleSizeDIV(values);
-  console.log(scaledSize);
+
 
   return (
     <div id="headstone"  style={scaledSize}>

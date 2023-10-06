@@ -8,8 +8,7 @@ const { Text, Title } = Typography;
 const fontsData = require("@/data/static.fonts.json");
 
 
-const SelectFont = () => {
-  const [fontOptions, setFontOptions] = useState([]);
+const SelectFont = (props) => {
   const [popupFonts, setPopupFonts] = useState(false);
 
 
@@ -21,9 +20,16 @@ const SelectFont = () => {
       onChange={(value)=> form.setFieldValue('fontFamily', value)}/>}
 
       <Select 
+      name={props?.name}
+      value={props?.value}
+      onChange={props?.onChange}
       listHeight={400} 
-      placeholder="Select Font" 
-      defaultActiveFirstOption
+      options={fontsData.map((item) => ({
+        label: (<span style={{ fontFamily: `"${item?.code}"`}} className="has-font">{item?.fontFamily}</span>),
+        value: item?.code,
+      }))}
+      defaultValue={0}
+      placeholder="Seleziona font" 
       dropdownRender={(menu) => (
         <>
           {menu}
@@ -37,10 +43,7 @@ const SelectFont = () => {
               </Button>
               </>
               )}
-            options={fontsData.map((item) => ({
-              label: item?.fontFamily,
-              value: item?.code,
-            }))}
+           
           />
     </>
   );
