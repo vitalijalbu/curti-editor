@@ -8,30 +8,18 @@ import { formState } from "@/store/index";
 
 
 
-import Editor from "@/shared/components/editor";
+import Editor from "@/shared/editor/editor";
 
 const Index = () => {
   
   
   return (
-    <div>
+    <div className="page-flow">
       
 
-         <Title level={3}>Anteprima lapide</Title>
+
           <Editor/>
-       
-        <Divider />
-        <Row>
-          <Col span="24">
-        <Alert
-            showIcon
-            message="SCALA 1:10"
-            description="1cm sullo schermo corrisponde a 10cm nella realtà"
-            type="warning"
-            key="alert"
-          />
-          </Col>
-        </Row>
+    
     </div>
   );
 };

@@ -27,7 +27,8 @@ const Draggable = ({ form }) => {
         id={`target-${form.id}`}
         key={form.id}
         style={{
-          minWidth: scaleFontSize(form?.data?.fontSize, 10)
+          minWidth: scaleFontSize(form?.data?.fontSize, 10),
+          width: scaleFontSize(form?.data?.fontSize, 1)
         }}
       >
         <span 
@@ -35,6 +36,7 @@ const Draggable = ({ form }) => {
           style={{
             fontFamily: `"${form?.data?.fontFamily}"`,
             fontSize: scaleFontSize(form?.data?.fontSize, 10),
+            letterSpacing: scaleFontSize(form?.data?.letterSpacing, 10),
             lineHeight: scaleFontSize(form?.data?.fontSize, 10)+1,
           }}
         >
@@ -51,21 +53,17 @@ const Draggable = ({ form }) => {
         throttleScale={0}
         startDragRotate={0}
         throttleDragRotate={0}
+        onClick={(e) => console.log('clicked-target', e.target.id)}
         snappable={true}
-        isDisplaySnapDigit={true}
-        isDisplayInnerSnapDigit={false}
-        snapGap={true}
-        snapDirections={{"top":true,"left":true,"bottom":true,"right":true,"center":true,"middle":true}}
-        elementSnapDirections={{"top":true,"left":true,"bottom":true,"right":true,"center":true,"middle":true}}
-        snapThreshold={5}
+        padding={{
+          left: 10,
+          right: 10,
+          top: 10,
+          bottom: 10,
+          }}
         onDrag={(e) => {
           e.target.style.transform = e.transform;
         }}
-        onRotate={(e) => {
-          e.target.style.transform = e.drag.transform;
-        }}
-
-        renderDirections={["nw", "n", "ne", "w", "e", "sw", "s", "se"]}
         onResize={(e) => {
           e.target.style.width = `${e.width}px`;
           e.target.style.height = `${e.height}px`;

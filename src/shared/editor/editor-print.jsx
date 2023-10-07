@@ -4,7 +4,7 @@ import { Alert, Card, Divider } from "antd";
 import Toolbar from "@/shared/components/toolbar";
 import { useRecoilValue } from "recoil";
 import { formState } from "@/store/index";
-import Draggable from "@/shared/components/draggable";
+import Draggable from "@/shared/editor/draggable";
 
 const Editor = () => {
   const forms = useRecoilValue(formState);

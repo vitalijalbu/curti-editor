@@ -1,8 +1,8 @@
 import { Button, Tabs } from "antd";
 import React from "react";
-import TabMain from "@/shared/editor/tab-main";
-import TabDimensions from "@/shared/editor/tab-dimensions";
-import TabSettings from "@/shared/editor/tab-settings";
+import TabMain from "@/shared/partials/tab-main";
+import TabDimensions from "@/shared/partials/tab-dimensions";
+import TabSettings from "@/shared/partials/tab-settings";
 import {
   IconAlphabetLatin,
   IconAspectRatio,

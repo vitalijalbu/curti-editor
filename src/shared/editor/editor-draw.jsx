@@ -4,10 +4,12 @@ import { Alert, Card, Tag } from "antd";
 import Toolbar from "@/shared/components/toolbar";
 import { useRecoilValue } from "recoil";
 import { formState } from "@/store/index";
-import Draggable from "@/shared/components/draggable";
+import Draggable from "@/shared/editor/draggable";
 import { scaleSizeDIV } from "helpers/scale-sizes";
 
-const Editor = () => {
+
+
+const EditorDraw = () => {
   const forms = useRecoilValue(formState);
   console.log('✅ all-forms', forms);
 
@@ -29,8 +31,8 @@ const Editor = () => {
           <Tag color="red">margini sicuri</Tag>
         </div>
       </div>
-    </div>
+    </div> 
   );
 };
 
-export default Editor;
+export default EditorDraw;

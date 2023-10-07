@@ -14,15 +14,10 @@ const PageLayout = (props) => {
     return (
       <>
         <Head>
-						<title>Epigrafe</title>
+						<title>Crea la tua Epigrafe</title>
 					</Head>
 
-        <Layout className="main-layout" 
-        style={{
-          backgroundImage: "radial-gradient(#ccc 1px, transparent 0)",
-          backgroundSize: "10mm 10mm",
-          backgroundPosition: "0 0"
-        }}>
+        <Layout className="main-layout">
           <Header
             theme="light"
             style={{
@@ -72,17 +67,16 @@ const PageLayout = (props) => {
               className="site-layout"
               style={{
                 marginLeft: collapsed ? 40 : 500,
-                marginTop: "30px",
+                marginTop: "50px",
                 transition: "margin-left 0.2s",
               }}
             >
               <Content
                 style={{
-                  padding: "30px",
                   maxWidth: "100%",
                   overflow: "initial",
                   paddingBottom: "30px",
-                  background: "#F8F8F8"
+                  background: "#E8E8E8"
                 }}
               >
                 <div className="main-container">
