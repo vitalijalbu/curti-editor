@@ -20,30 +20,32 @@ const Editor = () => {
   const initialNode = [
     {
       id: '1',
+      type: 'div',
       connectable: false,
       dragHandle: false,
       deletable: false,
       showZoom: true,
       selectable: false,
       className: 'react-flow__node-artboard',
-      position: { x: 30, y: 30 },
-      style: { background: '#323232', height: "60cm", width: "80cm", padding: 0, color: "#fff", border: 0 },
-      data: { label: <><EditorDraw /></> }
+      position: { x: 0, y: 20 },
+      style: { background: '#323232', padding: "2cm", height: "30cm", width: "40cm", color: "#fff", border: 0 },
+      data: { label: <EditorDraw /> }
     }
   ];
 
   const printNode = [
     {
       id: '2',
+      type: 'div',
       connectable: false,
       dragHandle: false,
       deletable: false,
       showZoom: true,
       selectable: false,
       className: 'react-flow__node-artboard',
-      position: { x: 30, y: 30 },
-      style: { background: '#fff', height: "297mm", width: "420mm", padding: 0, color: "#000", border: 0 },
-      data: { label: <><Alert message="A3"/><EditorPrint disabled={true} /></> }
+      position: { x: 0, y: 20 },
+      style: { background: '#fff', height: "29.7cm", width: "42cm", padding: 0, color: "#000", border: 0 },
+      data: { label: <EditorPrint disabled={true} />}
     }
   ];
 
@@ -51,13 +53,18 @@ const Editor = () => {
     <div style={{ width: '100%', height: '100vh', display: 'block', position: 'relative' }}>
       <ReactFlow
         nodes={preview === 'Disegna lapide' ? initialNode : printNode }
-        panOnDrag={false}
+        style={{ height: "100%", width: "100%"}}
+        nodesDraggable={false}
+        dragHandle={false}
+        fitBounds
+        fitView
+        attributionPosition="bottom-left"
       >
-        <Controls position="top-left" size="large" showZoom={true}/>
         <Panel position="top-center">
           <Segmented defaultValue={'Disegna lapide'} options={['Disegna lapide', 'Anteprima stampa A3']} onChange={(value) => setPreview(value)} />
         </Panel>
         <Background variant="dots" gap={20} size={1} />
+        <Controls position="top-left" size="large" showZoom={true}/>
       </ReactFlow>
     </div>
   );

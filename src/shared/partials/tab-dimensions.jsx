@@ -40,7 +40,6 @@ const TabDimensions = () => {
       <List.Item key={i}>
       <List.Item.Meta
         title={item.title}
-        description="Inserisci testo"
       />
       <div className="list-actions">
           <Form.Item name={item.id} initialValue={item.default}>

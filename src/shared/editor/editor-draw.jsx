@@ -16,11 +16,7 @@ const EditorDraw = (props) => {
 
 
   return (
-    <>
-           <div style={{ position: "absolute", width:"100%", height:"100%",  bottom: 0, left: 0 }}>
-          {props?.disabled && <Title>Foglio A3</Title>}
-        </div>
-    <div id="headstone">
+    <div className="headstone">
       <div className={!props?.disabled && "headstone-wrapper"}>
         {/* Drawing Area */}
         {forms.map((form, i) => (
@@ -32,7 +28,6 @@ const EditorDraw = (props) => {
         </div>
       </div>
     </div> 
-    </>
   );
 };
 

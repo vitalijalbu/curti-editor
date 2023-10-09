@@ -20,18 +20,16 @@ const EditorPrint = (props) => {
 
 
   return (
-<div>
-           <div style={{ position: "relative", width:"100%", height:"100%",  bottom: 0, left: 0 }}>
-          {props?.disabled && <Title>Foglio A3</Title>}
+    <div className="headstone print" id="sheet-print">
+    <div style={{ position: "absolute",  bottom: 0, left: 0 }}>
+          <Title>Foglio A3</Title>
         </div>
-    <div id="headstone" className="print">
       <div className={!props?.disabled && "headstone-wrapper"}>
         {/* Drawing Area */}
         {forms.map((form, i) => (
           <Draggable key={i} form={form} disabled={props?.disabled}/>
         ))}
       </div>
-    </div> 
     </div> 
   );
 };

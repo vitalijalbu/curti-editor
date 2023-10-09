@@ -36,9 +36,9 @@ const Draggable = (props) => {
           className="has-font"
           style={{
             fontFamily: `"${props?.form?.data?.fontFamily}"`,
-            fontSize: scaleFontSize(props?.form?.data?.fontSize, 10),
-            letterSpacing: scaleFontSize(props?.form?.data?.letterSpacing, 10),
-            lineHeight: scaleFontSize(props?.form?.data?.fontSize, 10)+1,
+            fontSize: scaleFontSize(props?.form?.data?.fontSize),
+            letterSpacing: scaleFontSize(props?.form?.data?.letterSpacing),
+            lineHeight: scaleFontSize(props?.form?.data?.fontSize)+1,
           }}
         >
           {props?.form?.data?.text}

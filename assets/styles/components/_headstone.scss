@@ -1,8 +1,7 @@
-#headstone {
+.headstone {
   width: 100%;
   display: block;
   height: 100%;
-  padding: 1.5cm;
   color: #fff;
   position: relative;
   &.print{
@@ -29,8 +28,29 @@
     height: 100px;
     text-align: center;
     box-sizing: border-box;
+    z-index: 10000000;
   }
   .moveable-control-box{
     z-index: 10;
   }
+}
+
+.react-flow__handle {
+  display: none !important;
+}
+.react-flow__controls{
+  border-radius: 12px !important;
+
+  & .react-flow__controls-button:first-of-type{
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+  & .react-flow__controls-button:last-of-type{
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+}
+.react-flow__controls-button{
+  width: 32px !important;
+  height: 32px !important;
 }

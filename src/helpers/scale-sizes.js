@@ -30,9 +30,9 @@ export const scaleSizeDIV = (values) => {
 };
 
 // Scale font
-export const scaleFontSize = (cm, scale) => {
-  const fontSizeInPx = (cm / scale) * 37.8; // Assuming 1cm = 37.8 pixels (standard screen DPI)
-  return `${fontSizeInPx}px`;
+export const scaleFontSize = (cm) => {
+  const fontSizeInPx = (cm / 10) * 2; // Assuming 1cm = 37.8 pixels (standard screen DPI)
+  return `${fontSizeInPx}mm`;
 };
 
 

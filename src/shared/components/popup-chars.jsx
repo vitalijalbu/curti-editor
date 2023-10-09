@@ -11,10 +11,9 @@ const PopupCharacters = ({ opened, toggle, fontFamily }) => {
     <Modal
       open={opened}
       onCancel={toggle}
-      width={"60%"}
+      width={"50%"}
       title="Caratteri speciali"
       centered
-      maskClosable={false}
       transitionName="ant-modal-slide-up"
       footer={[
         <Button key={0} onClick={toggle}>

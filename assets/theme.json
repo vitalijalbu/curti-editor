@@ -12,6 +12,9 @@
       "Tag": {
         "borderRadiusSM": 0
       },  
+      "Segmented": {
+        "controlHeight": 40
+      },  
        "Avatar": {
         "borderRadius": 8,
         "colorBgContainer": "#0B7542"

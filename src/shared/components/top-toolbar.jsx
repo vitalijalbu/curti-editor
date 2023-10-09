@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import html2canvas from 'html2canvas';
 import dayjs from 'dayjs';
 import jsPDF from 'jspdf';
-import { Button, Col, Row, Space, Modal, message, Divider, Spin } from "antd";
+import { Button, Col, Row, Space, Modal, message, Divider, Spin, Alert } from "antd";
 const { confirm } = Modal;
 import { IconDownload, IconEyeShare, IconPrinter, IconTrash } from "@tabler/icons-react";
 import { formState } from '@/store/index'; // Update the path
@@ -49,7 +49,7 @@ const TopToolbar = () => {
         orientation: 'landscape',
       });
     
-      const contentDiv = document.getElementById('headstone');
+      const contentDiv = document.getElementById('sheet-print');
     
       if (contentDiv) {
         setLoading(true);
@@ -87,16 +87,16 @@ const TopToolbar = () => {
     <>
      {popup && <PopupPreview opened={popup} toggle={togglePopup} />}
     <div className="contain">
-      <Row justify={"space-between"}>
-        <Col style={{display: "flex", alignItems: "center"}}>
+      <Row justify={"space-between"} align={"middle"}>
+        <Col>
           <img src={"/logo.png"} className="site-logo" alt="Logo Curti"/>
+        </Col>        
+        <Col>
+          <Alert message="Scala 1:10" showIcon/>
         </Col>
-        <Col span="16" style={{display: "flex", justifyContent: "end"}}>
+        <Col style={{justifyContent: "end"}}>
           <Space split={<Divider type="vertical" />}>
             <Button key={0} type="link" icon={<IconTrash/>} onClick={handleDeleteSession}>Ricomincia</Button>
-            <Button key={1} icon={<IconEyeShare />} onClick={togglePopup}>
-              Anteprima
-            </Button>
             <Button key={2} type="primary" icon={<IconPrinter />} onClick={() => printToPdf()} disabled={form.length <= 0} loading={loading}>
               Stampa
             </Button>

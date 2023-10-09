@@ -1,5 +1,6 @@
-$border-color: rgb(0 0 0 / 15%);
-
+* {
+  box-sizing: border-box;
+}
 html, body{
 	margin: 0;
     height: 100%;
