@@ -28,13 +28,13 @@ const Editor = () => {
       className: 'react-flow__node-artboard',
       position: { x: 30, y: 30 },
       style: { background: '#323232', height: "60cm", width: "80cm", padding: 0, color: "#fff", border: 0 },
-      data: { label: <EditorDraw /> }
+      data: { label: <><EditorDraw /></> }
     }
   ];
 
   const printNode = [
     {
-      id: '1',
+      id: '2',
       connectable: false,
       dragHandle: false,
       deletable: false,
@@ -48,14 +48,14 @@ const Editor = () => {
   ];
 
   return (
-    <div style={{ width: '100%', height: '80cm' }}>
+    <div style={{ width: '100%', height: '100vh', display: 'block', position: 'relative' }}>
       <ReactFlow
         nodes={preview === 'Disegna lapide' ? initialNode : printNode }
         panOnDrag={false}
       >
         <Controls position="top-left" size="large" showZoom={true}/>
         <Panel position="top-center">
-          <Segmented defaultValue={'Disegna'} options={['Disegna lapide', 'Anteprima stampa A3']} onChange={(value) => setPreview(value)} />
+          <Segmented defaultValue={'Disegna lapide'} options={['Disegna lapide', 'Anteprima stampa A3']} onChange={(value) => setPreview(value)} />
         </Panel>
         <Background variant="dots" gap={20} size={1} />
       </ReactFlow>
