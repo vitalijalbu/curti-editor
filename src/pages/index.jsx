@@ -15,8 +15,6 @@ const Index = () => {
   
   return (
     <div className="page-flow">
-      
-
 
           <Editor/>
     

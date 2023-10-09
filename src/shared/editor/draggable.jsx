@@ -3,7 +3,7 @@ import { scaleFontSize } from "helpers/scale-sizes";
 import React, { useRef, useEffect, useState } from "react";
 import Moveable from "react-moveable";
 
-const Draggable = ({ form }) => {
+const Draggable = (props) => {
   const targetRef = useRef(null);
   const moveableRef = useRef(null);
 
@@ -14,9 +14,10 @@ const Draggable = ({ form }) => {
       moveable.target = targetRef.current;
   
     }
-  }, [form]);
+  }, [props?.form]);
 
-  console.log('font-family', form?.data?.fontFamily);
+  console.log('font-family', props?.form?.data?.fontFamily);
+  console.log('props?.disabled', props?.disabled);
 
 
   return (
@@ -24,37 +25,31 @@ const Draggable = ({ form }) => {
       <div
         className="target"
         ref={targetRef}
-        id={`target-${form.id}`}
-        key={form.id}
+        id={`target-${props?.form.id}`}
+        key={props?.form.id}
         style={{
-          minWidth: scaleFontSize(form?.data?.fontSize, 10),
-          width: scaleFontSize(form?.data?.fontSize, 1)
+          minWidth: scaleFontSize(props?.form?.data?.fontSize, 10),
+          width: scaleFontSize(props?.form?.data?.fontSize, 1)
         }}
       >
         <span 
           className="has-font"
           style={{
-            fontFamily: `"${form?.data?.fontFamily}"`,
-            fontSize: scaleFontSize(form?.data?.fontSize, 10),
-            letterSpacing: scaleFontSize(form?.data?.letterSpacing, 10),
-            lineHeight: scaleFontSize(form?.data?.fontSize, 10)+1,
+            fontFamily: `"${props?.form?.data?.fontFamily}"`,
+            fontSize: scaleFontSize(props?.form?.data?.fontSize, 10),
+            letterSpacing: scaleFontSize(props?.form?.data?.letterSpacing, 10),
+            lineHeight: scaleFontSize(props?.form?.data?.fontSize, 10)+1,
           }}
         >
-          {form?.data?.text}
+          {props?.form?.data?.text}
         </span>
       </div>
       <Moveable
         ref={moveableRef}
-        target={`#target-${form.id}`}
+        target={`#target-${props?.form.id}`}
         individualGroupable={true}
-        draggable={true}
         resizable={true}
-        rotatable={true}
-        throttleScale={0}
-        startDragRotate={0}
-        throttleDragRotate={0}
-        onClick={(e) => console.log('clicked-target', e.target.id)}
-        snappable={true}
+        draggable={props?.disabled ? false : true}
         padding={{
           left: 10,
           right: 10,
@@ -64,7 +59,10 @@ const Draggable = ({ form }) => {
         onDrag={(e) => {
           e.target.style.transform = e.transform;
         }}
-        onResize={(e) => {
+        keepRatio={false}
+        throttleResize={1}
+        renderDirections={["nw","n","ne","w","e","sw","s","se"]}
+        onResize={e => {
           e.target.style.width = `${e.width}px`;
           e.target.style.height = `${e.height}px`;
           e.target.style.transform = e.drag.transform;
