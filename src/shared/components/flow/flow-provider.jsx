@@ -45,7 +45,11 @@ const FlowProvider = (props) => {
   };
 
   return (
-    <div className="flow__provider">
+    <div className="flow__provider"
+    //onMouseDown={handleMouseDown}
+    //onMouseMove={handleMouseMove}
+    //onMouseUp={handleMouseUp}
+    >
       <Row justify={'space-between'}>
         <Col>
           <Space className="flow__controls">
@@ -60,9 +64,6 @@ const FlowProvider = (props) => {
       <div
         className="flow__container grabbable"
         style={zoomStyle}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
       >
         <div className="flow__pane">{props.children}</div>
       </div>

@@ -29,7 +29,6 @@ const Draggable = (props) => {
         key={props?.form.id}
         style={{
           minWidth: scaleFontSize(props?.form?.data?.fontSize, 10),
-          width: scaleFontSize(props?.form?.data?.fontSize, 1)
         }}
       >
         <span 

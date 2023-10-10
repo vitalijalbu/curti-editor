@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Button, Divider, Select, Typography } from "antd";
 import { IconListCheck } from "@tabler/icons-react";
 import PopupFonts from "../components/popup-fonts";
-const { Option } = Select;
-const { Text, Title } = Typography;
 const fontsData = require("@/data/static.fonts.json");
 
 
@@ -17,7 +15,7 @@ const SelectFont = (props) => {
      {popupFonts && <PopupFonts
       opened={popupFonts} 
       toggle={()=> setPopupFonts(!popupFonts)} 
-      onChange={(value)=> form.setFieldValue('fontFamily', value)}/>}
+      onChange={(value)=> props?.onChange(value)}/>}
 
       <Select 
       name={props?.name}

@@ -4,17 +4,17 @@ import { IconCheckbox } from "@tabler/icons-react";
 const fontsData = require("@/data/static.fonts.json");
 
 const PopupFonts = ({ opened, toggle, data, onChange }) => {
-  const [selectedFont, setSelectedFont] = useState("3900");
+  const [selected, setSelectedFont] = useState(null);
 
-  console.log('selectedFont', selectedFont);
+  console.log('selected', selected);
   
   const handleFontChange = (e) => {
     setSelectedFont(e.target.value);
   };
 
   const handleSelect = () => {
-    if (selectedFont) {
-      onChange(selectedFont);
+    if (selected) {
+      onChange(selected);
       toggle();
     }
   };
@@ -26,14 +26,13 @@ const PopupFonts = ({ opened, toggle, data, onChange }) => {
       width={"90%"}
       title="Seleziona Font"
       centered
-      maskClosable={false}
       className="modal-fullscreen"
       transitionName="ant-modal-slide-up"
       footer={[
         <Button key={0} onClick={toggle}>
           Chiudi
         </Button>,
-        <Button key={1} type="primary" onClick={handleSelect} icon={<IconCheckbox />}>
+        <Button key={1} type="primary" onClick={handleSelect} icon={<IconCheckbox />} disabled={!selected}>
           Seleziona
         </Button>,
       ]}
@@ -50,7 +49,7 @@ const PopupFonts = ({ opened, toggle, data, onChange }) => {
             <Radio
               onChange={handleFontChange}
               value={font.code}
-              checked={selectedFont === font.code}
+              checked={selected === font.code}
             >
               <h1 style={{ fontFamily: `"${font?.code}"`}} className="has-font">{font.fontFamily}</h1>
             </Radio>

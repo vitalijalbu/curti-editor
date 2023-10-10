@@ -40,11 +40,11 @@
         "colorPrimary": "rgba(0, 0, 0, 0.88)"
       },
       "Button": {
+        "colorBgContainer": "#fff",
         "controlHeight": 40,
         "controlHeightLG": 40,
         "colorTextDisabled": "rgba(0, 0, 0, 0.25)",
-        "controlOutline": 0,
-        "defaultBg": "linear-gradient(to bottom,#3b8f60 0,#0B7542 100%)"
+        "controlOutline": 0
       },
       "Menu": {
         "itemMarginInline": 0,
