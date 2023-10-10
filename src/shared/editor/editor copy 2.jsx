@@ -4,9 +4,10 @@ import { Alert, Button, Segmented } from "antd";
 import { useRecoilValue } from "recoil";
 import { formState } from "@/store/index";
 import { scaleSizeDIV } from "helpers/scale-sizes";
+import ReactFlow, { Controls, Panel, Background } from 'reactflow';
+import 'reactflow/dist/base.css';
 import EditorDraw from "./editor-draw";
 import EditorPrint from "./editor-print";
-import FlowProvider from "@/shared/components/flow/flow-provider";
 
 const Editor = () => {
   const forms = useRecoilValue(formState);
@@ -61,13 +62,22 @@ const Editor = () => {
 
   return (
     <div style={{ width: '100%', height: '100vh', display: 'block', position: 'relative' }}>
-     
-      <FlowProvider
-      head={        <div className="flow__head">
-      <Segmented defaultValue={'Disegna lapide'} options={['Disegna lapide', 'Anteprima stampa A3']} onChange={(value) => setPreview(value)} />
-      </div>}>
-          <EditorDraw/>
-          </FlowProvider>
+      <ReactFlow
+        nodes={nodes}
+        //nodesDraggable={false}
+        zoomOnScroll={false}  // Disable zoom on scroll if it causes issues
+        zoomOnPinch={false}   // Disable zoom on pinch if it causes issues
+        //dragHandle={false}
+        fitBounds
+        fitView
+        attributionPosition="bottom-left"
+      >
+        <Panel position="top-center">
+          <Segmented defaultValue={'Disegna lapide'} options={['Disegna lapide', 'Anteprima stampa A3']} onChange={(value) => setPreview(value)} />
+        </Panel>
+        <Background variant="dots" gap={20} size={1} />
+        <Controls position="top-left" size="large" showZoom={true}/>
+      </ReactFlow>
     </div>
   );
 };

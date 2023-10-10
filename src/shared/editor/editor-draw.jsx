@@ -13,10 +13,11 @@ const EditorDraw = (props) => {
   const forms = useRecoilValue(formState);
   console.log('✅ all-forms', forms);
 
-
+  const values = { width: 800, height: 600 };
+  const scaledSize = scaleSizeDIV(values);
 
   return (
-    <div className="headstone">
+    <div className="headstone" style={scaledSize}>
       <div className={!props?.disabled && "headstone-wrapper"}>
         {/* Drawing Area */}
         {forms.map((form, i) => (

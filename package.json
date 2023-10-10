@@ -23,9 +23,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-moveable": "^0.54.2",
-    "reactflow": "^11.9.2",
     "recoil": "^0.7.7",
-    "sass": "^1.68.0"
+    "sass": "^1.69.1"
   },
   "license": "MIT",
   "keywords": [],

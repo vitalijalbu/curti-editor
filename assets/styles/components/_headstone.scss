@@ -3,7 +3,8 @@
   display: block;
   height: 100%;
   color: #fff;
-  position: relative;
+  z-index: 1000000;
+  background-color: #333;
   &.print{
     color: #000 !important;
     .ant-typography{
@@ -24,17 +25,20 @@
 
   .target {
     width: 100%;
-    min-width: 20%;
+    min-width: 100px;
     height: 100px;
     text-align: center;
+    position: relative;
     box-sizing: border-box;
-    z-index: 10000000;
+    z-index: 100000;
   }
   .moveable-control-box{
     z-index: 10;
   }
 }
-
+.react-flow__renderer{
+  z-index: -1 !important;
+}
 .react-flow__handle {
   display: none !important;
 }
@@ -53,4 +57,11 @@
 .react-flow__controls-button{
   width: 32px !important;
   height: 32px !important;
+}
+.react-flow-node {
+  pointer-events: none !important;
+}
+
+.moveable-div {
+  pointer-events: auto !important;
 }
