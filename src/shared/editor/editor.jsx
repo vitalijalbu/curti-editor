@@ -63,10 +63,10 @@ const Editor = () => {
     <div style={{ width: '100%', height: '100vh', display: 'block', position: 'relative' }}>
      
       <FlowProvider
-      head={        <div className="flow__head">
+      center={<>
       <Segmented defaultValue={'Disegna lapide'} options={['Disegna lapide', 'Anteprima stampa A3']} onChange={(value) => setPreview(value)} />
-      </div>}>
-          <EditorDraw/>
+      </>}>
+      {preview === 'Disegna lapide' ? <EditorDraw/> : <EditorPrint/> } 
           </FlowProvider>
     </div>
   );

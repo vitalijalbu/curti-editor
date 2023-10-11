@@ -17,7 +17,7 @@ const EditorDraw = (props) => {
   const scaledSize = scaleSizeDIV(values);
 
   return (
-    <div className="headstone" style={scaledSize}>
+    <div className="headstone" style={{ background: "#333", ...scaledSize }}>
       <div className={!props?.disabled && "headstone-wrapper"}>
         {/* Drawing Area */}
         {forms.map((form, i) => (

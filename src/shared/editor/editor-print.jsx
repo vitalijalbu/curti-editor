@@ -13,18 +13,16 @@ const EditorPrint = (props) => {
   const forms = useRecoilValue(formState);
   console.log('✅ all-forms', forms);
 
-
-
-  const values = { width: 800, height: 600 };
+  const values = { width: 420, height: 297 };
   const scaledSize = scaleSizeDIV(values);
 
 
   return (
-    <div className="headstone print" id="sheet-print">
+    <div className="headstone print" id="sheet-print" style={{ background: "#fff", ...scaledSize }}>
     <div style={{ position: "absolute",  bottom: 0, left: 0 }}>
           <Title>Foglio A3</Title>
         </div>
-      <div className={!props?.disabled && "headstone-wrapper"}>
+      <div>
         {/* Drawing Area */}
         {forms.map((form, i) => (
           <Draggable key={i} form={form} disabled={props?.disabled}/>

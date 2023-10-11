@@ -50,8 +50,9 @@ const FlowProvider = (props) => {
     //onMouseMove={handleMouseMove}
     //onMouseUp={handleMouseUp}
     >
-      <Row justify={'space-between'}>
-        <Col>
+      <div className='flow__head'>
+      <Row>
+        <Col span={8} className='flow__left'>
           <Space className="flow__controls">
             <Button icon={<IconPlus />} onClick={handleZoomIn} />
             <Button>{zoomLevel}%</Button>
@@ -59,8 +60,10 @@ const FlowProvider = (props) => {
             <Button icon={<IconMaximize />} onClick={handleResetZoom} />
           </Space>
         </Col>
-        <Col>{props.head}</Col>
+        <Col span={8} className='flow__center'>{props.center}</Col>
+        <Col span={8} className='flow__right'>{props.right}</Col>
       </Row>
+      </div>
       <div
         className="flow__container grabbable"
         style={zoomStyle}
