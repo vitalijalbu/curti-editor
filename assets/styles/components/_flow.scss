@@ -15,6 +15,7 @@
 }
 .flow__container {
     transition: transform 75ms ease-in-out;
+    cursor: grab;
   }
   
   .flow__container.dragging {
@@ -23,11 +24,6 @@
     cursor: -webkit-grabbing;
     transition: transform 75ms ease-in-out;
   }
-
-.flow__pane {
-    cursor: grab;
-    z-index: 1
-}
 
 
 .flow__pane.selection {

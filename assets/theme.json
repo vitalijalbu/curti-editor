@@ -67,7 +67,7 @@
         "motionDurationMid": "0",
         "motionDurationSlow": "0",
         "controlOutline": "rgba(5, 25, 42, 23)",
-        "controlHeight": 40,
+        "controlHeight": 42,
         "controlOutlineWidth": 1,
         "colorWarningOutline": "rgba(255, 215, 5, 1)"
       },

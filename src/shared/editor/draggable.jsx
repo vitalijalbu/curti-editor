@@ -38,6 +38,7 @@ const Draggable = (props) => {
             fontSize: scaleFontSize(props?.form?.data?.fontSize),
             letterSpacing: scaleFontSize(props?.form?.data?.letterSpacing),
             lineHeight: scaleFontSize(props?.form?.data?.fontSize, 10)+1,
+            textAlign: `"${props?.form?.data?.textAlign}"`
           }}
         >
           {props?.form?.data?.text}

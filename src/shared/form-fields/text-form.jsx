@@ -7,6 +7,8 @@ import {
   IconAlignLeft,
   IconAlignRight,
   IconCodeAsterix,
+  IconMinus,
+  IconPlus,
 } from "@tabler/icons-react";
 import SelectFont from "./select-font";
 
@@ -21,11 +23,22 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
     setPopup(!popup);
   };
 
+  const increaseSpacing = () => {
+    const currentLetterSpacing = form.getFieldValue("letterSpacing");
+    form.setFieldsValue({ letterSpacing: parseInt(currentLetterSpacing, 10) + 1 });
+    console.log('increase', currentLetterSpacing);
+  };
+
+  const decreaseSpacing = () => {
+    const currentLetterSpacing = form.getFieldValue("letterSpacing");
+    form.setFieldsValue({ letterSpacing: parseInt(currentLetterSpacing, 10) - 1 });
+    console.log('decrease', currentLetterSpacing);
+  };
+
   useEffect(() => {
     onValuesChange(formBody);
     console.log('🚀 sending-form-to-parent');
   }, [formBody]);
-
   return (
     <>
       {popup && <PopupCharacters opened={popup} toggle={togglePopup} fontFamily={form.getFieldValue('fontFamily')}/>}
@@ -57,16 +70,6 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
         </Form.Item>
         <Row gutter="16">
           <Col span="12">
-            <Form.Item label="Grandezza caratteri" name="fontSize" initialValue={20}>
-              <InputNumber addonAfter="cm" />
-            </Form.Item>
-          </Col>
-          <Col span="12">
-            <Form.Item label="Spaziatura caratteri" name="letterSpacing" initialValue={0}>
-              <InputNumber addonAfter="cm" />
-            </Form.Item>
-          </Col>
-          <Col span="12">
             <Form.Item label="Allineamento testo" name="textAlign">
               <Radio.Group initialValue="left" size="large">
                 <Radio.Button value="left">
@@ -75,6 +78,17 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
                 <Radio.Button value="center">{<IconAlignCenter />}</Radio.Button>
                 <Radio.Button value="right">{<IconAlignRight />}</Radio.Button>
               </Radio.Group>
+            </Form.Item>
+          </Col>
+          <Col span="12">
+            <Form.Item label="Spaziatura caratteri" name="letterSpacing" initialValue={10}>
+              <Input
+                type="number"
+                value={form.getFieldValue("letterSpacing")}
+                onChange={(e) => form.setFieldsValue({ letterSpacing: parseInt(e.target.value, 10) || 0 })}
+                addonAfter={<Button icon={<IconMinus />} onClick={decreaseSpacing} />}
+                addonBefore={<Button icon={<IconPlus />} onClick={increaseSpacing} />}
+              />
             </Form.Item>
           </Col>
         </Row>

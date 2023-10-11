@@ -17,7 +17,7 @@ const FlowProvider = (props) => {
   };
 
   const handleResetZoom = () => {
-    setZoomLevel(90);
+    setZoomLevel(75);
   };
 
   const handleMouseDown = (e) => {
@@ -65,7 +65,7 @@ const FlowProvider = (props) => {
         className="flow__container grabbable"
         style={zoomStyle}
       >
-        <div className="flow__pane">{props.children}</div>
+        {props.children}
       </div>
     </div>
   );

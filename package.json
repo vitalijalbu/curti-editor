@@ -14,8 +14,8 @@
     "@ant-design/icons": "^5.2.6",
     "@tabler/icons-react": "^2.38.0",
     "antd": "^5.10.0",
+    "convert": "^4.13.2",
     "dayjs": "^1.11.10",
-    "fs": "^0.0.1-security",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "lodash": "^4.17.21",
@@ -23,6 +23,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-moveable": "^0.54.2",
+    "reactflow": "^11.9.3",
     "recoil": "^0.7.7",
     "sass": "^1.69.1"
   },
