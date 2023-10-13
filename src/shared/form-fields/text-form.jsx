@@ -1,6 +1,6 @@
 // TextForm.jsx
 import React, { useEffect, useState } from "react";
-import { Row, Col, Space, Button, Form, Input, InputNumber, Radio, Checkbox, Select } from "antd";
+import { Row, Col, Space, Button, Form, Input, InputNumber, Radio, Checkbox, Select, Tooltip } from "antd";
 import PopupCharacters from "../components/popup-chars";
 import {
   IconAlignCenter,
@@ -65,27 +65,34 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
         <Button block type="link" onClick={() => togglePopup()} icon={<IconCodeAsterix />}>
             Caratteri speciali
           </Button>
-        <Form.Item label="Font" name="fontFamily" initialValue={"3900"}>
-          <SelectFont name="fontFamily" onChange={(value) => form.setFieldValue("fontFamily", value)}/>
+          <Row gutter="16">
+          <Col span="16">
+        <Form.Item label="Carattere" name="fontFamily" initialValue={"3900"}>
+          <SelectFont name="fontFamily" onChange={(value) => form.setFieldsValue({"fontFamily": value?.code, "fontSize": value?.fontSize})}/>
         </Form.Item>
-        <Row gutter="16">
-          <Col span="12">
-            <Form.Item label="Allineamento testo" name="textAlign">
-              <Radio.Group initialValue="left" size="large">
-                <Radio.Button value="left">
+        </Col>  
+        <Col span="8">
+        <Form.Item label="Dim. carattere" name="fontSize" tooltip="Per modificare la dimensione, si prega di scegliere un'altro carattere">
+          <InputNumber disabled too/>
+          </Form.Item>
+        </Col>
+        <Col span="12">
+            <Form.Item label="Posizione" name="textAlign">
+              <Radio.Group block initialValue="left" buttonStyle="solid" size="large">
+                <Radio.Button  size="large" value="left">
                   <IconAlignLeft />
                 </Radio.Button>
-                <Radio.Button value="center">{<IconAlignCenter />}</Radio.Button>
-                <Radio.Button value="right">{<IconAlignRight />}</Radio.Button>
+                <Radio.Button block value="center">{<IconAlignCenter />}</Radio.Button>
+                <Radio.Button block value="right">{<IconAlignRight />}</Radio.Button>
               </Radio.Group>
             </Form.Item>
           </Col>
           <Col span="12">
-            <Form.Item label="Spaziatura caratteri" name="letterSpacing" initialValue={10}>
+            <Form.Item label="Spaziatura caratteri" name="letterSpacing" initialValue={0}>
               <Input
                 type="number"
                 value={form.getFieldValue("letterSpacing")}
-                onChange={(e) => form.setFieldsValue({ letterSpacing: parseInt(e.target.value, 10) || 0 })}
+                onChange={(e) => form.setFieldsValue({ letterSpacing: parseInt(e.target.value, 0) || 0 })}
                 addonAfter={<Button icon={<IconMinus />} onClick={decreaseSpacing} />}
                 addonBefore={<Button icon={<IconPlus />} onClick={increaseSpacing} />}
               />

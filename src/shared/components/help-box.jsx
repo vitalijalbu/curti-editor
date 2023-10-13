@@ -5,7 +5,7 @@ import { IconEyeShare, IconMail, IconPhoneCall, IconWorldWww } from "@tabler/ico
 
 const HelpBox = () => {
   return (
-    <div>
+    <div style={{marginTop: '60px'}}>
     
 <Divider>Hai bisogno di aiuto?</Divider>
 <List
@@ -15,7 +15,7 @@ key={1}
       <List.Item key={0}>
       <List.Item.Meta
         title="Scrivici"
-        avatar={<Avatar shape="square" icon={<IconMail color="#0B7542"/>}/>}
+        avatar={<Avatar style={{background: '#dfecff'}} shape="square" icon={<IconMail color="#1677ff"/>}/>}
       />
       <div className="list-actions">
           <Link href="mailto:info@ellepisrl.org" target="_blank">info@ellepisrl.org</Link>
@@ -23,7 +23,7 @@ key={1}
     </List.Item>  
     <List.Item key={1}>
       <List.Item.Meta
-        avatar={<Avatar shape="square" icon={<IconPhoneCall color="#0B7542"/>}/>}
+        avatar={<Avatar style={{background: '#dfecff'}} shape="square" icon={<IconPhoneCall color="#1677ff"/>}/>}
         title="Chiamaci"
       />
       <div className="list-actions">
@@ -32,7 +32,7 @@ key={1}
     </List.Item> 
     <List.Item key={2}>
       <List.Item.Meta
-        avatar={<Avatar shape="square" icon={<IconWorldWww color="#0B7542"/>}/>}
+        avatar={<Avatar style={{background: '#dfecff'}} shape="square" icon={<IconWorldWww color="#1677ff"/>}/>}
         title="Visita il nostro sito web"
       />
       <div className="list-actions">

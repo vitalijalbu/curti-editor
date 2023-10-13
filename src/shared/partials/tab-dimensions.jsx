@@ -16,20 +16,28 @@ const TabDimensions = () => {
     {
       id: "lenght",
       type: "number",
-      default: 80,
+      default: 800,
+      disabled: true,
       title: 'Larghezza lapide',
     },
     {
       id: "width",
       type: "number",
-      default: 60,
+      default: 600,
+      disabled: true,
       title: 'Altezza lapide',
+    },
+    {
+      id: "margin",
+      type: "number",
+      default: 100,
+      title: 'Margini interni lapide',
     }
   ];
 
   return (
     <div>
-       <Alert showIcon message="Impostazioni e dimensioni lapide"/>
+       <Alert showIcon message="Impostazioni e dimensioni lapide" type="warning"/>
       <Divider/>
       <Form form={form} name="form-dimensions">
        <List
@@ -43,7 +51,7 @@ const TabDimensions = () => {
       />
       <div className="list-actions">
           <Form.Item name={item.id} initialValue={item.default}>
-            <InputNumber allowClear addonAfter="cm"/>
+            <InputNumber min={0} max={100000} type="number" allowClear addonAfter="mm" disabled={item?.disabled || false}/>
           </Form.Item>
         </div>
     </List.Item>

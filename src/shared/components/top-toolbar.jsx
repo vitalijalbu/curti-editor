@@ -5,13 +5,13 @@ import jsPDF from 'jspdf';
 import { Button, Col, Row, Space, Modal, message, Divider, Spin, Alert } from "antd";
 const { confirm } = Modal;
 import { IconDownload, IconEyeShare, IconPrinter, IconTrash } from "@tabler/icons-react";
-import { formState } from '@/store/index'; // Update the path
+import { editorState } from '@/store/index'; // Update the path
 import { useRecoilState } from "recoil";
 import PopupPreview from "./popup-preview";
 
 const TopToolbar = () => {
   const [loading, setLoading] = useState(false);
-  const [form, setForms] = useRecoilState(formState);
+  const [form, setForms] = useRecoilState(editorState);
   const [popup, setPopup] = useState(false);
   
   const togglePopup = () => {

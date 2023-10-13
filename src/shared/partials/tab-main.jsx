@@ -6,16 +6,16 @@ const { Panel } = Collapse;
 import { CaretRightOutlined } from '@ant-design/icons';
 import { IconPlus, IconTrash } from '@tabler/icons-react';
 import { useRecoilValue, useRecoilState } from 'recoil';
-import { formState } from '@/store/index'; // Update the path
+import { editorState } from '@/store/index'; // Update the path
 import TextForm from '../form-fields/text-form';
 
 
 const TabMain = () => {
-  const forms = useRecoilValue(formState);
-  const [formsState, setFormsState] = useRecoilState(formState);
+  const forms = useRecoilValue(editorState);
+  const [formState, setFormState] = useRecoilState(editorState);
   const [activeKeys, setActiveKeys] = React.useState(1);
-
-  console.log('activeKeys', activeKeys);
+  //console
+  console.log(JSON.stringify(forms))
 
   const handleAddRow = () => {
     const newForm = {
@@ -25,19 +25,19 @@ const TabMain = () => {
     };
      // Close all existing panels and open the new one
       setActiveKeys(newForm.id);
-      setFormsState([...forms, newForm]);
+      setFormState([...forms, newForm]);
   };
 
   const handleRemoveRow = (id) => {
     const updatedForms = forms.filter((form) => form.id !== id);
-    setFormsState(updatedForms);
+    setFormState(updatedForms);
   };
 
   // Set forms Data State
   const handleFormValuesChange = (values, formId) => {
     //console.log('parent-component-form-changed', values);
 
-    setFormsState((prevForms) =>
+    setFormState((prevForms) =>
       prevForms.map((prevForm) =>
         prevForm.id === formId
           ? { ...prevForm, data: values }
@@ -46,9 +46,16 @@ const TabMain = () => {
     );
   };
 
+
+    // Add this function to check if any form has empty data{text:}
+    const isAnyFormEmpty = () => {
+      return forms.some((form) => !form.data || !form.data.text);
+    };
+
+
   return (
     <div>
-      <Alert showIcon message="Modifica i testi sulla lapide"/>
+      <Alert showIcon message="Modifica i testi sulla lapide"  type="warning"/>
       <Divider />
       <Collapse
         bordered={false}
@@ -87,7 +94,7 @@ const TabMain = () => {
       </Collapse>
       {/* Add new line */}
       <Divider />
-      <Button block type="dashed" icon={<IconPlus />} onClick={handleAddRow}>
+      <Button block type="dashed" icon={<IconPlus />} onClick={handleAddRow} disabled={isAnyFormEmpty()}>
         Aggiungi riga
       </Button>
     </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { List, Select, Form, Input, Divider, Typography, Alert } from "antd";
+import { List, Select, Form, Input, Divider, Typography, Alert, Tag } from "antd";
 const { Title, Text } = Typography;
 import materials from "@/data/static.materials.json";
 import finish from "@/data/static.finish.json";
@@ -24,7 +24,7 @@ const TabSettings = () => {
   ];
   return (
     <div>
-            <Alert showIcon message="Impostazioni area di lavoro"/>
+            <Alert showIcon message="Impostazioni area di lavoro"  type="warning"/>
       <Divider/>
        <List
     itemLayout="horizontal"
@@ -35,7 +35,7 @@ const TabSettings = () => {
           title="Unità di misura"
         />
         <div className="list-actions">
-         cm
+         <Tag color="red">Millimentri</Tag>
           </div>
       </List.Item>
     </List>

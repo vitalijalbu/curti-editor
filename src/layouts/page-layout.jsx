@@ -41,6 +41,8 @@ const PageLayout = (props) => {
                 position: "fixed",
                 left: 0,
                 top: "50px",
+                bottom: "50px",
+                paddingBottom: "50px",
                 padding: "0px 10px 50px 10px",
                 background: "#fff",
                 overflowY: "auto"
@@ -59,15 +61,17 @@ const PageLayout = (props) => {
                 icon={collapsed === true ? <IconChevronRight /> : <IconChevronLeft />}
               />}
               onCollapse={() => setCollapsed(!collapsed)}
-              collapsedWidth={40}
+              collapsedWidth={50}
             >
               <Aside collapse={collapsed}/>
             </Sider>
             <Layout
               className="site-layout"
               style={{
-                marginLeft: collapsed ? 40 : 500,
+                marginLeft: collapsed ? 50 : 500,
                 marginTop: "50px",
+                position: "relative",
+                overflow: "unset",
                 transition: "margin-left 0.2s",
               }}
             >

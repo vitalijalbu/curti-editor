@@ -2,7 +2,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Alert, Button, Segmented } from "antd";
 import { useRecoilValue } from "recoil";
-import { formState } from "@/store/index";
+import { editorState } from "@/store/index";
 import { scaleSizeDIV } from "helpers/scale-sizes";
 import ReactFlow, { Controls, Panel, Background } from 'reactflow';
 import 'reactflow/dist/style.css';
@@ -10,7 +10,7 @@ import EditorDraw from "./editor-draw";
 import EditorPrint from "./editor-print";
 
 const Editor = () => {
-  const forms = useRecoilValue(formState);
+  const forms = useRecoilValue(editorState);
   console.log('✅ all-forms', forms);
   const [preview, setPreview] = useState('Disegna lapide');
 

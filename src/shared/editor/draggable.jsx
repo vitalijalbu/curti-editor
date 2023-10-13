@@ -35,10 +35,10 @@ const Draggable = (props) => {
           className="has-font"
           style={{
             fontFamily: `"${props?.form?.data?.fontFamily}"`,
-            fontSize: scaleFontSize(props?.form?.data?.fontSize),
+            fontSize: props?.form?.data?.fontSize,
             letterSpacing: scaleFontSize(props?.form?.data?.letterSpacing),
             lineHeight: scaleFontSize(props?.form?.data?.fontSize, 10)+1,
-            textAlign: `"${props?.form?.data?.textAlign}"`
+            alignContent: `"${props?.form?.data?.textAlign}"`
           }}
         >
           {props?.form?.data?.text}
@@ -48,8 +48,7 @@ const Draggable = (props) => {
         ref={moveableRef}
         target={`#target-${props?.form.id}`}
         individualGroupable={true}
-        resizable={true}
-        draggable={true}
+        draggable={props?.disabled ? false : true}
         padding={{
           left: 10,
           right: 10,

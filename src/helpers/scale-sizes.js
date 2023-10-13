@@ -1,3 +1,5 @@
+
+
 // Scale DIV HTML
 export const scaleSizeDIV = (values) => {
   if (!values || typeof values !== 'object') {
@@ -36,3 +38,9 @@ export const scaleFontSize = (cm) => {
 };
 
 
+
+
+export const mmToPx = (mm) => {
+  const dpi = 96;
+  return (mm / 25.4) * dpi;
+};

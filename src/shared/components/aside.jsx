@@ -17,7 +17,7 @@ const Aside = (props) => {
     {
       key: "1",
       label: (
-        <Button type="text" icon={<IconSortAZ />}>
+        <Button block type="text" icon={<IconSortAZ />}>
           Testi
         </Button>
       ),
@@ -26,7 +26,7 @@ const Aside = (props) => {
     {
       key: "2",
       label: (
-        <Button type="text" icon={<IconAspectRatio />}>
+        <Button block type="text" icon={<IconAspectRatio />}>
           Lapide
         </Button>
       ),
@@ -35,7 +35,7 @@ const Aside = (props) => {
     {
       key: "3",
       label: (
-        <Button type="text" icon={<IconSettings />}>
+        <Button block type="text" icon={<IconSettings />}>
           Impostazioni
         </Button>
       ),
@@ -46,9 +46,9 @@ const Aside = (props) => {
   console.log('collapse', props?.collapse);
 
   return (
-    <aside>
+    <aside style={{paddingBottom: "120px",}}>
       {props?.collapse === false ?
-      <Tabs items={items} />
+      <Tabs items={items} centered f/>
       : null}
     </aside>
   );

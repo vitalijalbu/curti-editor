@@ -3,14 +3,14 @@ import React, { useRef, useEffect, useState } from "react";
 import { Alert, Card, Tag, Typography } from "antd";
 const { Title } = Typography;
 import { useRecoilValue } from "recoil";
-import { formState } from "@/store/index";
+import { editorState } from "@/store/index";
 import Draggable from "@/shared/editor/draggable";
 import { scaleSizeDIV } from "helpers/scale-sizes";
 
 
 
 const EditorPrint = (props) => {
-  const forms = useRecoilValue(formState);
+  const forms = useRecoilValue(editorState);
   console.log('✅ all-forms', forms);
 
   const values = { width: 420, height: 297 };
