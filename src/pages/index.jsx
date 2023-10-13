@@ -4,6 +4,8 @@ import { fabric } from 'fabric';
 import { mmToPx, scaleSizeDIV } from 'helpers/scale-sizes';
 import FlowProvider from '@/shared/components/flow-provider';
 import { Segmented } from 'antd';
+import SheetDraw from '@/shared/editor/sheet-draw';
+import SheetPrint from '@/shared/editor/sheet-print';
 
 const Index = () => {
   const [preview, setPreview] = useState('Disegna lapide');
@@ -85,7 +87,7 @@ const Index = () => {
       <Segmented defaultValue={'Disegna lapide'} options={['Disegna lapide', 'Anteprima stampa A3']} onChange={(value) => setPreview(value)} />
       </>}>
       <div style={scaledSize}>
-      {preview === 'Disegna lapide' ? <FabricJSCanvas className="f-canvas" onReady={onReady} /> : 'print' } 
+      {preview === 'Disegna lapide' ? <SheetDraw/> : <SheetPrint/> } 
       </div>
       </FlowProvider>
     </div>

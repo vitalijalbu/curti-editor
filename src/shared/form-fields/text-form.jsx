@@ -15,7 +15,7 @@ import SelectFont from "./select-font";
 const TextForm = ({ formId, initialValues, onValuesChange }) => {
   const [form] = Form.useForm();
   const formBody = Form.useWatch([], { form, preserve: true });
-  console.log("👀 useWatch", formBody);
+  //console.log("👀 useWatch", formBody);
   //states
   const [popup, setPopup] = useState(false);
 
@@ -37,7 +37,7 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
 
   useEffect(() => {
     onValuesChange(formBody);
-    console.log('🚀 sending-form-to-parent');
+    //console.log('🚀 sending-form-to-parent');
   }, [formBody]);
   return (
     <>
@@ -60,7 +60,7 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
             },
           ]}
         >
-          <Input.TextArea allowClear autoFocus={true} placeholder="Inserisci il testo qui" rows="3" />
+          <Input allowClear autoFocus={true} placeholder="Inserisci il testo qui" rows="3" />
         </Form.Item>
         <Button block type="link" onClick={() => togglePopup()} icon={<IconCodeAsterix />}>
             Caratteri speciali
@@ -77,15 +77,15 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
           </Form.Item>
         </Col>
         <Col span="12">
-            <Form.Item label="Posizione" name="textAlign">
-              <Radio.Group block initialValue="left" buttonStyle="solid" size="large">
-                <Radio.Button  size="large" value="left">
-                  <IconAlignLeft />
-                </Radio.Button>
-                <Radio.Button block value="center">{<IconAlignCenter />}</Radio.Button>
-                <Radio.Button block value="right">{<IconAlignRight />}</Radio.Button>
-              </Radio.Group>
-            </Form.Item>
+        <Form.Item label="Posizione" name="textAlign" initialValue={'center'}>
+          <Radio.Group buttonStyle="solid" size="large">
+            <Radio.Button size="large" value="left">
+              <IconAlignLeft />
+            </Radio.Button>
+            <Radio.Button value="center">{<IconAlignCenter />}</Radio.Button>
+            <Radio.Button value="right">{<IconAlignRight />}</Radio.Button>
+          </Radio.Group>
+        </Form.Item>
           </Col>
           <Col span="12">
             <Form.Item label="Spaziatura caratteri" name="letterSpacing" initialValue={0}>

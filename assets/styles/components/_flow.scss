@@ -19,19 +19,10 @@
     top: 0;
     padding: 15px;
     width: 100%;
-    z-index: 10000;
 }
 .flow__container {
     transition: transform 75ms ease-in-out;
     position: relative; /* Needed for absolute positioning within */
-  }
-  
-  .f-canvas {
-    transition: transform 75ms ease-in-out;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
   }
 .flow__left{
     & button{

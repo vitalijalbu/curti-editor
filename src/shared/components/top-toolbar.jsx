@@ -91,9 +91,9 @@ const TopToolbar = () => {
         <Col>
           <img src={"/logo.png"} className="site-logo" alt="Logo Curti"/>
         </Col>        
-        <Col>
+        {/*<Col>
           <Alert message="Scala 1:10" showIcon/>
-        </Col>
+  </Col>*/}
         <Col style={{justifyContent: "end"}}>
           <Space split={<Divider type="vertical" />}>
             <Button key={0} type="link" icon={<IconTrash/>} onClick={handleDeleteSession}>Ricomincia</Button>
