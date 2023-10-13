@@ -12,39 +12,40 @@ const SheetDraw = () => {
 
   const displayTexts = useCallback((canvas) => {
     try {
-      // Clear all objects on the canvas
-      // canvas.clear();
-
       if (texts.length > 0) {
         texts.forEach((formData, index) => {
-          const { text, fontFamily, fontSize, textAlign, letterSpacing } = formData?.data;
-          console.log('text-to-canvas', text);
+          const textData = formData?.data;
 
-          const fontSizeInPixels = mmToPx(fontSize);
+          if (textData) {
+            const { text, fontFamily, fontSize, textAlign, letterSpacing } = textData;
+            console.log('text-to-canvas', text);
 
-          const textObject = new fabric.IText(text, {
-            //left: 100,
-            top: 100 + index * 100,
-            fontFamily: `"${fontFamily}"`,
-            fill: '#fff',
-            fontSize: 30,
-            //borderColor: '#004bb3',
-            charSpacing: letterSpacing,
-            //originX: 'center',
-            //originY: 'center',
-            editable: false,
-            hasRotatingPoint: false
-          });
+            const fontSizeInPixels = mmToPx(fontSize);
 
-         /* textObject.on('object:modified', function (options) {
-            // Do nothing for now or handle additional logic if needed
-          });*/
+            const textObject = new fabric.IText(text, {
+              left: 100,
+              top: 100 + index * 100,
+              fontFamily: `"${fontFamily}"`,
+              fill: '#fff',
+              fontSize: 30,
+              charSpacing: letterSpacing,
+              editable: false,
+              hasRotatingPoint: false,
+              lockMovementX: false,
+              lockMovementY: false,
+            });
 
-          canvas.add(textObject);
+            textObject.on('object:moving', function (options) {
+              context.clearRect(0, 0, canvas.width, canvas.height);
+            });
+
+
+            canvas.add(textObject);
+          }
         });
-        
+
+        canvas.requestRenderAll();
       }
-      canvas.requestRenderAll();
     } catch (e) {
       console.error('Issues rendering texts:', e);
     }
@@ -54,7 +55,7 @@ const SheetDraw = () => {
     if (editor) {
       const canvas = editor.canvas;
 
-      canvas.clear(); // Clear all objects before adding new ones
+     
       canvas.allowTouchScrolling = false;
       //canvas.setWidth = '800px';
       //canvas.setHeight = '600px';
@@ -62,10 +63,12 @@ const SheetDraw = () => {
       canvas.cursor = 'grab';
       //canvas.selectionFullyContained = true;
       canvas.selection = false;
+      //canvas.preserveObjectStacking = false;
+      canvas.renderOnAddRemove = true;
 
       displayTexts(canvas);
     }
-  }, [editor, texts]);
+  }, [editor]);
 
 
   return (
