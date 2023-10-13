@@ -13,57 +13,38 @@ const SheetDraw = () => {
   const displayTexts = useCallback((canvas) => {
     try {
       // Clear all objects on the canvas
-      //canvas.clear();
+      // canvas.clear();
 
       if (texts.length > 0) {
         texts.forEach((formData, index) => {
-          const { text, fontFamily, fontSize, textAlign } = formData?.data;
-          console.log('canvas-to-text-', text);
+          const { text, fontFamily, fontSize, textAlign, letterSpacing } = formData?.data;
+          console.log('text-to-canvas', text);
 
           const fontSizeInPixels = mmToPx(fontSize);
 
-          const textObject = new fabric.Text(text, {
-            left: 100,
-            top: 100 + index * 10,
+          const textObject = new fabric.IText(text, {
+            //left: 100,
+            top: 100 + index * 100,
             fontFamily: `"${fontFamily}"`,
             fill: '#fff',
             fontSize: 30,
-            borderColor: '#004bb3',
-            lockUniScaling: true,
-            editable: false,
-            hasRotatingPoint: false,
-            lockRotation: true,
-            lockScalingFlip: true,
-            lockScaling: true,
+            //borderColor: '#004bb3',
+            charSpacing: letterSpacing,
             //originX: 'center',
             //originY: 'center',
+            editable: false,
+            hasRotatingPoint: false
           });
 
-          /*textObject.on('object:moving', function (options) {
-            const obj = options.target;
-            const copy = new fabric.Text(obj.text, {
-              left: obj.left,
-              top: obj.top,
-              fontFamily: obj.fontFamily,
-              fill: obj.fill,
-              fontSize: obj.fontSize,
-              borderColor: obj.borderColor,
-              lockUniScaling: obj.lockUniScaling,
-              editable: false,
-              hasRotatingPoint: false,
-              lockRotation: true,
-              lockScalingFlip: true,
-              lockScaling: true,
-              originX: obj.originX,
-              originY: obj.originY,
-            });
-            canvas.add(copy);
+         /* textObject.on('object:modified', function (options) {
+            // Do nothing for now or handle additional logic if needed
           });*/
 
           canvas.add(textObject);
         });
-        canvas.requestRenderAll();
+        
       }
+      canvas.requestRenderAll();
     } catch (e) {
       console.error('Issues rendering texts:', e);
     }
@@ -75,16 +56,17 @@ const SheetDraw = () => {
 
       canvas.clear(); // Clear all objects before adding new ones
       canvas.allowTouchScrolling = false;
+      //canvas.setWidth = '800px';
+      //canvas.setHeight = '600px';
       canvas.backgroundColor = '#B6B6B6';
+      canvas.cursor = 'grab';
+      //canvas.selectionFullyContained = true;
       canvas.selection = false;
 
       displayTexts(canvas);
     }
   }, [editor, texts]);
 
-  // static sizes calc
-  const values = { width: 800, height: 600 };
-  const scaledSize = scaleSizeDIV(values);
 
   return (
     <>

@@ -53,18 +53,21 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
         <Form.Item
           label="Testo"
           name="text"
+          autoFocus
           rules={[
             {
               required: true,
               message: "Campo richiesto",
             },
           ]}
+          help={  <a href="#" onClick={() => togglePopup()}>
+          <IconCodeAsterix /> Caratteri speciali
+        </a>}
         >
-          <Input allowClear autoFocus={true} placeholder="Inserisci il testo qui" rows="3" />
-        </Form.Item>
-        <Button block type="link" onClick={() => togglePopup()} icon={<IconCodeAsterix />}>
-            Caratteri speciali
-          </Button>
+          <Input allowClear autoFocus={true} placeholder="Inserisci il testo qui"/>
+          </Form.Item>
+      
+          
           <Row gutter="16">
           <Col span="16">
         <Form.Item label="Carattere" name="fontFamily" initialValue={"3900"}>
