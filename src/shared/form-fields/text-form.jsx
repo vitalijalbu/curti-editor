@@ -96,8 +96,8 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
                 type="number"
                 value={form.getFieldValue("letterSpacing")}
                 onChange={(e) => form.setFieldsValue({ letterSpacing: parseInt(e.target.value, 0) || 0 })}
-                addonAfter={<Button icon={<IconMinus />} onClick={decreaseSpacing} />}
-                addonBefore={<Button icon={<IconPlus />} onClick={increaseSpacing} />}
+                addonAfter={<Button type="text" icon={<IconMinus />} onClick={decreaseSpacing} />}
+                addonBefore={<Button type="text" icon={<IconPlus />} onClick={increaseSpacing} />}
               />
             </Form.Item>
           </Col>
