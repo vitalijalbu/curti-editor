@@ -4,47 +4,71 @@ import { fabric } from 'fabric';
 import { mmToPx, scaleSizeDIV } from 'helpers/scale-sizes';
 import { editorState } from '@/store/index';
 import { useRecoilValue } from 'recoil';
+const texts = [
+  {
+    id: 1,
+    text: 'This is the first text.',
+    fontFamily: 'Arial',
+    fontSize: 30,
+    textAlign: 'left',
+    letterSpacing: 1,
+  },
+  {
+    id: 2,
+    text: 'This is the second text.',
+    fontFamily: 'Times New Roman',
+    fontSize: 40,
+    textAlign: 'center',
+    letterSpacing: 2,
+  },
+];
 
 const SheetDraw = () => {
   const [loading, setLoading] = useState(false);
   const { editor, onReady } = useFabricJSEditor();
-  const texts = useRecoilValue(editorState);
 
   const displayTexts = useCallback((canvas) => {
     try {
       if (texts.length > 0) {
-        texts.forEach((formData, index) => {
-          const textData = formData?.data;
+        texts.forEach((textData, index) => {
+          const { text, fontFamily, fontSize, textAlign, letterSpacing } = textData;
+          console.log('text-to-canvas', text);
 
-          if (textData) {
-            const { text, fontFamily, fontSize, textAlign, letterSpacing } = textData;
-            console.log('text-to-canvas', text);
+          const fontSizeInPixels = mmToPx(fontSize);
 
-            const fontSizeInPixels = mmToPx(fontSize);
+          const textObject = new fabric.Text(text, {
+            id: index + 1,
+            left: 100,
+            top: 100 + index * 100,
+            fontFamily: `"${fontFamily}"`,
+            fill: '#fff',
+            fontSize: fontSizeInPixels,
+            charSpacing: letterSpacing,
+            editable: false,
+            hasRotatingPoint: false,
+            lockMovementX: false,
+            lockMovementY: false,
+          });
 
-            const textObject = new fabric.IText(text, {
-              left: 100,
-              top: 100 + index * 100,
-              fontFamily: `"${fontFamily}"`,
-              fill: '#fff',
-              fontSize: 30,
-              charSpacing: letterSpacing,
-              editable: false,
-              hasRotatingPoint: false,
-              lockMovementX: false,
-              lockMovementY: false,
-            });
+          textObject.on('object:moving', function (options) {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            console.log('moving', options);
 
-            textObject.on('object:moving', function (options) {
+            // Remove the event listener before moving the text object.
+            this.off('object:moving');
+
+            // Move the text object.
+            this.moveTo(options.left, options.top);
+
+            // Re-add the event listener.
+            this.on('object:moving', function (options) {
               context.clearRect(0, 0, canvas.width, canvas.height);
+              console.log('moving', options);
             });
+          });
 
-
-            canvas.add(textObject);
-          }
+          canvas.add(textObject);
         });
-
-        canvas.requestRenderAll();
       }
     } catch (e) {
       console.error('Issues rendering texts:', e);
@@ -55,7 +79,6 @@ const SheetDraw = () => {
     if (editor) {
       const canvas = editor.canvas;
 
-     
       canvas.allowTouchScrolling = false;
       //canvas.setWidth = '800px';
       //canvas.setHeight = '600px';
@@ -65,11 +88,10 @@ const SheetDraw = () => {
       canvas.selection = false;
       //canvas.preserveObjectStacking = false;
       canvas.renderOnAddRemove = true;
-
+      canvas.renderAll();
       displayTexts(canvas);
     }
   }, [editor]);
-
 
   return (
     <>
