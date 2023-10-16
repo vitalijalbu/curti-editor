@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
-    "@tabler/icons-react": "^2.38.0",
-    "antd": "^5.10.0",
+    "@tabler/icons-react": "^2.39.0",
+    "antd": "^5.10.1",
     "convert": "^4.13.2",
     "dayjs": "^1.11.10",
     "html2canvas": "^1.4.1",
@@ -26,9 +26,8 @@
     "react-dom": "18.2.0",
     "react-konva": "^18.2.10",
     "react-moveable": "^0.54.2",
-    "reactflow": "^11.9.3",
     "recoil": "^0.7.7",
-    "sass": "^1.69.1"
+    "sass": "^1.69.3"
   },
   "license": "MIT",
   "keywords": [],

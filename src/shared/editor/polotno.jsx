@@ -1,25 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { PolotnoContainer, SidePanelWrap, WorkspaceWrap } from "polotno";
-import { Toolbar } from "polotno/toolbar/toolbar";
-import { ZoomButtons } from "polotno/toolbar/zoom-buttons";
 import { SidePanel } from "polotno/side-panel";
 import { Workspace } from "polotno/canvas/workspace";
-
-import "@blueprintjs/icons/lib/css/blueprint-icons.css";
-import "@blueprintjs/core/lib/css/blueprint.css";
-import "@blueprintjs/popover2/lib/css/blueprint-popover2.css";
-
+import { ZoomButtons } from "polotno/toolbar/zoom-buttons";
 import { createStore } from "polotno/model/store";
+import { Toolbar } from "polotno/toolbar/toolbar";
+// Import your fonts here
+const fonts = require("@/data/static.fonts.json");
 
-const store = createStore({
-  key: "nFA5H9elEytDyPyvKL7T", // you can create it here: https://polotno.com/cabinet/
-  // you can hide back-link on a paid license
-  // but it will be good if you can keep it for Polotno project support
-  showCredit: true
-});
-const page = store.addPage();
+const Editor = () => {
+  const store = createStore({
+    key: "nFA5H9elEytDyPyvKL7T",
+    showCredit: false,
+  });
 
-export const Editor = () => {
+  store.toggleRulers(true);
+  store.setUnit({
+    unit: 'cm', // mm, cm, in, pt, px
+    dpi: 300,
+  });
+  store.setRole('user');
+
+  const page = store.addPage({
+    width: 800,
+    height: 600
+  });
+
+  // Load fonts when the component mounts
+  useEffect(() => {
+    fonts.forEach(font => {
+      store.addFont({fontFamily:font.fontFamily, src: `url('/fonts/${font.filename}')`});
+    });
+  }, []);
+
   return (
     <PolotnoContainer style={{ width: "100vw", height: "100vh" }}>
       <SidePanelWrap>

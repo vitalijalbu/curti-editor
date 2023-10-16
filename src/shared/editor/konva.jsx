@@ -1,68 +1,91 @@
-// Konva.js
-import React, { useEffect, useState, useCallback } from 'react';
-import dynamic from 'next/dynamic';
-import { mmToPx, scaleSizeDIV } from 'helpers/scale-sizes';
-import { editorState } from '@/store/index';
+import React, { useRef, useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { Stage, Layer, Rect, Text } from 'react-konva';
-import Konva from 'konva';
+import { Stage, Layer, Text, Transformer } from 'react-konva';
+import { editorState } from '@/store/index';
 
 const KonvaComponent = () => {
+  const [selectedId, setSelectedId] = useState(null);
   const texts = useRecoilValue(editorState);
+  const trRef = useRef();
+  const textNodeRef = useRef();
 
-  const displayTexts = useCallback((layer) => {
-    if (Konva && texts.length > 0 && layer) {
-      //layer.destroyChildren();
-  
-      try {
-        texts.forEach((formData, index) => {
-          const textData = formData?.data;
-  
-          if (textData) {
-            const { text, fontFamily, fontSize, textAlign, letterSpacing } = textData;
-            console.log('text-to-layer', text);
-  
-            const fontSizeInPixels = mmToPx(fontSize);
-  
-            const textObject = (
-              <Text
-                key={index}
-                x={100}
-                y={100 + index * 100}
-                fontFamily={fontFamily}
-                fill=""
-                fontSize={30}
-                letterSpacing={letterSpacing}
-                text={text}
-                width={300} // adjust as needed
-                align={textAlign}
-                draggable
-              />
-            );
-  
-            layer.add(textObject);
-          }
-        });
-  
-        layer.batchDraw();
-      } catch (e) {
-        console.error('Issues rendering texts:', e);
-      }
+  const handleTextClick = (e) => {
+    setSelectedId(e.target.id());
+  };
+
+  const handleStageClick = () => {
+    setSelectedId(null);
+  };
+
+  useEffect(() => {
+    // we need to attach transformer manually
+    if (selectedId) {
+      trRef.current.nodes([textNodeRef.current]);
+      trRef.current.getLayer().batchDraw();
     }
-  }, [Konva, texts]);
-
-  // static sizes calc
-  const values = { width: 800, height: 600 };
-  const scaledSize = scaleSizeDIV(values);
+  }, [selectedId]);
 
   return (
-    <>
-
-        <Stage width={scaledSize.width} height={scaledSize.height}>
-          <Layer ref={displayTexts} />
-        </Stage>
-
-    </>
+    <Stage
+      width={window.innerWidth}
+      height={window.innerHeight}
+      onClick={handleStageClick}
+      style={{ background: 'red' }}
+    >
+      <Layer>
+        {texts.map((text) => (
+          <React.Fragment key={text.id}>
+            <Text
+              id={text.id}
+              text={text.label}
+              x={text.data.x || 0}
+              y={text.data.y || 0}
+              draggable
+              fontSize={40}
+              onClick={handleTextClick}
+              onDragEnd={(e) => {
+                const newProps = {
+                  x: e.target.x(),
+                  y: e.target.y(),
+                };
+                // Update the position of the text in the state or your Recoil state
+                // You might need to implement this part based on your application structure
+                // setNewPosition(text.id, newProps);
+              }}
+              ref={textNodeRef}
+            />
+          </React.Fragment>
+        ))}
+        {selectedId && textNodeRef.current && (
+          <Transformer
+            ref={trRef}
+            boundBoxFunc={(oldBox, newBox) => {
+              // Limit the transformer to stay within the stage boundaries
+              if (
+                newBox.x < 0 ||
+                newBox.y < 0 ||
+                newBox.x + newBox.width > window.innerWidth ||
+                newBox.y + newBox.height > window.innerHeight
+              ) {
+                return oldBox;
+              }
+              return newBox;
+            }}
+            enabledAnchors={['left', 'right', "top", "bottom"]} // Adjust as needed
+            anchorCornerRadius={5}
+            borderStrokeWidth={1}
+            keepRatio={false}
+            rotateEnabled={false}
+            ignoreStroke
+            rotateAnchorOffset={20}
+            resizeEnabled={true}
+            borderStroke="#1890ff"
+            anchorFill="#1890ff"
+            anchorSize={8}
+          />
+        )}
+      </Layer>
+    </Stage>
   );
 };
 
