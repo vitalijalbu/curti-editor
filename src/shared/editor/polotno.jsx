@@ -6,6 +6,7 @@ import { Workspace } from "polotno/canvas/workspace";
 import { ZoomButtons } from "polotno/toolbar/zoom-buttons";
 import { createStore } from "polotno/model/store";
 import { Toolbar } from "polotno/toolbar/toolbar";
+import { runInAction } from 'mobx';
 import {
   TextSection,
   PhotosSection,
@@ -16,8 +17,21 @@ import {
   SectionTab
 } from 'polotno/side-panel';
 import { IconHelpCircle } from "@tabler/icons-react";
+import { setGoogleFonts } from "polotno/utils/fonts";
 // Import your fonts here
 const fonts = require("@/data/static.fonts.json");
+
+
+// Help sections
+const HelpSection = {
+  name: "custom",
+  Tab: (props) => (
+    <SectionTab name="Aiuto" {...props}>
+      <IconHelpCircle/>
+    </SectionTab>
+  )
+}
+
 
 const Editor = () => {
   const store = createStore({
@@ -26,11 +40,12 @@ const Editor = () => {
   });
 
   store.toggleRulers(true);
+  store.setElementsPixelRatio(2);
   store.setUnit({
     unit: 'cm', // mm, cm, in, pt, px
     dpi: 300,
   });
-  store.setRole('user');
+  store.setRole('admin');
 
 
   var widthPage = unitToPx({
@@ -43,22 +58,41 @@ const Editor = () => {
     unit: 'cm',
     dpi: 300,
     unitVal: 29.7,
-  });
+  });  
+  
+  
 
 
   const page = store.addPage({
     width: widthPage,
-    height: heightPage
+    height: heightPage,
+    fontFamily: '3900'
   });
 
-  store.activePage.set({ bleed: 20 });
 
-  // Load fonts when the component mounts
-  useEffect(() => {
+// Load fonts when the component mounts
+useEffect(() => {
+  runInAction(() => {
+    // Remove all existing fonts
+    setGoogleFonts([]);
+
+    // Add your custom fonts
     fonts.forEach(font => {
-      store.addFont({fontFamily:font.fontFamily, styles:[{src: `url('/fonts/${font.filename}')`, fontStyle: 'normal'}]});
+      store.addFont({
+        fontFamily: font.fontFamily,
+        styles: [
+          {
+            src: `url('/fonts/${font.filename}')`,
+            fontStyle: 'normal',
+            fontSize: `${font.fontSize}`,
+          },
+        ],
+      });
     });
-  }, []);
+  });
+}, []);
+
+
 
 
   // we will have just two sections
@@ -81,12 +115,3 @@ const sections = [TextSection, HelpSection, SizeSection, ];
 export default Editor;
 
 
-// Help sections
-const HelpSection = {
-  name: "custom",
-  Tab: (props) => (
-    <SectionTab name="Aiuto" {...props}>
-      <IconHelpCircle/>
-    </SectionTab>
-  )
-}
