@@ -5,6 +5,16 @@ import { Workspace } from "polotno/canvas/workspace";
 import { ZoomButtons } from "polotno/toolbar/zoom-buttons";
 import { createStore } from "polotno/model/store";
 import { Toolbar } from "polotno/toolbar/toolbar";
+import {
+  TextSection,
+  PhotosSection,
+  ElementsSection,
+  UploadSection,
+  BackgroundSection,
+  SizeSection,
+  SectionTab
+} from 'polotno/side-panel';
+import { IconHelpCircle } from "@tabler/icons-react";
 // Import your fonts here
 const fonts = require("@/data/static.fonts.json");
 
@@ -26,6 +36,8 @@ const Editor = () => {
     height: 600
   });
 
+  store.activePage.set({ bleed: 20 });
+
   // Load fonts when the component mounts
   useEffect(() => {
     fonts.forEach(font => {
@@ -33,10 +45,14 @@ const Editor = () => {
     });
   }, []);
 
+
+  // we will have just two sections
+const sections = [TextSection, HelpSection, SizeSection, ];
+
   return (
     <PolotnoContainer style={{ width: "100vw", height: "100vh" }}>
       <SidePanelWrap>
-        <SidePanel store={store} />
+        <SidePanel store={store} sections={sections}/>
       </SidePanelWrap>
       <WorkspaceWrap>
         <Toolbar store={store} downloadButtonEnabled />
@@ -48,3 +64,14 @@ const Editor = () => {
 };
 
 export default Editor;
+
+
+// Help sections
+const HelpSection = {
+  name: "custom",
+  Tab: (props) => (
+    <SectionTab name="Aiuto" {...props}>
+      <IconHelpCircle/>
+    </SectionTab>
+  )
+}
