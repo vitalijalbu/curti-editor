@@ -72,8 +72,8 @@ const Editor = () => {
 
 // Load fonts when the component mounts
 useEffect(() => {
-  runInAction(() => {
-    // Remove all existing fonts
+  
+  // Remove all existing fonts
     setGoogleFonts([]);
 
     // Add your custom fonts
@@ -89,7 +89,14 @@ useEffect(() => {
         ],
       });
     });
-  });
+
+          // Disable resizing for all existing elements
+          store.pages.forEach(page => {
+            page?.elements?.forEach(element => {
+              element.set({ resizable: false });
+            });
+          });
+
 }, []);
 
 
