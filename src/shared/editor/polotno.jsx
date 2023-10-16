@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { pxToUnitRounded, unitToPx, pxToUnit } from 'polotno/utils/unit';
 import { PolotnoContainer, SidePanelWrap, WorkspaceWrap } from "polotno";
 import { SidePanel } from "polotno/side-panel";
 import { Workspace } from "polotno/canvas/workspace";
@@ -31,9 +32,23 @@ const Editor = () => {
   });
   store.setRole('user');
 
+
+  var widthPage = unitToPx({
+    unit: 'cm',
+    dpi: 300,
+    unitVal: 42,
+  });
+
+  var heightPage = unitToPx({
+    unit: 'cm',
+    dpi: 300,
+    unitVal: 29.7,
+  });
+
+
   const page = store.addPage({
-    width: 800,
-    height: 600
+    width: widthPage,
+    height: heightPage
   });
 
   store.activePage.set({ bleed: 20 });
@@ -41,7 +56,7 @@ const Editor = () => {
   // Load fonts when the component mounts
   useEffect(() => {
     fonts.forEach(font => {
-      store.addFont({fontFamily:font.fontFamily, src: `url('/fonts/${font.filename}')`});
+      store.addFont({fontFamily:font.fontFamily, styles:[{src: `url('/fonts/${font.filename}')`, fontStyle: 'normal'}]});
     });
   }, []);
 
