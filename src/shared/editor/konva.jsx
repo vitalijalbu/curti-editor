@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 import { render } from "react-dom";
 import { Stage, Layer, Rect, Transformer, Text } from "react-konva";
