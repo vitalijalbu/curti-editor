@@ -17,7 +17,7 @@ const Aside = (props) => {
     {
       key: "1",
       label: (
-        <Button block type="text" icon={<IconSortAZ />}>
+        <Button type="text" icon={<IconSortAZ />}>
           Testi
         </Button>
       ),
@@ -26,7 +26,7 @@ const Aside = (props) => {
     {
       key: "2",
       label: (
-        <Button block type="text" icon={<IconAspectRatio />}>
+        <Button type="text" icon={<IconAspectRatio />}>
           Lapide
         </Button>
       ),
@@ -35,7 +35,7 @@ const Aside = (props) => {
     {
       key: "3",
       label: (
-        <Button block type="text" icon={<IconSettings />}>
+        <Button type="text" icon={<IconSettings />}>
           Impostazioni
         </Button>
       ),

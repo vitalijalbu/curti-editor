@@ -22,8 +22,8 @@ const PageLayout = (props) => {
             theme="light"
             style={{
               background: "#fff",
-              height: "50px",
-              lineHeight: "50px",
+              height: "40px",
+              lineHeight: "40px",
               padding: "0 30px",
               position: "fixed",
               top: 0,
@@ -40,36 +40,35 @@ const PageLayout = (props) => {
                 height: "100%",
                 position: "fixed",
                 left: 0,
-                top: "50px",
-                bottom: "50px",
-                paddingBottom: "50px",
-                padding: "0px 10px 50px 10px",
+                top: "40px",
+                bottom: "40px",
+                paddingBottom: "40px",
+                padding: "0px 10px 40px 10px",
                 background: "#fff",
                 overflowY: "auto"
               }}
               breakpoint="md"
-              width={"500px"}
+              width={"400px"}
               theme="light"
               collapsible
               reverseArrow={true}
               collapsed={collapsed}
               trigger={<Button
-                titl="Chiudi"
-                shape="circle"
+                title="Chiudi"
                 size="small"
                 onClick={() => setCollapsed(!collapsed)} // Assuming props.collapse is a function that toggles the collapse state
                 icon={collapsed === true ? <IconChevronRight /> : <IconChevronLeft />}
               />}
               onCollapse={() => setCollapsed(!collapsed)}
-              collapsedWidth={50}
+              collapsedWidth={40}
             >
               <Aside collapse={collapsed}/>
             </Sider>
             <Layout
               className="site-layout"
               style={{
-                marginLeft: collapsed ? 50 : 500,
-                marginTop: "50px",
+                marginLeft: collapsed ? 40 : 400,
+                marginTop: "40px",
                 position: "relative",
                 overflow: "unset",
                 transition: "margin-left 0.2s",
