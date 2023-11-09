@@ -1,7 +1,7 @@
 // TextForm.jsx
 import React, { useEffect, useState } from "react";
 import { Row, Col, Space, Button, Form, Input, InputNumber, Radio, Checkbox, Select, Tooltip } from "antd";
-import PopupCharacters from "../components/popup-chars";
+import PopupCharacters from "@/shared/components/popup-chars";
 import {
   IconAlignCenter,
   IconAlignLeft,
@@ -9,8 +9,10 @@ import {
   IconCodeAsterix,
   IconMinus,
   IconPlus,
+  IconRulerMeasure,
 } from "@tabler/icons-react";
 import SelectFont from "./select-font";
+import PopupSpacing from "@/shared/components/popup-spacing";
 
 const TextForm = ({ formId, initialValues, onValuesChange }) => {
   const [form] = Form.useForm();
@@ -18,9 +20,14 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
   //console.log("👀 useWatch", formBody);
   //states
   const [popup, setPopup] = useState(false);
+  const [popupSpacing, setPopupSpacing] = useState(false);
 
   const togglePopup = () => {
     setPopup(!popup);
+  };  
+  
+  const togglePopupSpacing = () => {
+    setPopupSpacing(!popupSpacing);
   };
 
   const increaseSpacing = () => {
@@ -42,6 +49,7 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
   return (
     <>
       {popup && <PopupCharacters opened={popup} toggle={togglePopup} fontFamily={form.getFieldValue('fontFamily')}/>}
+      {popupSpacing && <PopupSpacing opened={popupSpacing} toggle={togglePopupSpacing} fontFamily={form.getFieldValue('letterSpace')}/>}
 
       <Form
         form={form}
@@ -68,15 +76,15 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
           </Form.Item>
       
           
-          <Row gutter="16">
+          <Row gutter={12}>
           <Col span={12} md={24} sm={24}>
         <Form.Item label="Carattere" name="fontFamily" initialValue={"3900"}>
           <SelectFont name="fontFamily" onChange={(value) => form.setFieldsValue({"fontFamily": value?.code, "fontSize": value?.fontSize})}/>
         </Form.Item>
         </Col>  
         </Row>
-        <Row gutter="16">
-        <Col span={12} md={24} sm={24}>
+        <Row gutter={12}>
+        <Col lg={12} md={24} sm={24}>
         <Form.Item label="Posizione" name="textAlign" initialValue={'center'}>
           <Radio.Group buttonStyle="solid">
             <Radio.Button value="left">
@@ -87,14 +95,17 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
           </Radio.Group>
         </Form.Item>
           </Col>
-          <Col span={12} md={24} sm={24}>
-            <Form.Item label="Spaziatura caratteri" name="letterSpacing" initialValue={0}>
-              <Input
+          <Col lg={12} md={24} sm={24}>
+            <Form.Item label="Spaziatura caratteri" name="letterSpacing" initialValue={1}
+            help={  <a href="#" onClick={() => togglePopupSpacing()}>
+            <IconRulerMeasure /> Avanzate
+          </a>}
+          >
+              <InputNumber
                 type="number"
                 value={form.getFieldValue("letterSpacing")}
                 onChange={(e) => form.setFieldsValue({ letterSpacing: parseInt(e.target.value, 0) || 0 })}
-                addonAfter={<Button type="text" icon={<IconMinus />} onClick={decreaseSpacing} />}
-                addonBefore={<Button type="text" icon={<IconPlus />} onClick={increaseSpacing} />}
+                addonAfter="mm"
               />
             </Form.Item>
           </Col>

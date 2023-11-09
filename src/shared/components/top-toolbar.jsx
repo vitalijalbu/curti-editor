@@ -96,8 +96,8 @@ const TopToolbar = () => {
   </Col>*/}
         <Col style={{justifyContent: "end"}}>
           <Space split={<Divider type="vertical" />}>
-            <Button size="small" key={0} type="link" icon={<IconTrash/>} onClick={handleDeleteSession}>Ricomincia</Button>
-            <Button size="small" key={2} type="primary" icon={<IconPrinter />} onClick={() => printToPdf()} disabled={form.length <= 0} loading={loading}>
+            <Button key={0} type="link" icon={<IconTrash/>} onClick={handleDeleteSession}>Ricomincia</Button>
+            <Button key={2} type="primary" icon={<IconPrinter />} onClick={() => printToPdf()} disabled={form.length <= 0} loading={loading}>
               Stampa
             </Button>
           </Space>

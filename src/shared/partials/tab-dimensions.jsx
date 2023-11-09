@@ -16,22 +16,14 @@ const TabDimensions = () => {
     {
       id: "lenght",
       type: "number",
-      default: 800,
-      disabled: true,
+      default: 80,
       title: 'Larghezza lapide',
     },
     {
       id: "width",
       type: "number",
-      default: 600,
-      disabled: true,
+      default: 60,
       title: 'Altezza lapide',
-    },
-    {
-      id: "margin",
-      type: "number",
-      default: 100,
-      title: 'Margini interni lapide',
     }
   ];
 
@@ -51,7 +43,7 @@ const TabDimensions = () => {
       />
       <div className="list-actions">
           <Form.Item name={item.id} initialValue={item.default}>
-            <InputNumber min={0} max={100000} type="number" allowClear addonAfter="mm" disabled={item?.disabled || false}/>
+            <InputNumber min={0} max={100000} type="number" allowClear addonAfter="cm" disabled={item?.disabled || false}/>
           </Form.Item>
         </div>
     </List.Item>

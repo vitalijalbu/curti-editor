@@ -17,7 +17,7 @@ html, body{
     height: 100vh;
 }
 .site-logo{
-    height: 26px;
+    height: 20px;
     width: auto;
     display: flex;
     align-self: center;
@@ -104,26 +104,3 @@ svg{
   .vertical {
     transform: rotate(90deg);
   }
-  
-  .centimeter {
-    position: absolute;
-    bottom: -10px;
-    transform: translateX(-50%);
-  }
-  .ant-tabs-nav {
-    width: 100% !important;
-    }
-    
-    .ant-tabs-tab {
-    display: block; // centers text inside tabs
-    flex: 1;
-    text-align: center;
-    }
-    .ant-tabs-tab-btn{
-      width: 33%;
-    }
-    .ant-tabs-nav > div:nth-of-type(1) {
-    display: unset !important;
-    width: 100% !important;
-    }
-    

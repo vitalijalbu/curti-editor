@@ -1,7 +1,7 @@
 // SelectFont.jsx
 import React, { useState } from "react";
-import { Button, Divider, Flex, Select } from "antd";
-import { IconListCheck } from "@tabler/icons-react";
+import { Space, Button, Divider, Flex, Select } from "antd";
+import { IconCodeAsterix, IconListCheck } from "@tabler/icons-react";
 import PopupFonts from "../components/popup-fonts";
 const fontsData = require("@/data/static.fonts.json");
 
@@ -28,7 +28,7 @@ const SelectFont = (props) => {
         />
       )}
 
-      <Select
+       <Select
         name={props?.name}
         value={selectedFont ? selectedFont.code : null}
         onChange={(value) => handleFontChange(value)}
@@ -62,6 +62,8 @@ const SelectFont = (props) => {
           </>
         )}
       />
+
+
     </>
   );
 };

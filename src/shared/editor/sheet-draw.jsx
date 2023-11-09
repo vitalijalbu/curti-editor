@@ -6,6 +6,7 @@ import { useRecoilValue } from "recoil";
 import { editorState } from "@/store/index";
 import Draggable from "@/shared/editor/draggable";
 import { scaleSizeDIV } from "helpers/scale-sizes";
+import { unitToPx } from "polotno/utils/unit";
 
 
 
@@ -43,7 +44,8 @@ const SheetDraw = (props) => {
     }
   }, [containerRef]);
 
-  console.log('scaledSize', scaledSize)
+  console.log('scaledSize', scaledSize);
+  console.log('unitToPx', unitToPx({ unitVal: '42', dpi:300, unit:'mm' }));
 
   return (
       <div ref={containerRef} className="headstone" style={{ background: "#aa9883", ...scaledSize }}>

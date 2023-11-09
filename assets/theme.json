@@ -1,7 +1,7 @@
 {
   "theme": "light",
   "token": {
-    "colorPrimary": "#0B7542",
+    "colorPrimary": "#0B7532",
     "colorSuccess": "#0f845d",
     "colorError": "#de0004",
     "borderRadius": 12,
@@ -9,12 +9,6 @@
     "wireframe": true
     },
     "components": {
-      "Tabs": {
-        "marginSM": 4,
-        "marginMD": 4,
-        "margin": 6,
-        "horizontalItemGutter": 2
-      },
       "Tag": {
         "borderRadiusSM": 0
       },  
@@ -23,7 +17,7 @@
       },  
        "Avatar": {
         "borderRadius": 8,
-        "colorBgContainer": "#0B7542"
+        "colorBgContainer": "#0B7532"
       },  
       "Card": {
         "borderRadiusLG": 12,
@@ -38,7 +32,7 @@
       },
       "message": {
         "boxShadow": 0,
-        "controlHeightLG": 32,
+        "controlHeightLG": 34,
         "borderRadiusLG": 12
       },
       "Pagination": {
@@ -47,8 +41,8 @@
       },
       "Button": {
         "colorBgContainer": "#fff",
-        "controlHeight": 32,
-        "controlHeightLG": 32,
+        "controlHeight": 34,
+        "controlHeightLG": 34,
         "controlHeightSM": 28,
         "paddingInline": 8,
         "colorTextDisabled": "rgba(0, 0, 0, 0.25)",
@@ -74,19 +68,19 @@
         "lineHeight": 1.75,
         "motionDurationMid": "0",
         "motionDurationSlow": "0",
-        "controlOutline": "rgba(5, 25, 42, 23)",
-        "controlHeight": 42,
+        "controlOutline": "rgba(5, 25, 34, 23)",
+        "controlHeight": 34,
         "controlOutlineWidth": 1,
         "colorWarningOutline": "rgba(255, 215, 5, 1)"
       },
       "InputNumber": {
-        "controlHeight": 32,
-        "controlOutline": "rgba(5, 25, 42, 10)",
+        "controlHeight": 34,
+        "controlOutline": "rgba(5, 25, 34, 10)",
         "controlOutlineWidth": 1
       },
       "Select": {
-        "controlHeight": 32,
-        "controlHeightLG": 56,
+        "controlHeight": 34,
+        "controlHeightLG": 34,
         "optionHeight": 32
       },
       "Radio": {
@@ -104,7 +98,7 @@
         "lineHeight": 1.5
       },
       "Cascader": {
-        "controlHeight": 32,
+        "controlHeight": 34,
         "motionDurationMid": "0.1s",
         "motionDurationSlow": "0.2s"
       }

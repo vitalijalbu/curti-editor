@@ -16,29 +16,20 @@ const Aside = (props) => {
   const items = [
     {
       key: "1",
-      label: (
-        <Button type="text" icon={<IconSortAZ />}>
-          Testi
-        </Button>
-      ),
+      icon: <IconSortAZ />,
+      label: "Testi",
       children: <TabMain />,
     },
     {
       key: "2",
-      label: (
-        <Button type="text" icon={<IconAspectRatio />}>
-          Lapide
-        </Button>
-      ),
+      icon: <IconAspectRatio />,
+      label: "Lapide",
       children: <TabDimensions />,
     },
     {
       key: "3",
-      label: (
-        <Button type="text" icon={<IconSettings />}>
-          Impostazioni
-        </Button>
-      ),
+      icon: <IconSettings />,
+      label: "Impostazioni",
       children: <TabSettings />,
     },
   ];

@@ -35,7 +35,7 @@ const TabSettings = () => {
           title="Unità di misura"
         />
         <div className="list-actions">
-         <Tag color="red">Millimentri</Tag>
+         <Tag color="red">CM</Tag>
           </div>
       </List.Item>
     </List>
