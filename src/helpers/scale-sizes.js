@@ -1,42 +1,63 @@
-
+import convert from 'convert-units';
 
 // Scale DIV HTML
-export const scaleSizeDIV = (values) => {
-  if (!values || typeof values !== 'object') {
-    throw new Error('Invalid values object provided');
+export const scaleSizeDIV = (containerElement) => {
+  if (typeof window === 'undefined') {
+    // Skip if running on the server (during SSR)
+    return { width: '100%', height: '100%' }; // or return an appropriate default size
   }
 
-  // Check if window is defined (to handle server-side rendering or other environments)
-  const isBrowser = typeof window !== 'undefined';
-
-  const screenWidth = isBrowser ? window.innerWidth : 1920; // Use a default value if window is not available
-  const screenHeight = isBrowser ? window.innerHeight : 1080; // Use a default value if window is not available
-
-  if (!values.width || !values.height) {
-    throw new Error('Width and height values are required');
+  if (!containerElement || !(containerElement instanceof Element)) {
+    console.error('Invalid container element provided');
+    return { width: '100%', height: '100%' }; // or return an appropriate default size
   }
 
-  const scaleWidth = (screenWidth / values.width).toFixed(2);
-  const scaleHeight = (screenHeight / values.height).toFixed(2);
+  const containerWidth = containerElement.offsetWidth;
+  const containerHeight = containerElement.offsetHeight;
 
-  // Use the minimum scale factor to ensure that the content fits within the screen
+  // A3 dimensions in millimeters
+  const a3WidthMm = 420;
+  const a3HeightMm = 297;
+
+  // Convert millimeters to pixels based on assumed pixel density (e.g., 96 pixels per inch)
+  const pixelsPerInch = 96;
+  const mmToInch = 1 / 25.4;
+  const a3WidthPixels = a3WidthMm * mmToInch * pixelsPerInch;
+  const a3HeightPixels = a3HeightMm * mmToInch * pixelsPerInch;
+
+  // Calculate the scale factors based on the container dimensions and A3 dimensions in pixels
+  const scaleWidth = containerWidth / a3WidthPixels;
+  const scaleHeight = containerHeight / a3HeightPixels;
+
+  // Use the minimum scale factor to ensure that the content fits within the container
   const scale = Math.min(scaleWidth, scaleHeight);
 
-  const scaledWidth = `${values.width * scale}px`;
-  const scaledHeight = `${values.height * scale}px`;
+  // Calculate scaled dimensions in pixels
+  const scaledWidthPixels = a3WidthPixels * scale;
+  const scaledHeightPixels = a3HeightPixels * scale;
 
   return {
-    width: scaledWidth,
-    height: scaledHeight,
+    width: `${scaledWidthPixels}px`,
+    height: `${scaledHeightPixels}px`,
   };
 };
 
+
+
 // Scale font
 export const scaleFontSize = (cm) => {
-  const fontSizeInPx = (cm / 2); // Assuming 1cm = 37.8 pixels (standard screen DPI)
-  return `${fontSizeInPx}mm`;
-};
+  if (typeof window === 'undefined') {
+    // Skip if running on the server (during SSR)
+    return `${cm}cm`; // or return an appropriate default size
+  }
 
+  // Assuming standard pixel density of 96 pixels per inch
+  const pixelsPerInch = 96;
+  const cmToInch = 1 / 2.54; // 1 inch = 2.54 cm
+  const fontSizeInPx = cm * cmToInch * pixelsPerInch;
+
+  return `${fontSizeInPx}px`;
+};
 
 
 

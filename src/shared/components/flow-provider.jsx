@@ -50,6 +50,7 @@ const FlowProvider = (props) => {
       </div>
       <div
         className="flow__container"
+        
         style={zoomStyle}
       >
         {props.children}

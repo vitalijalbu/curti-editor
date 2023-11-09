@@ -12,12 +12,41 @@ import { scaleSizeDIV } from "helpers/scale-sizes";
 const SheetDraw = (props) => {
   const forms = useRecoilValue(editorState);
   console.log('✅ all-forms', forms);
+  const containerRef = useRef(null);
+  const [scaledSize, setScaledSize] = useState({ width: '100%', height: '100%' });
 
-  const values = { width: 800, height: 600 };
-  const scaledSize = scaleSizeDIV(values);
+
+  useEffect(() => {
+    const calculateSize = () => {
+      if (containerRef.current) {
+        try {
+          const newSize = scaleSizeDIV(containerRef.current);
+          setScaledSize(newSize);
+        } catch (error) {
+          console.error(error.message);
+        }
+      }
+    };
+
+    // Check if window is defined before attaching the event listener
+    if (typeof window !== 'undefined') {
+      // Call the function on mount
+      calculateSize();
+
+      // Call the function whenever the window is resized
+      window.addEventListener('resize', calculateSize);
+
+      // Cleanup the event listener on component unmount
+      return () => {
+        window.removeEventListener('resize', calculateSize);
+      };
+    }
+  }, [containerRef]);
+
+  console.log('scaledSize', scaledSize)
 
   return (
-    <div className="headstone" style={{ background: "#333", ...scaledSize }}>
+      <div ref={containerRef} className="headstone" style={{ background: "#aa9883", ...scaledSize }}>
       <div className={!props?.disabled && "headstone-wrapper"}>
         {/* Drawing Area */}
         {forms.map((form, i) => (
@@ -28,7 +57,7 @@ const SheetDraw = (props) => {
           {!props?.disabled && <Tag color="red">margini sicuri</Tag>}
         </div>
       </div>
-    </div> 
+      </div>
   );
 };
 
