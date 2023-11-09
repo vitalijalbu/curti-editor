@@ -30,22 +30,13 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
     setPopupSpacing(!popupSpacing);
   };
 
-  const increaseSpacing = () => {
-    const currentLetterSpacing = form.getFieldValue("letterSpacing");
-    form.setFieldsValue({ letterSpacing: parseInt(currentLetterSpacing, 10) + 1 });
-    console.log('increase', currentLetterSpacing);
-  };
-
-  const decreaseSpacing = () => {
-    const currentLetterSpacing = form.getFieldValue("letterSpacing");
-    form.setFieldsValue({ letterSpacing: parseInt(currentLetterSpacing, 10) - 1 });
-    console.log('decrease', currentLetterSpacing);
-  };
 
   useEffect(() => {
     onValuesChange(formBody);
     //console.log('🚀 sending-form-to-parent');
   }, [formBody]);
+
+  
   return (
     <>
       {popup && <PopupCharacters opened={popup} toggle={togglePopup} fontFamily={form.getFieldValue('fontFamily')}/>}
@@ -104,7 +95,6 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
               <InputNumber
                 type="number"
                 value={form.getFieldValue("letterSpacing")}
-                onChange={(e) => form.setFieldsValue({ letterSpacing: parseInt(e.target.value, 0) || 0 })}
                 addonAfter="mm"
               />
             </Form.Item>

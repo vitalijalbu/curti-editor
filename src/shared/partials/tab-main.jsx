@@ -20,7 +20,7 @@ const TabMain = () => {
   const handleAddRow = () => {
     const newForm = {
       id: forms.length,
-      label: `Testo ${forms.length + 1}`,
+      label: `Riga ${forms.length + 1}`,
       data: {}, // Initialize an empty values object
     };
      // Close all existing panels and open the new one
