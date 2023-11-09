@@ -69,20 +69,22 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
       
           
           <Row gutter="16">
-          <Col span="16">
+          <Col span={16} md={24} sm={24}>
         <Form.Item label="Carattere" name="fontFamily" initialValue={"3900"}>
           <SelectFont name="fontFamily" onChange={(value) => form.setFieldsValue({"fontFamily": value?.code, "fontSize": value?.fontSize})}/>
         </Form.Item>
         </Col>  
-        <Col span="8">
+        <Col span={8} md={24} sm={24}>
         <Form.Item label="Dim. carattere" name="fontSize" tooltip="Per modificare la dimensione, si prega di scegliere un'altro carattere">
           <InputNumber disabled too/>
           </Form.Item>
         </Col>
-        <Col span="12">
+        </Row>
+        <Row gutter="16">
+        <Col span={12} md={24} sm={24}>
         <Form.Item label="Posizione" name="textAlign" initialValue={'center'}>
-          <Radio.Group buttonStyle="solid" size="large">
-            <Radio.Button size="large" value="left">
+          <Radio.Group buttonStyle="solid">
+            <Radio.Button value="left">
               <IconAlignLeft />
             </Radio.Button>
             <Radio.Button value="center">{<IconAlignCenter />}</Radio.Button>
@@ -90,7 +92,7 @@ const TextForm = ({ formId, initialValues, onValuesChange }) => {
           </Radio.Group>
         </Form.Item>
           </Col>
-          <Col span="12">
+          <Col span={12} md={24} sm={24}>
             <Form.Item label="Spaziatura caratteri" name="letterSpacing" initialValue={0}>
               <Input
                 type="number"

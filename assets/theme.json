@@ -38,7 +38,7 @@
       },
       "message": {
         "boxShadow": 0,
-        "controlHeightLG": 50,
+        "controlHeightLG": 32,
         "borderRadiusLG": 12
       },
       "Pagination": {
@@ -92,7 +92,7 @@
       "Radio": {
         "motionDurationMid": "0",
         "motionDurationSlow": "0",
-        "controlHeight": 50
+        "controlHeight": 32
       },
       "Modal": {
         "colorBgMask": "rgba(0, 0, 0, 0.75)",
