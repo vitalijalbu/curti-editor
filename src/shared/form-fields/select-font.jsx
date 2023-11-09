@@ -57,7 +57,7 @@ const SelectFont = (props) => {
               icon={<IconListCheck />}
               block
             >
-              Vedi tutto
+              Mostra tutti
             </Button>
           </>
         )}

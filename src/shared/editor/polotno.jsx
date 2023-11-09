@@ -32,6 +32,7 @@ const HelpSection = {
   )
 }
 
+// ... (your imports)
 
 const Editor = () => {
   const store = createStore({
@@ -40,40 +41,21 @@ const Editor = () => {
   });
 
   store.toggleRulers(true);
-  store.setElementsPixelRatio(2);
   store.setUnit({
-    unit: 'cm', // mm, cm, in, pt, px
-    dpi: 300,
-  });
-  store.setRole('admin');
-
-
-  var widthPage = unitToPx({
     unit: 'cm',
     dpi: 300,
-    unitVal: 42,
   });
-
-  var heightPage = unitToPx({
-    unit: 'cm',
-    dpi: 300,
-    unitVal: 29.7,
-  });  
-  
-  
-
 
   const page = store.addPage({
-    width: widthPage,
-    height: heightPage,
-    fontFamily: '3900'
+    width: 42,
+    height: 29.7,
+    unit: 'cm',
+    fontFamily: '3900',
+    dpi: 300,
   });
 
-
-// Load fonts when the component mounts
-useEffect(() => {
-  
-  // Remove all existing fonts
+  useEffect(() => {
+    // Remove all existing fonts
     setGoogleFonts([]);
 
     // Add your custom fonts
@@ -84,31 +66,27 @@ useEffect(() => {
           {
             src: `url('/fonts/${font.filename}')`,
             fontStyle: 'normal',
-            fontSize: `${font.fontSize}`,
           },
         ],
       });
     });
 
-          // Disable resizing for all existing elements
-          store.pages.forEach(page => {
-            page?.elements?.forEach(element => {
-              element.set({ resizable: false });
-            });
-          });
-
-}, []);
-
+    // Disable resizing for all existing elements
+    store.pages.forEach(page => {
+      page?.elements?.forEach(element => {
+        element.set({ resizable: false });
+      });
+    });
+  }, [store]);
 
 
 
-  // we will have just two sections
-const sections = [TextSection, HelpSection, SizeSection, ];
+  const sections = [TextSection, HelpSection, SizeSection];
 
   return (
     <PolotnoContainer style={{ width: "100vw", height: "100vh" }}>
       <SidePanelWrap>
-        <SidePanel store={store} sections={sections}/>
+        <SidePanel store={store} sections={sections} />
       </SidePanelWrap>
       <WorkspaceWrap>
         <Toolbar store={store} downloadButtonEnabled />
@@ -120,5 +98,7 @@ const sections = [TextSection, HelpSection, SizeSection, ];
 };
 
 export default Editor;
+
+
 
 
