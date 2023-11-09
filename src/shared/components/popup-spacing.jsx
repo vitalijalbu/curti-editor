@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Button, List, Modal, Alert, Typography, InputNumber, Divider, Card } from "antd";
+import { IconRulerMeasure } from "@tabler/icons-react";
 const { Title, Text } = Typography;
 const arrayChars = require("@/data/static.chars.json");
 
@@ -15,8 +16,8 @@ const PopupSpacing = ({ opened, toggle, fontFamily }) => {
     <Modal
       visible={opened} // Changed 'open' to 'visible'
       onCancel={toggle}
-      width={"50%"}
-      title="Spaziatura caratteri"
+      width={"60%"}
+      title={<><IconRulerMeasure/> Spaziatura caratteri</>}
       centered
       transitionName="ant-modal-slide-up"
       footer={[
@@ -30,23 +31,21 @@ const PopupSpacing = ({ opened, toggle, fontFamily }) => {
     >
       
       <Row gutter={12}>
-      <Col span={12}>
+      <Col span={10}>
       <Alert type="info" message="Imposta spaziatura per ogni singolo carattere" />
         {WORD_DEMO.split(" ").map((word, i) => (
           <>
           <Title level={5}>{word}</Title>
             <List
               key={i}
-              grid={{
-                gutter: 16,
-                column: 6,
-              }}
-              itemLayout="horizontal"
               dataSource={splitWord(word)} // Split each word into an array of letters
               renderItem={(item, index) => (
                 <List.Item key={index}>
                   <div>
-                    {item.letter} <InputNumber /> {/* InputNumber for custom spacing */}
+                  {item.letter} 
+                  </div>
+                  <div>
+                    <InputNumber defaultValue={1} addonAfter="mm"/> {/* InputNumber for custom spacing */}
                   </div>
                 </List.Item>
               )}
@@ -54,8 +53,8 @@ const PopupSpacing = ({ opened, toggle, fontFamily }) => {
          </>
         ))}
          </Col>
-        <Col span={12}>
-          <Card style={{background: "#fafafa", color: "#111"}}>preview</Card></Col>
+        <Col span={14}>
+          <Card style={{background: "#fafafa", color: "#111", textAlign: "center"}}>preview</Card></Col>
       </Row>
     </Modal>
   );
