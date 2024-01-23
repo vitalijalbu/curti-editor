@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { unitToPx } from "polotno/utils/unit";
-import {
-  TextSection
-} from 'polotno/side-panel';
+import { TextSection } from "polotno/side-panel";
 import { setGoogleFonts } from "polotno/utils/fonts";
 import { PolotnoContainer, SidePanelWrap, WorkspaceWrap } from "polotno";
 import { Toolbar } from "polotno/toolbar/toolbar";
@@ -21,13 +19,14 @@ function App() {
   });
 
   store.toggleRulers(true);
-  store.openSidePanel('text');
+  store.openSidePanel("text");
   store.setUnit({
     unit: "cm", // mm, cm, in, pt, px
     dpi: 300,
   });
   store.setRole("admin");
-
+  store.setScale(2);
+  
   var widthPage = unitToPx({
     unit: "cm",
     dpi: 300,
@@ -42,38 +41,36 @@ function App() {
   const page = store.addPage({
     width: widthPage,
     height: heightPage,
-    fontFamily: '3900'
+    fontFamily: "3900",
   });
-
+  store.activePage.set({ bleed: 20 }); // set bleed in pixels
 
   // Load fonts when the component mounts
-useEffect(() => {
-  
-  // Remove all existing fonts
+  useEffect(() => {
+    // Remove all existing fonts
     setGoogleFonts([]);
 
     // Add your custom fonts
-    fontsArray.forEach(font => {
+    fontsArray.forEach((font) => {
       store.addFont({
         fontFamily: font.fontFamily,
         styles: [
           {
             src: `url('${font.filename}')`,
-            fontStyle: 'normal',
+            fontStyle: "normal",
             fontSize: `${font.fontSize}`,
           },
         ],
       });
     });
 
-          // Disable resizing for all existing elements
-          store.pages.forEach(page => {
-            page?.elements?.forEach(element => {
-              element.set({ resizable: false });
-            });
-          });
-
-}, []);
+    // Disable resizing for all existing elements
+    store.pages.forEach((page) => {
+      page?.elements?.forEach((element) => {
+        element.set({ resizable: false });
+      });
+    });
+  }, []);
 
   // we will have just two sections
   const sections = [TextSection];
@@ -81,7 +78,7 @@ useEffect(() => {
   return (
     <PolotnoContainer style={{ width: "100vw", height: "100vh" }}>
       <SidePanelWrap>
-        <SidePanel store={store} sections={sections} />
+        <SidePanel store={store} sections={sections} defaultSection="text" />
       </SidePanelWrap>
       <WorkspaceWrap>
         <Toolbar store={store} downloadButtonEnabled />

@@ -9,3 +9,8 @@ body {
   display: flex;
   place-items: center;
 }
+
+/* POLOTNO */
+.bp5-tabs{
+  display: none !important;
+}
