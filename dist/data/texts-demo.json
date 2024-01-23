@@ -1,0 +1,17 @@
+[
+    {
+        "id": 0,
+        "label": "Testo 1",
+        "bodyHtml": "<h1>This is the first title</h1><p>This is some content for the first object.</p>"
+    },
+    {
+        "id": 1,
+        "label": "Testo 2",
+        "bodyHtml": "<h2>This is the second title</h2><p>This is some content for the second object.</p>"
+    },
+    {
+        "id": 2,
+        "label": "Testo 3",
+        "bodyHtml": "<h3>This is the third title</h3><p>This is some content for the third object.</p>"
+    }
+]
