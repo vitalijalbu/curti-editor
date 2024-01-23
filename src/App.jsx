@@ -41,7 +41,7 @@ function App() {
   const page = store.addPage({
     width: widthPage,
     height: heightPage,
-    fontFamily: "3900",
+    fontFamily: "Personal · 3900",
   });
   store.activePage.set({ bleed: 20 }); // set bleed in pixels
 
