@@ -6,7 +6,7 @@ import { useRecoilValue } from "recoil";
 import { editorState } from "@/store/index";
 import Draggable from "@/shared/editor/draggable";
 import { scaleSizeDIV } from "helpers/scale-sizes";
-import { unitToPx } from "polotno/utils/unit";
+import { unitToPx } from "helpers/unit";
 
 
 
@@ -30,7 +30,7 @@ const SheetDraw = (props) => {
     };
 
     // Check if window is defined before attaching the event listener
-    if (typeof window !== 'undefined') {
+    if (typeof window !== undefined) {
       // Call the function on mount
       calculateSize();
 
@@ -45,7 +45,7 @@ const SheetDraw = (props) => {
   }, [containerRef]);
 
   console.log('scaledSize', scaledSize);
-  console.log('unitToPx', unitToPx({ unitVal: '42', dpi:300, unit:'mm' }));
+  console.log('unitToPx', unitToPx({ unitVal: '42', dpi:300, unit:'px' }));
 
   return (
       <div ref={containerRef} className="headstone" style={{ background: "#aa9883", ...scaledSize }}>

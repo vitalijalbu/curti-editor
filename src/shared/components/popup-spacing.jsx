@@ -1,6 +1,8 @@
 import React from "react";
-import { Row, Col, Button, List, Modal, Alert, Typography, InputNumber, Divider, Card } from "antd";
+import { Row, Col, Button, List, Modal, Alert, Typography, InputNumber, Divider, Card, Flex } from "antd";
 import { IconRulerMeasure } from "@tabler/icons-react";
+import { Draggable } from "react-moveable";
+import TextSpan from "../editor/text-span";
 const { Title, Text } = Typography;
 const arrayChars = require("@/data/static.chars.json");
 
@@ -14,7 +16,7 @@ const PopupSpacing = ({ opened, toggle, fontFamily }) => {
 
   return (
     <Modal
-      visible={opened} // Changed 'open' to 'visible'
+      open={opened}
       onCancel={toggle}
       width={"60%"}
       title={<><IconRulerMeasure/> Spaziatura caratteri</>}
@@ -54,7 +56,16 @@ const PopupSpacing = ({ opened, toggle, fontFamily }) => {
         ))}
          </Col>
         <Col span={14}>
-          <Card style={{background: "#fafafa", color: "#111", textAlign: "center"}}>preview</Card></Col>
+          <Card style={{background: "#fafafa", color: "#111", textAlign: "center"}}>
+          <Flex>
+          {WORD_DEMO.split(" ").map((word, i) => (
+              
+                <TextSpan key={i} data={word}/>
+                
+            ))}
+            </Flex>
+            </Card>
+            </Col>
       </Row>
     </Modal>
   );
