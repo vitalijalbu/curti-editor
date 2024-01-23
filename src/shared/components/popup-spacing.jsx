@@ -7,7 +7,8 @@ const { Title, Text } = Typography;
 const arrayChars = require("@/data/static.chars.json");
 
 const PopupSpacing = ({ opened, toggle, fontFamily }) => {
-  const WORD_DEMO = "Ciao qui";
+  const forms = useRecoilValue(editorState);
+  const WORD_DEMO = forms?.data?.text;
 
   // Function to split a word into an array of letters
   const splitWord = (word) => {

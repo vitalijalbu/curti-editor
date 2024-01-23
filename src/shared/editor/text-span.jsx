@@ -1,4 +1,5 @@
 'use client';
+import { scaleFontSize } from "helpers/scale-sizes";
 import React from "react";
 import { render } from "react-dom";
 
