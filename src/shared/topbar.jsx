@@ -13,13 +13,13 @@ const Topbar = ({store}) => {
     </Navbar.Group>
     <Navbar.Group align="right">
       <Button
-        icon="print"
+        icon="download"
         intent="primary"
         onClick={() => {
           store.saveAsPDF({ fileName: 'curti-lapide.pdf' });
         }}
       >
-        Stampa
+        Salva PDF
       </Button>
     </Navbar.Group>
   </div>

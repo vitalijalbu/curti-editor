@@ -111,7 +111,12 @@ function App() {
           components={{
             TextAlertButton
           }}/>
-        <Workspace store={store} components={{ PageControls: () => null }}/>
+        <Workspace 
+        store={store}
+        paddingX={50}
+        paddingY={50}
+        bleedColor="rgba(222, 167, 11, .20)" 
+        components={{ PageControls: () => null }}/>
         <ZoomButtons store={store} />
       </WorkspaceWrap>
     </PolotnoContainer>
