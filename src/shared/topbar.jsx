@@ -1,10 +1,19 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import { Button, Navbar } from '@blueprintjs/core';
+import dayjs from "dayjs";
 
 // TopBar
 const Topbar = ({store}) => {
+  const [loading, setLoading] = useState(false);
+  const formattedDate = dayjs().format('DD-MM-YYYY');
+
+  const saveFile = async ()  => {
+    setLoading(true);
+    await store.saveAsPDF({ fileName: `CURTI-STAMPA-CARATTERI-${formattedDate}.pdf` });
+    setLoading(false);
+  }
    return (
     <Navbar style={{padding: '0px 15px'}}>
       <div style={{padding: '0px 15px'}}>
@@ -15,10 +24,8 @@ const Topbar = ({store}) => {
       <Button
         icon="download"
         intent="primary"
-        onClick={() => {
-          store.saveAsPDF({ fileName: 'curti-lapide.pdf' });
-        }}
-      >
+        loading={loading}
+        onClick={saveFile}>
         Salva PDF
       </Button>
     </Navbar.Group>

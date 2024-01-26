@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@blueprintjs/icons": "^5.7.0",
+    "dayjs": "^1.11.10",
     "lodash": "^4.17.21",
     "mobx-react-lite": "^4.0.5",
     "polotno": "^2.4.8",

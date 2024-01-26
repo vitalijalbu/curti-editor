@@ -22,7 +22,7 @@ function App() {
   const [fontSize, setFontSize ] = useState('72');
 
   const store = createStore({
-    key: "nFA5H9elEytDyPyvKL7T",
+    key: "8pFtY2xb8GgQ43vryonK",
     showCredit: true,
   });
 
