@@ -2,19 +2,15 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Button, Navbar } from '@blueprintjs/core';
-import dayjs from "dayjs";
+import PopupExport from "./popup-export";
 
 // TopBar
 const Topbar = ({store}) => {
-  const [loading, setLoading] = useState(false);
-  const formattedDate = dayjs().format('DD-MM-YYYY');
+  const [popup, setPopup] = useState(false);
 
-  const saveFile = async ()  => {
-    setLoading(true);
-    await store.saveAsPDF({ fileName: `CURTI-STAMPA-CARATTERI-${formattedDate}.pdf` });
-    setLoading(false);
-  }
    return (
+    <>
+     {popup && <PopupExport opened={popup} toggle={()=>setPopup(!popup)} store={store}/>}
     <Navbar style={{padding: '0px 15px'}}>
       <div style={{padding: '0px 15px'}}>
     <Navbar.Group align="left">
@@ -24,13 +20,14 @@ const Topbar = ({store}) => {
       <Button
         icon="download"
         intent="primary"
-        loading={loading}
-        onClick={saveFile}>
+        //onClick={saveFile}
+        onClick={()=>setPopup(!popup)}>
         Salva PDF
       </Button>
     </Navbar.Group>
   </div>
   </Navbar>
+  </>
     )
   }
   
