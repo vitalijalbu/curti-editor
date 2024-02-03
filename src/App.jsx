@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { unitToPx } from "polotno/utils/unit";
-import { ElementsSection, TextSection } from "polotno/side-panel";
+import { LayersSection, ElementsSection } from "polotno/side-panel";
 import { setGoogleFonts } from "polotno/utils/fonts";
 import { PolotnoContainer, SidePanelWrap, WorkspaceWrap } from "polotno";
 import { Toolbar } from "polotno/toolbar/toolbar";
@@ -14,17 +14,44 @@ import { addGlobalFont } from 'polotno/config';
 import fontsArray from "./fonts";
 import "@blueprintjs/core/lib/css/blueprint.css";
 import HelpSection from "./shared/section-help";
+import CharSection from "./shared/section-char";
+import TextSection from "./shared/section-text";
 import Topbar from "./shared/topbar";
-import TextAlertButton from "./shared/popup-spacing";
+import TextSpacingButton from "./shared/popup-spacing";
+
 
 function App() {
-
-  const [fontSize, setFontSize ] = useState('72');
-
   const store = createStore({
-    key: "8pFtY2xb8GgQ43vryonK",
+    key: "nFA5H9elEytDyPyvKL7T",
     showCredit: true,
   });
+
+
+  const jsonSTORE = store.toJSON();
+
+
+
+
+  useEffect(() => {
+    // Remove all existing fonts
+    setGoogleFonts([]);
+
+    // Add your custom fonts
+    fontsArray.forEach((font) => {
+      store.addFont({
+        fontFamily: font.fontFamily,
+        styles: [
+          {
+            src: `url('${font.filename}')`,
+            fontStyle: "normal",
+            fontSize: `${font.fontSize}`,
+          },
+        ],
+      });
+    });
+  });  
+  
+
 
   store.toggleRulers(true);
   store.openSidePanel("text");
@@ -48,47 +75,31 @@ function App() {
     dpi: 72,
     unitVal: 29.7,
   });
-  store.addPage({
+
+  const page = store.addPage({
     width: widthPage,
     height: heightPage,
     fontFamily: "Personal · 3900",
     bleed: 20,
   });
+
+
+
   store.toggleBleed();
-
-  // Remove all existing fonts
-  setGoogleFonts([]);
-
-  // Add your custom fonts
-  fontsArray.forEach((font) => {
-    store.addFont({
-      fontFamily: font.fontFamily,
-      styles: [
-        {
-          src: `url('${font.filename}')`,
-          fontStyle: "normal",
-          fontSize: `${font.fontSize}`,
-        },
-      ],
-    });
-  });
 
   addGlobalFont({
     fontFamily: 'Personal · 3900',
+    url: '/fonts/3900.ttf'
   });
 
-  // Disable resizing for all existing elements
-  store.pages.forEach((page) => {
-    page?.elements?.forEach((element) => {
-      element.set({ resizable: false });
-    });
-  });
 
-  // we will have just two sections
-  const jsonSTORE = store.toJSON();
-  console.log("OPTIONS", JSON.stringify(jsonSTORE));
+  useEffect(() => {
+    console.log("Store", jsonSTORE);
+ 
+   }, [store]);
 
-  const sections = [TextSection, ElementsSection, HelpSection];
+
+  const sections = [TextSection, CharSection, ElementsSection, LayersSection, HelpSection];
 
   return (
     <div
@@ -109,7 +120,7 @@ function App() {
           store={store}
           downloadButtonEnabled={false}
           components={{
-            TextAlertButton
+            TextSpacingButton
           }}/>
         <Workspace 
         store={store}

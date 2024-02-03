@@ -1,10 +1,10 @@
-// TextAlertButton.js
+// TextSpacingButton.js
 import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Button } from '@blueprintjs/core';
 import Popup from './popup';
 
-const TextAlertButton = observer(({ store, element, elements }) => {
+const TextSpacingButton = observer(({ store, element, elements }) => {
     const [popup, setPopup] = useState(false);
   return (
     <>
@@ -16,4 +16,4 @@ const TextAlertButton = observer(({ store, element, elements }) => {
   );
 });
 
-export default TextAlertButton;
+export default TextSpacingButton;

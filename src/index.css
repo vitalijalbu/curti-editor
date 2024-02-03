@@ -11,14 +11,15 @@ body {
 }
 
 /* POLOTNO */
-.bp5-tabs{
+.bp5-navbar .bp5-tabs,
+.bp5-navbar .bp5-control-group.bp5-numeric-input{
   display: none !important;
 }
-.go4160152499{
-  display: none;
+.polotno-text-preview-plain{
+  display: none !important;
 }
   /* Hide the 1st span element */
-  .bp5-overflow-list > span:first-child,
-  .bp5-overflow-list > span:nth-child(3){
+  .bp5-navbar .bp5-overflow-list > span:first-child,
+  .bp5-navbar .bp5-overflow-list > span:nth-child(3){
     display: none;
   }  
