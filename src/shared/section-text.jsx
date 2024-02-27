@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { Icon, Button } from "@blueprintjs/core";
 import { SectionTab } from 'polotno/side-panel';
@@ -45,8 +45,6 @@ const addText = () =>{
   setYPosition(100 + element.y);
   //console.log(element.y);
 }
-
-
 
     return (
       <div>

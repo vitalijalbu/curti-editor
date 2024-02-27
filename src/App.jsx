@@ -27,9 +27,6 @@ function App() {
   });
 
 
-  const jsonSTORE = store.toJSON();
-
-
 
 
   useEffect(() => {
@@ -82,10 +79,39 @@ function App() {
     fontFamily: "Personal · 3900",
   });
 
-  useEffect(() => {
-    console.log("Store", jsonSTORE);
- 
-   }, [store]);
+
+  // Change fonts sizies
+  const jsonSTORE = store.toJSON();
+
+
+  const [selectedFont, setSelectedFont] = useState(null);
+  
+  
+
+  // Assuming you have access to your Polotno SDK store
+  const off = 
+
+
+    store.on('change', () => {
+      const element = store.selectedElements[0];
+      console.log('Something changed in the editor');
+      console.log('store.selectedElements', store.selectedElements[0]);
+   
+
+    if (element) {
+      const fontFamily = element?.fontFamily;
+      const matchingFont = fontsArray.find(font => font.fontFamily === fontFamily);
+      if (matchingFont) {
+        const newFontSize = matchingFont.fontSize;
+        // Apply the font size to the element or take further actions
+        console.log('Applying font size:', newFontSize);
+        element.set({fontSize : newFontSize});
+      }
+    }else{
+      console.log('NO SELECETION');
+    }
+  });
+   
 
 
   const sections = [TextSection, CharSection, ElementsSection, HelpSection];
@@ -102,7 +128,7 @@ function App() {
       flexDirection: 'column',
     }}
   >
-    <Topbar store={store}/>
+    <Topbar store={store} />
     <PolotnoContainer>
       <SidePanelWrap>
         <SidePanel store={store} sections={sections} defaultSection="text" />
@@ -112,10 +138,10 @@ function App() {
           store={store}
           downloadButtonEnabled={false}
           components={{
-            TextFontFamily,
+            //TextFontFamily,
             TextSpacingButton,
-            TextFontVariant: NULL, 
-            TextFilters: NULL,
+            //TextFontVariant: NULL, 
+            //TextFilters: NULL,
           }}/>
         <Workspace 
         store={store}

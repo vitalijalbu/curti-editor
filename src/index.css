@@ -13,8 +13,9 @@ body {
 /* POLOTNO */
 .bp5-navbar .bp5-tabs,
 .bp5-navbar .bp5-control-group.bp5-numeric-input{
-  display: none !important;
-}
+  /* display: none !important; */
+  cursor: none !important;
+} 
 .polotno-text-preview-plain{
   display: none !important;
 }

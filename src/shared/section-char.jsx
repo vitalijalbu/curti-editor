@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react-lite";
-import { Icon } from "@blueprintjs/core";
+import { Icon, Button } from "@blueprintjs/core";
 import { SectionTab } from 'polotno/side-panel';
 import charsArray from "../chars";
 
@@ -15,16 +15,40 @@ const CharSection = {
   ),
   // we need observer to update component automatically on any store changes
   Panel: observer(({ store }) => {
+    const [yPosition, setYPosition] = useState(0);
+
+    const addText = (char) =>{
+      const element = store.activePage.addElement({
+        type: 'text',
+        name: 'row',
+        x: 250,
+        y: yPosition,
+        innerWidth: '100%',
+        rotable: false,
+        align: 'center',
+        resizable: false,
+        alwaysOnTop: true,
+        selectable: true,
+        text: char,
+        fontSize: 71,
+        fontFamily: 'Personal · 3900',
+        textDecoration: '',
+        fill: 'black',
+        strokeWidth: 0,
+        stroke: 'black',
+        width: 100,
+        lineHeight: 1.2,
+        letterSpacing: 0, // % from font size,
+      });
+      setYPosition(100 + element.y);
+      //console.log(element.y);
+    }
+
     return (
       <div>
         <h3>Seleziona carattere</h3>
         {charsArray.map((item, index) => (
-                <li key={index}>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <div style={{ marginRight: '10px' }}>{item}</div>
-                   
-                  </div>
-                </li>
+           <Button key={index} style={{ marginRight: '10px', fontFamily: 'Personal · 3900' }} onClick={()=> addText()} icon="plus" fill minimal large>{item}</Button>
               ))}
       </div>
     );
