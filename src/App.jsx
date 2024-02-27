@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { unitToPx } from "polotno/utils/unit";
-import { LayersSection, ElementsSection } from "polotno/side-panel";
+import { ElementsSection } from "polotno/side-panel";
 import { setGoogleFonts } from "polotno/utils/fonts";
 import { PolotnoContainer, SidePanelWrap, WorkspaceWrap } from "polotno";
-import { Toolbar } from "polotno/toolbar/toolbar";
+import { Toolbar, TextFontFamily } from "polotno/toolbar/toolbar";
 import { ZoomButtons } from "polotno/toolbar/zoom-buttons";
 import { SidePanel } from "polotno/side-panel";
 import { Workspace } from "polotno/canvas/workspace";
@@ -80,18 +80,7 @@ function App() {
     width: widthPage,
     height: heightPage,
     fontFamily: "Personal · 3900",
-    bleed: 20,
   });
-
-
-
-  store.toggleBleed();
-
-  addGlobalFont({
-    fontFamily: 'Personal · 3900',
-    url: '/fonts/3900.ttf'
-  });
-
 
   useEffect(() => {
     console.log("Store", jsonSTORE);
@@ -99,8 +88,11 @@ function App() {
    }, [store]);
 
 
-  const sections = [TextSection, CharSection, ElementsSection, LayersSection, HelpSection];
+  const sections = [TextSection, CharSection, ElementsSection, HelpSection];
 
+  // Remove component here 
+
+  const NULL = () => null;
   return (
     <div
     style={{
@@ -110,7 +102,7 @@ function App() {
       flexDirection: 'column',
     }}
   >
-    <Topbar store={store} />
+    <Topbar store={store}/>
     <PolotnoContainer>
       <SidePanelWrap>
         <SidePanel store={store} sections={sections} defaultSection="text" />
@@ -120,7 +112,10 @@ function App() {
           store={store}
           downloadButtonEnabled={false}
           components={{
-            TextSpacingButton
+            TextFontFamily,
+            TextSpacingButton,
+            TextFontVariant: NULL, 
+            TextFilters: NULL,
           }}/>
         <Workspace 
         store={store}

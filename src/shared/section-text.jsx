@@ -28,17 +28,14 @@ const addText = () =>{
     innerWidth: '100%',
     rotable: false,
     align: 'center',
-    resizable: true,
+    resizable: false,
     alwaysOnTop: true,
     selectable: true,
-    alwaysOnTop: true,
-    fill: 'black',
     text: 'RIGA ESEMPIO',
     fontSize: 71,
     fontFamily: 'Personal · 3900',
     textDecoration: '',
     fill: 'black',
-    align: 'center',
     strokeWidth: 0,
     stroke: 'black',
     width: 700,
@@ -54,7 +51,7 @@ const addText = () =>{
     return (
       <div>
         <h3>Inserisci un testo</h3>
-        <Button onClick={()=>addText()} icon="plus" fill minimal large>CREA UN TESTO</Button>
+        <Button onClick={()=> addText()} icon="plus" fill minimal large>CREA UN TESTO</Button>
       </div>
     );
   }),

@@ -16,6 +16,8 @@ const PopupExport = ({ opened, toggle, store }) => {
     setLoading(false);
   }
 
+  //Divide all in 2 pages
+
   return (
     <Dialog title="Esporta PDF" icon="document" isOpen={opened} onClose={toggle}>
       <DialogBody>
