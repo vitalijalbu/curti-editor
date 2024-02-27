@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { unitToPx } from "polotno/utils/unit";
-import { ElementsSection } from "polotno/side-panel";
+import { ElementsSection, UploadSection } from "polotno/side-panel";
 import { setGoogleFonts } from "polotno/utils/fonts";
 import { PolotnoContainer, SidePanelWrap, WorkspaceWrap } from "polotno";
 import { Toolbar, TextFontFamily } from "polotno/toolbar/toolbar";
@@ -114,7 +114,7 @@ function App() {
    
 
 
-  const sections = [TextSection, CharSection, ElementsSection, HelpSection];
+  const sections = [TextSection, UploadSection, CharSection, ElementsSection, HelpSection];
 
   // Remove component here 
 

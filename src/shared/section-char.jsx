@@ -45,12 +45,26 @@ const CharSection = {
     }
 
     return (
-      <div>
-        <h3>Seleziona carattere</h3>
+      <div style={{ position: 'relative' }}>
+      <h3>Seleziona carattere</h3>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
         {charsArray.map((item, index) => (
-           <Button key={index} style={{ marginRight: '10px', fontFamily: 'Personal · 3900' }} onClick={()=> addText()} icon="plus" fill minimal large>{item}</Button>
-              ))}
+          <div key={index}>
+            <Button
+              style={{ fontFamily: 'Personal · 3900' }}
+              onClick={() => addText(item)}
+              icon="plus"
+              fill
+              minimal
+              large
+            >
+              {item}
+            </Button>
+          </div>
+        ))}
       </div>
+    </div>
+    
     );
   }),
 };
